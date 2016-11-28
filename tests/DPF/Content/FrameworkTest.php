@@ -20,11 +20,11 @@ class FrameworkTest extends TestCase
     {
         $f = new Framework();
         $f->addOverride(Container::class, function (Element $element) {
-            return new Paragraph($element->getId());
+            return new Paragraph('unit');
         });
 
-        $element = $f->getElement(new Container('test'));
-        $this->assertInstanceOf(Paragraph::class, $element);
-        $this->assertEquals('test', $element->getId());
+        $e = $f->getElement(new Container('test'));
+        $this->assertInstanceOf(Paragraph::class, $e);
+        $this->assertXmlStringEqualsXmlString('<p id="unit"></p>', $e->render());
     }
 }

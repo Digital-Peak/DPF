@@ -8,12 +8,13 @@
 namespace DPF\Content\Element;
 
 use DPF\Content\Element;
+use DPF\Content\Element\Grid\Row;
 
-class Paragraph extends Container
+class Grid extends Container
 {
 
-    protected function getTagName()
+    public function addRow(Row $row)
     {
-        return 'p';
+        return $this->addChild($row);
     }
 }

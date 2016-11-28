@@ -8,17 +8,16 @@
 namespace DPF\Tests\Content\Element;
 
 use DPF\Content\Element;
+use DPF\Content\Element\Link;
 use PHPUnit\Framework\TestCase;
-use DPF\Content\Framework;
 
-class ElementTestCase extends TestCase
+class LinkTest extends TestCase
 {
 
-    public function getFramework(Element $element)
+    public function testRender()
     {
-        $framework = $this->getMockForAbstractClass(Framework::class);
-        $framework->method('getElement')->willReturn($element);
+        $e = new Link('test', 'https://digital-peak.com');
 
-        return $framework;
+        $this->assertXmlStringEqualsXmlString('<a id="test" href="https://digital-peak.com"></a>', $e->render());
     }
 }

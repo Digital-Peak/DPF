@@ -5,15 +5,16 @@
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Element;
+namespace DPF\Content\Element\Description;
 
 use DPF\Content\Element;
+use DPF\Content\Element\Container;
 
-class Paragraph extends Container
+class Description extends Container
 {
 
     protected function getTagName()
     {
-        return 'p';
+        return 'dd';
     }
 }

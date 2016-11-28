@@ -16,20 +16,44 @@ class Container extends Element
 
     public function addChild(Element $element)
     {
+        $this->checkPrefix($element);
         $this->children[] = $element;
+
+        $element->build($this->getRoot());
+        return $element;
     }
 
-    public function prepare($tagName = 'div')
+    protected function build(\DOMElement $parent = null)
     {
-        $buffer = $this->createOpeningTag($tagName);
-        $buffer .= $this->getContent();
+        $root = parent::build($parent);
 
         foreach ($this->children as $child) {
-            $buffer .= $child->render();
+            $child->build($root);
         }
 
-        $buffer .= $this->createClosingTag($tagName);
+        return $root;
+    }
 
-        return $buffer;
+    protected function checkPrefix(Element $element)
+    {
+        if (key_exists('dpf-prefix', $this->attributes) && ! key_exists('dpf-prefix', $element->attributes)) {
+
+            // Prefix class and id attribute
+            $element->attributes['dpf-prefix'] = $this->attributes['dpf-prefix'];
+            foreach ($element->attributes as $name => $attr) {
+                switch ($name) {
+                    case 'id':
+                    case 'class':
+                        $element->setAttribute($name, $attr);
+                        break;
+                }
+            }
+        }
+
+        if ($element instanceof Container) {
+            foreach ($element->children as $child) {
+                $element->checkPrefix($child);
+            }
+        }
     }
 }
