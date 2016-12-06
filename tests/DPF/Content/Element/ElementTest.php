@@ -24,9 +24,26 @@ class ElementTest extends TestCase
     public function testRenderWithContent()
     {
         $e = new Element('test');
-        $e->appendContent('unit');
+        $e->setContent('unit');
 
         $this->assertXmlStringEqualsXmlString('<div id="test">unit</div>', $e->render());
+    }
+
+    public function testRenderWithHTMLContent()
+    {
+        $e = new Element('test');
+        $e->setContent('<p>unit</p>');
+
+        $this->assertXmlStringEqualsXmlString('<div id="test"><p>unit</p></div>', $e->render());
+    }
+
+    /**
+     * @expectedException DOMException
+     */
+    public function testRenderWithInvalidHTMLContent()
+    {
+        $e = new Element('test');
+        $e->setContent('<p>unit');
     }
 
     public function testRenderWithPrefix()

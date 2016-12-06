@@ -14,6 +14,11 @@ class Container extends Element
 
     private $children = array();
 
+    /**
+     *
+     * @param Element $element
+     * @return \DPF\Content\Element
+     */
     public function addChild(Element $element)
     {
         $this->checkPrefix($element);

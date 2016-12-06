@@ -50,15 +50,24 @@ class Element
         return $this->getRoot()->ownerDocument->saveHTML();
     }
 
-    public function appendContent($content)
+    public function getContent()
     {
-        $this->content .= $content;
-        $this->build($this->root->parentNode);
+        return $this->content;
+    }
+
+    public function setContent($content, $append = false)
+    {
+        $this->content = ($append ? $this->content : '') . $content;
+        $this->build($this->root->parentNode instanceof \DOMElement ? $this->root->parentNode : null);
+
+        return $this;
     }
 
     public function setFramework(Framework $framework)
     {
         $this->framework = $framework;
+
+        return $this;
     }
 
     protected function getRoot()
@@ -72,13 +81,11 @@ class Element
     protected function build(\DOMElement $parent = null)
     {
         // Prepare the domdocument
-        $dom = null;
+        $dom = new \DOMDocument();
         if ($parent != null) {
             $dom = $parent->ownerDocument;
-        } else {
-            $dom = new \DOMDocument();
-            $dom->formatOutput = true;
         }
+        $dom->formatOutput = true;
 
         // Create the root element
         $domElement = $dom->createElement($this->getTagName());
@@ -101,7 +108,23 @@ class Element
         }
 
         if ($this->content) {
-            $this->root->textContent = $this->content;
+            if (strpos($this->content, '<') === 0) {
+                $handler = function ($errno, $errstr) {
+                    throw new \DOMException($errstr);
+                };
+                $oldHandler = set_error_handler($handler);
+
+                $fragment = $dom->createDocumentFragment();
+                $fragment->appendXML($this->content);
+
+                if ($fragment->childNodes->length > 0) {
+                    $this->root->appendChild($fragment);
+                }
+
+                set_error_handler($oldHandler);
+            } else {
+                $this->root->textContent = $this->content;
+            }
         }
         return $this->root;
     }

@@ -18,7 +18,7 @@ class ContainerTest extends TestCase
     {
         $e = new Container('test');
         $el = $e->addChild(new Element('unit'));
-        $el->appendContent('unit test');
+        $el->setContent('unit test');
 
         $this->assertXmlStringEqualsXmlString('<div id="test"><div id="unit">unit test</div></div>', $e->render());
     }
