@@ -12,6 +12,9 @@ class Framework
 
     private $overrides = array();
 
+    public function __construct()
+    {}
+
     /**
      *
      * @return Element
@@ -29,5 +32,18 @@ class Framework
     public function addOverride($className, callable $callback)
     {
         $this->overrides[$className] = $callback;
+    }
+
+    /**
+     *
+     * @param string $className
+     * @param Element $element
+     * @return Element
+     */
+    public function createOverride($className, Element $element)
+    {
+        $instance = new $className($element->getId(), $element->getClasses(), $element->getAttributes());
+        $instance->setContent($element->getContent());
+        return $instance;
     }
 }

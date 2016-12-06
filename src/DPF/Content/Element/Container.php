@@ -22,9 +22,10 @@ class Container extends Element
     public function addChild(Element $element)
     {
         $this->checkPrefix($element);
+        $element->setFramework($this->getFramework());
+
         $this->children[] = $element;
 
-        $element->build($this->getRoot());
         return $element;
     }
 

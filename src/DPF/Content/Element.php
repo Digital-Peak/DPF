@@ -20,12 +20,6 @@ class Element
      */
     private $framework = null;
 
-    /**
-     *
-     * @var \DOMElement
-     */
-    private $root = null;
-
     public function __construct($id, array $classes = array(), array $attributes = array())
     {
         if (! $id) {
@@ -40,14 +34,22 @@ class Element
 
     public function render()
     {
-        if ($this->framework) {
-            $override = $this->framework->getElement($this);
-            if ($override) {
-                return $override->render();
-            }
-        }
+        return $this->build()->ownerDocument->saveHTML();
+    }
 
-        return $this->getRoot()->ownerDocument->saveHTML();
+    public function getId()
+    {
+        return $this->attributes['id'];
+    }
+
+    public function getClasses()
+    {
+        return explode(' ', $this->attributes['class']);
+    }
+
+    public function getAttributes()
+    {
+        return $this->attributes;
     }
 
     public function getContent()
@@ -58,24 +60,24 @@ class Element
     public function setContent($content, $append = false)
     {
         $this->content = ($append ? $this->content : '') . $content;
-        $this->build($this->root->parentNode instanceof \DOMElement ? $this->root->parentNode : null);
 
         return $this;
     }
 
-    public function setFramework(Framework $framework)
+    /**
+     *
+     * @return \DPF\Content\Framework
+     */
+    public function getFramework()
+    {
+        return $this->framework;
+    }
+
+    public function setFramework(Framework $framework = null)
     {
         $this->framework = $framework;
 
         return $this;
-    }
-
-    protected function getRoot()
-    {
-        if ($this->root == null) {
-            $this->build();
-        }
-        return $this->root;
     }
 
     protected function build(\DOMElement $parent = null)
@@ -87,46 +89,48 @@ class Element
         }
         $dom->formatOutput = true;
 
+        $instance = $this;
+        if ($this->framework && $override = $this->framework->getElement($this)) {
+            $instance = $override;
+        }
+
         // Create the root element
-        $domElement = $dom->createElement($this->getTagName());
+        $domElement = $dom->createElement($instance->getTagName());
 
         if ($parent == null) {
             $parent = $dom;
         }
 
-        if ($this->root != null && isset($this->root->ownerDocument)) {
-            $this->root->parentNode->removeChild($this->root);
-        }
-        $this->root = $parent->appendChild($domElement);
+        $root = $parent->appendChild($domElement);
 
         // Set the attributes
-        foreach ($this->attributes as $name => $attr) {
+        foreach ($instance->getAttributes() as $name => $attr) {
             if ($name == 'dpf-prefix' || ! $attr) {
                 continue;
             }
-            $this->root->setAttribute($name, $attr);
+            $root->setAttribute($name, $attr);
         }
 
-        if ($this->content) {
-            if (strpos($this->content, '<') === 0) {
+        if ($instance->getContent()) {
+            if (strpos($instance->getContent(), '<') === 0) {
                 $handler = function ($errno, $errstr) {
                     throw new \DOMException($errstr);
                 };
                 $oldHandler = set_error_handler($handler);
 
                 $fragment = $dom->createDocumentFragment();
-                $fragment->appendXML($this->content);
+                $fragment->appendXML($instance->getContent());
 
                 if ($fragment->childNodes->length > 0) {
-                    $this->root->appendChild($fragment);
+                    $root->appendChild($fragment);
                 }
 
                 set_error_handler($oldHandler);
             } else {
-                $this->root->textContent = $this->content;
+                $root->textContent = $instance->getContent();
             }
         }
-        return $this->root;
+        return $root;
     }
 
     protected function getTagName()

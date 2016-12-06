@@ -12,15 +12,26 @@ use DPF\Content\Element\Container;
 class Column extends Container
 {
 
+    protected $COL_CLASS = "dpf-col-";
+
+    private $width = 0;
+
     public function __construct($id, $width, array $classes = array(), array $attributes = array())
     {
-        $classes[] = 'dpf-col-' . $width;
+        $classes[] = $this->COL_CLASS . $width;
 
         parent::__construct($id, $classes, $attributes);
+
+        $this->width = $width;
+    }
+
+    public function getWidth()
+    {
+        return $this->width;
     }
 
     protected function canPrefix($name, $value)
     {
-        return strpos($value, 'dpf-col-') !== 0 && parent::canPrefix($name, $value);
+        return strpos($value, $this->COL_CLASS) !== 0 && parent::canPrefix($name, $value);
     }
 }

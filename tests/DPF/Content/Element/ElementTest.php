@@ -44,6 +44,7 @@ class ElementTest extends TestCase
     {
         $e = new Element('test');
         $e->setContent('<p>unit');
+        $e->render();
     }
 
     public function testRenderWithPrefix()
