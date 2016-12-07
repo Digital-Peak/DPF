@@ -58,6 +58,19 @@ class ElementTest extends TestCase
         $this->assertXmlStringEqualsXmlString('<div id="foo-test" class="foo-unit"></div>', $e->render());
     }
 
+    public function testRenderWithPrefixProtectedClass()
+    {
+        $e = new Element('test', array(
+            'foo',
+            'bar'
+        ), array(
+            'dpf-prefix' => 'unit-'
+        ));
+        $e->setProtectClass('bar');
+
+        $this->assertXmlStringEqualsXmlString('<div id="unit-test" class="unit-foo bar"></div>', $e->render());
+    }
+
     public function getFramework(Element $element)
     {
         $framework = $this->getMockForAbstractClass(Framework::class);

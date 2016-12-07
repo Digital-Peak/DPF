@@ -7,10 +7,16 @@
  */
 namespace DPF\Content\Framework\BS2\Element\Grid;
 
-use DPF\Content\Element\Basic\Grid\Column as OriginalColumn;
+use DPF\Content\Element\Basic\Alert as OriginalAlert;
 
-class Column extends OriginalColumn
+class Alert extends OriginalAlert
 {
 
-    protected $COL_CLASS = "span";
+    protected function getAlertClass($type)
+    {
+        $mappings = [
+            OriginalAlert::WARNING => 'warning'
+        ];
+        return ' alert alert-' . $mappings[$type];
+    }
 }

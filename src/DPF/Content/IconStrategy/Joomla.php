@@ -5,16 +5,16 @@
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Element;
+namespace DPF\Content\IconStrategy;
 
-use DPF\Content\Element;
-use DPF\Content\Element\Grid\Row;
+use DPF\Content\Element\Basic\Icon;
+use DPF\Content\IconStrategy;
 
-class Grid extends Container
+class Joomla extends IconStrategy
 {
 
-    public function addRow(Row $row)
+    public function __construct()
     {
-        return $this->addChild($row);
+        $this->setIconClass(Icon::PLUS, 'icon-plus');
     }
 }

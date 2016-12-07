@@ -5,11 +5,11 @@
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Element;
+namespace DPF\Content\Element\Basic;
 
 use DPF\Content\Element;
-use DPF\Content\Element\Description\Description;
-use DPF\Content\Element\Description\Term;
+use DPF\Content\Element\Basic\Description\Description;
+use DPF\Content\Element\Basic\Description\Term;
 
 class DescriptionList extends Container
 {

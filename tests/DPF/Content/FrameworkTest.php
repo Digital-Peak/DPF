@@ -8,8 +8,8 @@
 namespace DPF\Tests\Content\Element;
 
 use DPF\Content\Element;
-use DPF\Content\Element\Container;
-use DPF\Content\Element\Paragraph;
+use DPF\Content\Element\Basic\Container;
+use DPF\Content\Element\Basic\Paragraph;
 use DPF\Content\Framework;
 use PHPUnit\Framework\TestCase;
 

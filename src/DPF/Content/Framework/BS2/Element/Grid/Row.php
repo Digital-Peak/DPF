@@ -8,7 +8,7 @@
 namespace DPF\Content\Framework\BS2\Element\Grid;
 
 use DPF\Content\Element;
-use DPF\Content\Element\Grid\Row as OriginalRow;
+use DPF\Content\Element\Basic\Grid\Row as OriginalRow;
 
 class Row extends OriginalRow
 {

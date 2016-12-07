@@ -40,7 +40,7 @@ class Framework
      * @param Element $element
      * @return Element
      */
-    public function createOverride($className, Element $element)
+    protected function createOverride($className, Element $element)
     {
         $instance = new $className($element->getId(), $element->getClasses(), $element->getAttributes());
         $instance->setContent($element->getContent());

@@ -5,9 +5,9 @@
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Element\Grid;
+namespace DPF\Content\Element\Basic\Grid;
 
-use DPF\Content\Element\Container;
+use DPF\Content\Element\Basic\Container;
 
 class Column extends Container
 {
@@ -16,9 +16,10 @@ class Column extends Container
 
     private $width = 0;
 
-    public function __construct($id, $width, array $classes = array(), array $attributes = array())
+    public function __construct($id, $width, array $classes = [], array $attributes = [])
     {
         $classes[] = $this->COL_CLASS . $width;
+        $this->setProtectClass($this->COL_CLASS . $width);
 
         parent::__construct($id, $classes, $attributes);
 
@@ -28,10 +29,5 @@ class Column extends Container
     public function getWidth()
     {
         return $this->width;
-    }
-
-    protected function canPrefix($name, $value)
-    {
-        return strpos($value, $this->COL_CLASS) !== 0 && parent::canPrefix($name, $value);
     }
 }

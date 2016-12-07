@@ -8,11 +8,11 @@
 namespace DPF\Tests\Content\Element;
 
 use DPF\Content\Element;
-use DPF\Content\Element\Container;
-use DPF\Content\Element\Grid;
+use DPF\Content\Element\Basic\Container;
+use DPF\Content\Element\Basic\Grid;
 use PHPUnit\Framework\TestCase;
-use DPF\Content\Element\Grid\Row;
-use DPF\Content\Element\Grid\Column;
+use DPF\Content\Element\Basic\Grid\Row;
+use DPF\Content\Element\Basic\Grid\Column;
 
 class GridTest extends TestCase
 {

@@ -8,8 +8,8 @@
 namespace DPF\Tests\Content\Element\Grid;
 
 use DPF\Content\Element;
-use DPF\Content\Element\Grid;
-use DPF\Content\Element\Grid\Column;
+use DPF\Content\Element\Basic\Grid;
+use DPF\Content\Element\Basic\Grid\Column;
 use PHPUnit\Framework\TestCase;
 
 class ColumnTest extends TestCase

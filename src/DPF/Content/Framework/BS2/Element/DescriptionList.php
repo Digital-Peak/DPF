@@ -8,20 +8,16 @@
 namespace DPF\Content\Framework\BS2\Element;
 
 use DPF\Content\Element;
-use DPF\Content\Element\DescriptionList as OriginalDescriptionList;
+use DPF\Content\Element\Basic\DescriptionList as OriginalDescriptionList;
 
 class DescriptionList extends OriginalDescriptionList
 {
 
-    public function __construct($id, array $classes = array(), array $attributes = array())
+    public function __construct($id, array $classes = [], array $attributes = [])
     {
         $classes[] = 'dl-horizontal';
+        $this->setProtectClass('dl-horizontal');
 
         parent::__construct($id, $classes, $attributes);
-    }
-
-    protected function canPrefix($name, $value)
-    {
-        return $value != 'dl-horizontal' && parent::canPrefix($name, $value);
     }
 }
