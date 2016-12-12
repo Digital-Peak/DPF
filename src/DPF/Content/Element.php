@@ -82,6 +82,12 @@ class Element
         return $this->content;
     }
 
+    /**
+     *
+     * @param string $content
+     * @param boolean $append
+     * @return \DPF\Content\Element
+     */
     public function setContent($content, $append = false)
     {
         $this->content = ($append ? $this->content : '') . $content;

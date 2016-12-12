@@ -17,6 +17,34 @@ class Container extends Element
 
     /**
      *
+     * @param Element|string $content
+     * @param boolean $append
+     * @return \DPF\Content\Element
+     */
+    public function setContent($content, $append = false)
+    {
+        if ($content instanceof Element) {
+            $content = [
+                $content
+            ];
+        }
+
+        if (is_array($content)) {
+            foreach ($content as $item) {
+                if (! ($item instanceof Element)) {
+                    // If one item is not an element, we don't know what to do'
+                    break;
+                }
+                $this->addChild($item);
+            }
+            return $this;
+        }
+
+        return parent::setContent($content, $append);
+    }
+
+    /**
+     *
      * @param Element $element
      * @return \DPF\Content\Element
      */
