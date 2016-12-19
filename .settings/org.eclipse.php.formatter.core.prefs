@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
-formatterProfile=org.eclipse.php.formatter.ui.psr2
-indentationChar=\ 
+formatterProfile=_PSR-2 Extended
+indentationChar=\t
 insert_space_after_opening_paren_in_declare=false
 insert_space_before_closing_paren_in_declare=false
 insert_space_before_opening_paren_in_declare=false
@@ -73,7 +73,7 @@ org.eclipse.php.formatter.core.formatter.indent_statements_compare_to_block=true
 org.eclipse.php.formatter.core.formatter.indent_statements_compare_to_body=true
 org.eclipse.php.formatter.core.formatter.indent_switchstatements_compare_to_cases=true
 org.eclipse.php.formatter.core.formatter.indent_switchstatements_compare_to_switch=true
-org.eclipse.php.formatter.core.formatter.indentation.size=4
+org.eclipse.php.formatter.core.formatter.indentation.size=1
 org.eclipse.php.formatter.core.formatter.insert_new_line_after_opening_brace_in_array_initializer=false
 org.eclipse.php.formatter.core.formatter.insert_new_line_before_catch_in_try_statement=false
 org.eclipse.php.formatter.core.formatter.insert_new_line_before_closing_brace_in_array_initializer=true
