@@ -10,173 +10,187 @@ namespace DPF\Content;
 class Element
 {
 
-    /**
-     * The attributes of the element.
-     * The key is the name and the value the value.
-     *
-     * @var array
-     */
-    protected $attributes = array();
+	/**
+	 * The attributes of the element.
+	 * The key is the name and the value the value.
+	 *
+	 * @var array
+	 */
+	protected $attributes = array();
 
-    /**
-     * The content of the element
-     *
-     * @var string
-     */
-    private $content = '';
+	/**
+	 * The content of the element
+	 *
+	 * @var string
+	 */
+	private $content = '';
 
-    /**
-     * Some protected class names which will not being prefixed.
-     *
-     * @var array
-     */
-    private $protectedClasses = array();
+	/**
+	 * Some protected class names which will not being prefixed.
+	 *
+	 * @var array
+	 */
+	private $protectedClasses = array();
 
-    public function __construct($id, array $classes = [], array $attributes = [])
-    {
-        if (! $id) {
-            throw new \Exception('ID cannot be empty!');
-        }
+	public function __construct($id, array $classes = [], array $attributes = [])
+	{
+		if (! $id) {
+			throw new \Exception('ID cannot be empty!');
+		}
 
-        $this->attributes = $attributes;
+		$this->attributes = $attributes;
 
-        $this->attributes['id'] = $id;
-        $this->attributes['class'] = implode(' ', $classes);
-    }
+		$this->attributes['id'] = $id;
+		$this->attributes['class'] = implode(' ', $classes);
+	}
 
-    public function render(Framework $framework = null)
-    {
-        return $this->build(null, $framework)->ownerDocument->saveHTML();
-    }
+	public function render(Framework $framework = null)
+	{
+		return $this->build(null, $framework)->ownerDocument->saveHTML();
+	}
 
-    public function getId()
-    {
-        return $this->attributes['id'];
-    }
+	public function getId()
+	{
+		return $this->attributes['id'];
+	}
 
-    public function getClasses()
-    {
-        return explode(' ', $this->attributes['class']);
-    }
+	public function getClasses()
+	{
+		return explode(' ', $this->attributes['class']);
+	}
 
-    public function setProtectClass($class)
-    {
-        $this->protectedClasses[] = $class;
+	public function setProtectClass($class)
+	{
+		$this->protectedClasses[] = $class;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    public function getAttributes($prefix = false)
-    {
-        $attributes = $this->attributes;
-        if ($prefix) {
-            foreach ($attributes as $key => $attribute) {
-                $attributes[$key] = $this->getPrefixedAttribute($key, $attribute);
-            }
-        }
-        return $attributes;
-    }
+	public function getAttributes($prefix = false)
+	{
+		$attributes = $this->attributes;
+		if ($prefix) {
+			foreach ($attributes as $key => $attribute) {
+				$attributes[$key] = $this->getPrefixedAttribute($key, $attribute);
+			}
+		}
+		return $attributes;
+	}
 
-    public function getContent()
-    {
-        return $this->content;
-    }
+	public function getAttribute($name)
+	{
+		if (key_exists($name, $this->attributes)) {
+			return $this->attributes[$name];
+		}
 
-    /**
-     *
-     * @param string $content
-     * @param boolean $append
-     * @return \DPF\Content\Element
-     */
-    public function setContent($content, $append = false)
-    {
-        $this->content = ($append ? $this->content : '') . $content;
+		return null;
+	}
 
-        return $this;
-    }
+	public function getContent()
+	{
+		return $this->content;
+	}
 
-    protected function build(\DOMElement $parent = null, Framework $framework = null)
-    {
-        // Prepare the domdocument
-        $dom = new \DOMDocument();
-        if ($parent != null) {
-            $dom = $parent->ownerDocument;
-        }
-        $dom->formatOutput = true;
+	/**
+	 *
+	 * @param string $content
+	 * @param boolean $append
+	 * @return \DPF\Content\Element
+	 */
+	public function setContent($content, $append = false)
+	{
+		$content = trim($content);
+		$this->content = ($append ? $this->content : '') . $content;
 
-        $instance = $this;
-        if ($framework && $override = $framework->getElement($this)) {
-            $instance = $override;
-        }
+		return $this;
+	}
 
-        // Create the root element
-        $domElement = $dom->createElement($instance->getTagName());
+	public function build(\DOMElement $parent = null, Framework $framework = null)
+	{
+		// Prepare the domdocument
+		$dom = new \DOMDocument();
+		if ($parent != null) {
+			$dom = $parent->ownerDocument;
+		}
+		$dom->formatOutput = true;
 
-        if ($parent == null) {
-            $parent = $dom;
-        }
+		$instance = $this;
+		if ($framework && $override = $framework->getElement($this)) {
+			$instance = $override;
+		}
 
-        $root = $parent->appendChild($domElement);
+		// Create the root element
+		$domElement = $dom->createElement($instance->getTagName());
 
-        // Set the attributes
-        foreach ($instance->getAttributes(true) as $name => $attr) {
-            if ($name == 'dpf-prefix' || ! $attr) {
-                continue;
-            }
-            $root->setAttribute($name, $attr);
-        }
+		if ($parent == null) {
+			$parent = $dom;
+		}
 
-        if ($instance->getContent()) {
-            if (strpos($instance->getContent(), '<') === 0) {
-                $handler = function ($errno, $errstr) {
-                    throw new \DOMException($errstr);
-                };
-                $oldHandler = set_error_handler($handler);
+		$root = $parent->appendChild($domElement);
 
-                $fragment = $dom->createDocumentFragment();
-                $fragment->appendXML($instance->getContent());
+		// Set the attributes
+		foreach ($instance->getAttributes(true) as $name => $attr) {
+			if ($name == 'dpf-prefix' || ! $attr) {
+				continue;
+			}
+			$root->setAttribute($name, $attr);
+		}
 
-                if ($fragment->childNodes->length > 0) {
-                    $root->appendChild($fragment);
-                }
+		if ($instance->getContent()) {
+			if (strpos($instance->getContent(), '<') === 0) {
+				$handler = function ($errno, $errstr) {
+					throw new \DOMException($errstr);
+				};
+				$oldHandler = set_error_handler($handler);
 
-                set_error_handler($oldHandler);
-            } else {
-                $root->textContent = $instance->getContent();
-            }
-        }
-        return $root;
-    }
+				$fragment = $dom->createDocumentFragment();
+				$fragment->appendXML($instance->getContent());
 
-    protected function getTagName()
-    {
-        return 'div';
-    }
+				if ($fragment->childNodes->length > 0) {
+					$root->appendChild($fragment);
+				}
 
-    protected function canPrefix($name, $value)
-    {
-        if ($name == 'class') {
-            // Is the value protected
-            return ! in_array($value, $this->protectedClasses);
-        }
-        return $name == 'id';
-    }
+				set_error_handler($oldHandler);
+			} else {
+				$root->textContent = $instance->getContent();
+			}
+		}
+		return $root;
+	}
 
-    private function getPrefixedAttribute($name, $value)
-    {
-        $prefix = key_exists('dpf-prefix', $this->attributes) ? $this->attributes['dpf-prefix'] : '';
-        if (! $prefix) {
-            return trim($value);
-        }
+	protected function getTagName()
+	{
+		return 'div';
+	}
 
-        $tmp = '';
-        foreach (explode(' ', $value) as $v) {
-            if (strpos($v, $prefix) === 0 || ! $v) {
-                // Has prefix already
-                continue;
-            }
-            $tmp .= ($this->canPrefix($name, $v) ? $prefix : '') . $v . ' ';
-        }
-        return trim($tmp);
-    }
+	protected function canPrefix($name, $value)
+	{
+		if ($name == 'class') {
+			// Is the value protected
+			return ! in_array($value, $this->protectedClasses);
+		}
+		return $name == 'id';
+	}
+
+	private function getPrefixedAttribute($name, $value)
+	{
+		$prefix = key_exists('dpf-prefix', $this->attributes) ? $this->attributes['dpf-prefix'] : '';
+		if (! $prefix) {
+			return trim($value);
+		}
+
+		if (! is_array($value)) {
+			$value = explode(' ', $value);
+		}
+
+		$tmp = '';
+		foreach ($value as $v) {
+			if (strpos($v, $prefix) === 0 || ! $v) {
+				// Has prefix already
+				continue;
+			}
+			$tmp .= ($this->canPrefix($name, $v) ? $prefix : '') . $v . ' ';
+		}
+		return trim($tmp);
+	}
 }

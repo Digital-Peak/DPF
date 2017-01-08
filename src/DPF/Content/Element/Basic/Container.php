@@ -66,7 +66,7 @@ class Container extends Element
         return $this->children;
     }
 
-    protected function build(\DOMElement $parent = null, Framework $framework = null)
+    public function build(\DOMElement $parent = null, Framework $framework = null)
     {
         $root = parent::build($parent, $framework);
 

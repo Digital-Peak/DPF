@@ -14,34 +14,29 @@ class Icon extends Element
 {
 
     const PLUS = 'plus';
+    const LOCATION = 'location';
 
     private $iconStrategy = null;
 
-    public function __construct($id, $type, array $classes = [], array $attributes = [])
+    public function __construct($id, $type, IconStrategy $iconStrategy = null, array $classes = [], array $attributes = [])
     {
         if (! in_array($type, [
-            self::PLUS
+            self::PLUS,
+        	self::LOCATION
         ])) {
             $type = self::PLUS;
         }
 
-        $classes[] = $this->getIconClass($type);
-        $this->setProtectClass($this->getIconClass($type));
+        $class = 'dpf-icon-' . $type;
+
+        if ($iconStrategy) {
+            $class = $iconStrategy->getIconClass($type);
+        }
+
+        $classes[] = $class;
+        $this->setProtectClass($class);
 
         parent::__construct($id, $classes, $attributes);
-    }
-
-    public function setIconStrategy(IconStrategy $iconStrategy = null)
-    {
-        $this->iconStrategy = $iconStrategy;
-    }
-
-    protected function getIconClass($type)
-    {
-        if ($this->iconStrategy) {
-            return $this->iconStrategy->getIconClass($type);
-        }
-        return 'dpf-icon-' . $type;
     }
 
     protected function getTagName()
