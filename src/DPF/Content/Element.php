@@ -118,7 +118,7 @@ class Element
 	 *
 	 * @return Element
 	 */
-	public function setProtectClass($class)
+	public function setProtectedClass($class)
 	{
 		$this->protectedClasses[] = $class;
 
@@ -148,7 +148,7 @@ class Element
 	 * @return string
 	 *
 	 * @see Element::getPrefix
-	 * @see Element::setProtectClass
+	 * @see Element::setProtectedClass
 	 */
 	public function getAttributes($prefix = false)
 	{
@@ -319,7 +319,7 @@ class Element
 	 * @return boolean
 	 *
 	 * @see Element::getPrefix
-	 * @see Element::setProtectClass
+	 * @see Element::setProtectedClass
 	 */
 	protected function canPrefix($name, $value)
 	{
@@ -339,7 +339,7 @@ class Element
 	 * @return string
 	 *
 	 * @see Element::getPrefix
-	 * @see Element::setProtectClass
+	 * @see Element::setProtectedClass
 	 */
 	private function getPrefixedAttribute($name, $value)
 	{

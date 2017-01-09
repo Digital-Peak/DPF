@@ -19,7 +19,7 @@ class Column extends Container
     public function __construct($id, $width, array $classes = [], array $attributes = [])
     {
         $classes[] = $this->COL_CLASS . $width;
-        $this->setProtectClass($this->COL_CLASS . $width);
+        $this->setProtectedClass($this->COL_CLASS . $width);
 
         parent::__construct($id, $classes, $attributes);
 

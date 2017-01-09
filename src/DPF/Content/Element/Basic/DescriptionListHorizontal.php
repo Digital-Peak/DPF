@@ -15,7 +15,7 @@ class DescriptionListHorizontal extends DescriptionList
 	public function __construct($id, array $classes = [], array $attributes = [])
 	{
 		$classes[] = 'dpf-dl-horizontal';
-		$this->setProtectClass('dpf-dl-horizontal');
+		$this->setProtectedClass('dpf-dl-horizontal');
 
 		parent::__construct($id, $classes, $attributes);
 	}

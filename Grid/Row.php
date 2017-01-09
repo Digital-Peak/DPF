@@ -18,7 +18,7 @@ class Row extends Container
     public function __construct($id, array $classes = [], array $attributes = [])
     {
         $classes[] = $this->ROW_CLASS;
-        $this->setProtectClass($this->ROW_CLASS);
+        $this->setProtectedClass($this->ROW_CLASS);
 
         parent::__construct($id, $classes, $attributes);
     }

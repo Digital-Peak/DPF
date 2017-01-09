@@ -64,7 +64,7 @@ class GoogleLike extends Element
 		$attributes['data-href'] = $url;
 
 		$classes[] = 'g-plusone';
-		$this->setProtectClass('g-plusone');
+		$this->setProtectedClass('g-plusone');
 
 		parent::__construct($id, $classes, $attributes);
 

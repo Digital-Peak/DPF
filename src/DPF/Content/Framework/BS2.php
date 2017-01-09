@@ -32,38 +32,38 @@ class BS2 implements Framework
 	{
 		if ($element instanceof DescriptionListHorizontal) {
 			$element->addClass('dl-horizontal');
-			$element->setProtectClass('dl-horizontal');
+			$element->setProtectedClass('dl-horizontal');
 		}
 
 		if ($element instanceof Row) {
 			$element->addClass('row-fluid');
-			$element->setProtectClass('row-fluid');
+			$element->setProtectedClass('row-fluid');
 		}
 
 		if ($element instanceof Column) {
 			$element->addClass('span' . $element->getWidth());
-			$element->setProtectClass('span' . $element->getWidth());
+			$element->setProtectedClass('span' . $element->getWidth());
 		}
 
 		if ($element instanceof Alert) {
 			$element->addClass('alert');
-			$element->setProtectClass('alert');
+			$element->setProtectedClass('alert');
 			$element->addClass('alert-' . $element->getType());
-			$element->setProtectClass('alert-' . $element->getType());
+			$element->setProtectedClass('alert-' . $element->getType());
 		}
 
 		if ($element instanceof Table) {
 			$element->addClass('table');
-			$element->setProtectClass('table');
+			$element->setProtectedClass('table');
 			$element->addClass('table-stripped');
-			$element->setProtectClass('table-stripped');
+			$element->setProtectedClass('table-stripped');
 		}
 
 		if ($element instanceof Button) {
 			$element->addClass('btn');
-			$element->setProtectClass('btn');
+			$element->setProtectedClass('btn');
 			$element->addClass('btn-default');
-			$element->setProtectClass('btn-default');
+			$element->setProtectedClass('btn-default');
 		}
 
 		return $element;

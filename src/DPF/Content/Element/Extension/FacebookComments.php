@@ -126,7 +126,7 @@ class FacebookComments extends Element
     public function __construct($id, $url, array $classes = [], array $attributes = [])
     {
         $classes[] = 'fb-comments';
-        $this->setProtectClass('fb-comments');
+        $this->setProtectedClass('fb-comments');
 
         $attributes['data-href'] = $url;
 

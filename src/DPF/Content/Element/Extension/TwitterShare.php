@@ -33,7 +33,7 @@ class TwitterShare extends Link
 		$attributes['data-href'] = $url;
 
 		$classes[] = 'twitter-share-button';
-		$this->setProtectClass('twitter-share-button');
+		$this->setProtectedClass('twitter-share-button');
 
 		parent::__construct($id, '//twitter.com/share', '', $classes, $attributes);
 	}

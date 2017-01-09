@@ -110,7 +110,7 @@ class Icon extends Element
 		}
 
 		$classes[] = $class;
-		$this->setProtectClass($class);
+		$this->setProtectedClass($class);
 
 		parent::__construct($id, $classes, $attributes);
 	}

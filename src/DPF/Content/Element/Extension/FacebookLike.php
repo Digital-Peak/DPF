@@ -17,7 +17,7 @@ class FacebookLike extends Element
 		$attributes['data-href'] = $url;
 
 		$classes[] = 'fb-like';
-		$this->setProtectClass('fb-like');
+		$this->setProtectedClass('fb-like');
 
 		parent::__construct($id, $classes, $attributes);
 	}

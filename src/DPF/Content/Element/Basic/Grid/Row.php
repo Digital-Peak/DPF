@@ -16,7 +16,7 @@ class Row extends Container
 	public function __construct($id, array $classes = [], array $attributes = [])
 	{
 		$classes[] = 'dpf-row';
-		$this->setProtectClass('dpf-row');
+		$this->setProtectedClass('dpf-row');
 
 		parent::__construct($id, $classes, $attributes);
 	}

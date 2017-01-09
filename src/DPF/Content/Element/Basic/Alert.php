@@ -26,7 +26,7 @@ class Alert extends Container
 		}
 
 		$classes[] = 'dpf-alert-' . $type;
-		$this->setProtectClass('dpf-alert-' . $type);
+		$this->setProtectedClass('dpf-alert-' . $type);
 
 		parent::__construct($id, $classes, $attributes);
 

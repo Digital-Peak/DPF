@@ -66,7 +66,7 @@ class ElementTest extends TestCase
 		), array(
 			'dpf-prefix' => 'unit-'
 		));
-		$e->setProtectClass('bar');
+		$e->setProtectedClass('bar');
 
 		$this->assertXmlStringEqualsXmlString('<div id="unit-test" class="unit-foo bar"></div>', $e->render());
 	}

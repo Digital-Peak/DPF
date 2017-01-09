@@ -17,7 +17,7 @@ class Column extends Container
 	public function __construct($id, $width, array $classes = [], array $attributes = [])
 	{
 		$classes[] = 'dpf-col-' . $width;
-		$this->setProtectClass('dpf-col-' . $width);
+		$this->setProtectedClass('dpf-col-' . $width);
 
 		parent::__construct($id, $classes, $attributes);
 
