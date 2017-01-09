@@ -7,43 +7,17 @@
  */
 namespace DPF\Content;
 
-class Framework
+/**
+ * Interface any frontend framework needs to implement.
+ */
+interface Framework
 {
 
-    private $overrides = array();
-
-    public function __construct()
-    {}
-
-    /**
-     *
-     * @return Element
-     */
-    public function getElement(Element $element)
-    {
-        $className = get_class($element);
-        if (key_exists($className, $this->overrides)) {
-            return call_user_func($this->overrides[$className], $element);
-        }
-
-        return null;
-    }
-
-    public function addOverride($className, callable $callback)
-    {
-        $this->overrides[$className] = $callback;
-    }
-
-    /**
-     *
-     * @param string $className
-     * @param Element $element
-     * @return Element
-     */
-    protected function createOverride($className, Element $element)
-    {
-        $instance = new $className($element->getId(), $element->getClasses(), $element->getAttributes());
-        $instance->setContent($element->getContent());
-        return $instance;
-    }
+	/**
+	 * Prepares the given element for rendering.
+	 * The framework can anhance the given element, or return a completely new one.
+	 *
+	 * @return Element
+	 */
+	public function prepareElement(Element $element);
 }

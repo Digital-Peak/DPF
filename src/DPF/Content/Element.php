@@ -9,6 +9,9 @@ namespace DPF\Content;
 
 use DPF\Content\Element\Basic\Container;
 
+/**
+ * An element represents a node in an HTML tree.
+ */
 class Element
 {
 
@@ -48,6 +51,15 @@ class Element
 	 */
 	private $parent = null;
 
+	/**
+	 * Defines the internal attributes structure with the given parameters.
+	 *
+	 * @param string $id
+	 * @param array $classes
+	 * @param array $attributes
+	 *
+	 * @throws \Exception
+	 */
 	public function __construct($id, array $classes = [], array $attributes = [])
 	{
 		if (! $id) {
@@ -65,21 +77,47 @@ class Element
 		$this->attributes['class'] = implode(' ', $classes);
 	}
 
+	/**
+	 * Renders itself with the given framework.
+	 * A HTML string is returned.
+	 *
+	 * @param Framework $framework
+	 *
+	 * @return string
+	 */
 	public function render(Framework $framework = null)
 	{
 		return $this->build(null, $framework)->ownerDocument->saveHTML();
 	}
 
+	/**
+	 * Returns the id of the element.
+	 *
+	 * @return string
+	 */
 	public function getId()
 	{
 		return $this->attributes['id'];
 	}
 
+	/**
+	 * Returns the classes of the element.
+	 *
+	 * @return array[string]
+	 */
 	public function getClasses()
 	{
 		return explode(' ', $this->attributes['class']);
 	}
 
+	/**
+	 * Sets the given class as protected.
+	 * This means when a prefix is set, the class will not being prefixed.
+	 *
+	 * @param string $class
+	 *
+	 * @return Element
+	 */
 	public function setProtectClass($class)
 	{
 		$this->protectedClasses[] = $class;
@@ -87,6 +125,31 @@ class Element
 		return $this;
 	}
 
+	/**
+	 * Adds the given class to the internal class variable.
+	 *
+	 * @param string $class
+	 *
+	 * @return Element
+	 */
+	public function addClass($class)
+	{
+		$this->attributes['class'] .= ' ' . $class;
+
+		return $this;
+	}
+
+	/**
+	 * Returns the attributes of the element.
+	 * If prefix is set to true, then all attributes which are allowed, are prefixed.
+	 *
+	 * @param boolean $prefix
+	 *
+	 * @return string
+	 *
+	 * @see Element::getPrefix
+	 * @see Element::setProtectClass
+	 */
 	public function getAttributes($prefix = false)
 	{
 		$attributes = $this->attributes;
@@ -98,6 +161,12 @@ class Element
 		return $attributes;
 	}
 
+	/**
+	 * Returns the prefix of the element.
+	 * If none is set, then it traverses the parents up, till one get found.
+	 *
+	 * @return string
+	 */
 	public function getPrefix()
 	{
 		if (! $this->prefix && $this->parent) {
@@ -106,21 +175,49 @@ class Element
 		return $this->prefix;
 	}
 
+	/**
+	 * Returns the content of the element.
+	 *
+	 * @return string
+	 */
 	public function getContent()
 	{
 		return $this->content;
 	}
 
-	public function setParent(Container $parent)
+	/**
+	 * Returns the parent of the element.
+	 *
+	 * @return Element
+	 */
+	public function getParent()
 	{
-		$this->parent = $parent;
+		return $this->parent;
 	}
 
 	/**
+	 * Sets the parent of the element.
+	 *
+	 * @param Element $parent
+	 *
+	 * @return Element
+	 *
+	 */
+	public function setParent(Element $parent)
+	{
+		$this->parent = $parent;
+
+		return $this;
+	}
+
+	/**
+	 * Sets the content for the element.
+	 * If append is set to true, the existing content will not being touched.
 	 *
 	 * @param string $content
 	 * @param boolean $append
-	 * @return \DPF\Content\Element
+	 *
+	 * @return Element
 	 */
 	public function setContent($content, $append = false)
 	{
@@ -130,6 +227,16 @@ class Element
 		return $this;
 	}
 
+	/**
+	 * Builds the element as DOMElement under the given parent with the given framework.
+	 *
+	 * @param \DOMElement $parent
+	 * @param Framework $framework
+	 *
+	 * @return \DOMNode
+	 *
+	 * @throws \DOMException
+	 */
 	public function build(\DOMElement $parent = null, Framework $framework = null)
 	{
 		// Prepare the domdocument
@@ -139,10 +246,7 @@ class Element
 		}
 		$dom->formatOutput = true;
 
-		$instance = $this;
-		if ($framework && $override = $framework->getElement($this)) {
-			$instance = $override;
-		}
+		$instance = $framework->prepareElement($this);
 
 		// Create the root element
 		$domElement = $dom->createElement($instance->getTagName());
@@ -155,6 +259,11 @@ class Element
 
 		// Set the attributes
 		foreach ($instance->getAttributes(true) as $name => $attr) {
+			$attr = trim($attr);
+			if (! $attr) {
+				continue;
+			}
+
 			$root->setAttribute($name, $attr);
 		}
 
@@ -180,11 +289,38 @@ class Element
 		return $root;
 	}
 
+	/**
+	 * Returns a string for the element.
+	 *
+	 * @return string
+	 */
+	public function __toString()
+	{
+		return $this->getId() . ' [' . get_class($this) . ']';
+	}
+
+	/**
+	 * The tag name of the element.
+	 * Subclasses can define here another one.
+	 *
+	 * @return string
+	 */
 	protected function getTagName()
 	{
 		return 'div';
 	}
 
+	/**
+	 * Determines if the attribute with the given name and value can be prefixed.
+	 *
+	 * @param string $name
+	 * @param string $value
+	 *
+	 * @return boolean
+	 *
+	 * @see Element::getPrefix
+	 * @see Element::setProtectClass
+	 */
 	protected function canPrefix($name, $value)
 	{
 		if ($name == 'class') {
@@ -194,6 +330,17 @@ class Element
 		return $name == 'id';
 	}
 
+	/**
+	 * Returns the prefixed value for the given name.
+	 *
+	 * @param string $name
+	 * @param string $value
+	 *
+	 * @return string
+	 *
+	 * @see Element::getPrefix
+	 * @see Element::setProtectClass
+	 */
 	private function getPrefixedAttribute($name, $value)
 	{
 		$prefix = $this->getPrefix();

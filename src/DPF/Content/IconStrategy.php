@@ -9,29 +9,49 @@ namespace DPF\Content;
 
 use DPF\Content\Element\Basic\Icon;
 
+/**
+ * The icon strategy class.
+ */
 class IconStrategy
 {
 
-    private $mappings = [
-        ICON::PLUS => 'dpf-icon-plus'
-    ];
+	/**
+	 * Internal mappsing of icons.
+	 *
+	 * @var array
+	 */
+	private $mappings = [
+		ICON::PLUS => 'dpf-icon-plus',
+		ICON::LOCATION => 'dpf-icon-location',
+		ICON::EDIT => 'dpf-icon-edit'
+	];
 
-    /**
-     *
-     * @param string $type
-     * @return string
-     */
-    public function getIconClass($type)
-    {
-        if (key_exists($type, $this->mappings)) {
-            return $this->mappings[$type];
-        }
+	/**
+	 * Returns the icon class for the given type.
+	 *
+	 * @param string $type
+	 *
+	 * @return string
+	 *
+	 * @see Icon::getType
+	 */
+	public function getIconClass($type)
+	{
+		if (key_exists($type, $this->mappings)) {
+			return $this->mappings[$type];
+		}
 
-        return 'dpf-icon-notfound';
-    }
+		return 'dpf-icon-notfound';
+	}
 
-    protected function setIconClass($type, $class)
-    {
-        $this->mappings[$type] = $class;
-    }
+	/**
+	 * Subclasses can override icon mappings.
+	 *
+	 * @param string $type
+	 * @param string $class
+	 */
+	protected function setIconClass($type, $class)
+	{
+		$this->mappings[$type] = $class;
+	}
 }

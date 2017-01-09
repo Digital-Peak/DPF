@@ -13,24 +13,28 @@ use DPF\Content\Element;
 class Alert extends Container
 {
 
-    const WARNING = 'warning';
+	const WARNING = 'warning';
 
-    public function __construct($id, $type, array $classes = [], array $attributes = [])
-    {
-        if (! in_array($type, [
-            self::WARNING
-        ])) {
-            $type = self::WARNING;
-        }
+	private $type = self::WARNING;
 
-        $classes[] = $this->getAlertClass($type);
-        $this->setProtectClass($this->getAlertClass($type));
+	public function __construct($id, $type, array $classes = [], array $attributes = [])
+	{
+		if (! in_array($type, [
+			self::WARNING
+		])) {
+			$type = self::WARNING;
+		}
 
-        parent::__construct($id, $classes, $attributes);
-    }
+		$classes[] = 'dpf-alert-' . $type;
+		$this->setProtectClass('dpf-alert-' . $type);
 
-    protected function getAlertClass($type)
-    {
-        return 'dpf-alert-' . $type;
-    }
+		parent::__construct($id, $classes, $attributes);
+
+		$this->type = $type;
+	}
+
+	public function getType()
+	{
+		return $this->type;
+	}
 }

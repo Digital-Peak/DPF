@@ -12,22 +12,20 @@ use DPF\Content\Element\Basic\Container;
 class Column extends Container
 {
 
-    protected $COL_CLASS = "dpf-col-";
+	private $width = 0;
 
-    private $width = 0;
+	public function __construct($id, $width, array $classes = [], array $attributes = [])
+	{
+		$classes[] = 'dpf-col-' . $width;
+		$this->setProtectClass('dpf-col-' . $width);
 
-    public function __construct($id, $width, array $classes = [], array $attributes = [])
-    {
-        $classes[] = $this->COL_CLASS . $width;
-        $this->setProtectClass($this->COL_CLASS . $width);
+		parent::__construct($id, $classes, $attributes);
 
-        parent::__construct($id, $classes, $attributes);
+		$this->width = $width;
+	}
 
-        $this->width = $width;
-    }
-
-    public function getWidth()
-    {
-        return $this->width;
-    }
+	public function getWidth()
+	{
+		return $this->width;
+	}
 }

@@ -13,34 +13,40 @@ use DPF\Content\IconStrategy;
 class Icon extends Element
 {
 
-    const PLUS = 'plus';
-    const LOCATION = 'location';
+	const PLUS = 'plus';
 
-    private $iconStrategy = null;
+	const LOCATION = 'location';
 
-    public function __construct($id, $type, IconStrategy $iconStrategy = null, array $classes = [], array $attributes = [])
-    {
-        if (! in_array($type, [
-            self::PLUS,
-        	self::LOCATION
-        ])) {
-            $type = self::PLUS;
-        }
+	const EDIT = 'edit';
 
-        $class = 'dpf-icon-' . $type;
+	private static $ALL_ICONS = [
+		self::PLUS,
+		self::LOCATION,
+		self::EDIT
+	];
 
-        if ($iconStrategy) {
-            $class = $iconStrategy->getIconClass($type);
-        }
+	private $iconStrategy = null;
 
-        $classes[] = $class;
-        $this->setProtectClass($class);
+	public function __construct($id, $type, IconStrategy $iconStrategy = null, array $classes = [], array $attributes = [])
+	{
+		if (! in_array($type, self::$ALL_ICONS)) {
+			$type = self::PLUS;
+		}
 
-        parent::__construct($id, $classes, $attributes);
-    }
+		$class = 'dpf-icon-' . $type;
 
-    protected function getTagName()
-    {
-        return 'i';
-    }
+		if ($iconStrategy) {
+			$class = $iconStrategy->getIconClass($type);
+		}
+
+		$classes[] = $class;
+		$this->setProtectClass($class);
+
+		parent::__construct($id, $classes, $attributes);
+	}
+
+	protected function getTagName()
+	{
+		return 'i';
+	}
 }

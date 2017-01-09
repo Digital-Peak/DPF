@@ -10,16 +10,24 @@ namespace DPF\Content\Element\Basic;
 use DPF\Content\Element;
 use DPF\Content\Framework;
 
+/**
+ * A container element which can hold child elements.
+ */
 class Container extends Element
 {
 
+	/**
+	 * The children of this container.
+	 *
+	 * @var Element[]
+	 */
 	private $children = array();
 
 	/**
 	 *
-	 * @param Element|string $content
-	 * @param boolean $append
-	 * @return \DPF\Content\Element
+	 * {@inheritdoc}
+	 *
+	 * @see Element::setContent()
 	 */
 	public function setContent($content, $append = false)
 	{
@@ -44,9 +52,12 @@ class Container extends Element
 	}
 
 	/**
+	 * Adds the given element as child to itself.
+	 * It also sets the parent of the given element to this container.
 	 *
 	 * @param Element $element
-	 * @return \DPF\Content\Element
+	 *
+	 * @return Element
 	 */
 	public function addChild(Element $element)
 	{
@@ -69,10 +80,27 @@ class Container extends Element
 	{
 		$root = parent::build($parent, $framework);
 
-		foreach ($this->children as $child) {
+		foreach ($this->getChildren() as $child) {
 			$child->build($root, $framework);
 		}
 
 		return $root;
+	}
+
+	/**
+	 *
+	 * {@inheritdoc}
+	 *
+	 * @see Element::__toString()
+	 */
+	public function __toString()
+	{
+		$buffer = $this->getId() . PHP_EOL;
+
+		foreach ($this->getChildren() as $child) {
+			$buffer .= "\t" . $child . PHP_EOL;
+		}
+
+		return $buffer;
 	}
 }

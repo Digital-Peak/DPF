@@ -13,18 +13,16 @@ use DPF\Content\Element;
 class Row extends Container
 {
 
-    protected $ROW_CLASS = "dpf-row";
+	public function __construct($id, array $classes = [], array $attributes = [])
+	{
+		$classes[] = 'dpf-row';
+		$this->setProtectClass('dpf-row');
 
-    public function __construct($id, array $classes = [], array $attributes = [])
-    {
-        $classes[] = $this->ROW_CLASS;
-        $this->setProtectClass($this->ROW_CLASS);
+		parent::__construct($id, $classes, $attributes);
+	}
 
-        parent::__construct($id, $classes, $attributes);
-    }
-
-    public function addColumn(Column $column)
-    {
-        return $this->addChild($column);
-    }
+	public function addColumn(Column $column)
+	{
+		return $this->addChild($column);
+	}
 }
