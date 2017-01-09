@@ -10,23 +10,93 @@ namespace DPF\Content\Element\Basic;
 use DPF\Content\Element;
 use DPF\Content\IconStrategy;
 
+/**
+ * An icon representation.
+ */
 class Icon extends Element
 {
 
+	/**
+	 * The plus icon.
+	 *
+	 * @var string
+	 */
 	const PLUS = 'plus';
 
+	/**
+	 * The location icon.
+	 *
+	 * @var string
+	 */
 	const LOCATION = 'location';
 
+	/**
+	 * The edit icon.
+	 *
+	 * @var string
+	 */
 	const EDIT = 'edit';
 
+	/**
+	 * The delete icon.
+	 *
+	 * @var string
+	 */
+	const DELETE = 'delete';
+
+	/**
+	 * The edit icon.
+	 *
+	 * @var string
+	 */
+	const PRINT = 'print';
+
+	/**
+	 * The mail icon.
+	 *
+	 * @var string
+	 */
+	const MAIL = 'mail';
+
+	/**
+	 * The download icon.
+	 *
+	 * @var string
+	 */
+	const DOWNLOAD = 'download';
+
+	/**
+	 * The signup icon.
+	 *
+	 * @var string
+	 */
+	const SIGNUP = 'signup';
+
+	/**
+	 * Array which holds all available icons.
+	 *
+	 * @var array
+	 */
 	private static $ALL_ICONS = [
 		self::PLUS,
 		self::LOCATION,
-		self::EDIT
+		self::EDIT,
+		self::DELETE,
+		self::PRINT,
+		self::MAIL,
+		self::DOWNLOAD,
+		self::SIGNUP
 	];
 
-	private $iconStrategy = null;
-
+	/**
+	 * Prepares the icon with the given strategy if available.
+	 *
+	 * @param string $id
+	 * @param string $type
+	 * @param IconStrategy $iconStrategy
+	 * @param array $classes
+	 * @param array $attributes
+	 */
 	public function __construct($id, $type, IconStrategy $iconStrategy = null, array $classes = [], array $attributes = [])
 	{
 		if (! in_array($type, self::$ALL_ICONS)) {
@@ -45,6 +115,12 @@ class Icon extends Element
 		parent::__construct($id, $classes, $attributes);
 	}
 
+	/**
+	 *
+	 * {@inheritdoc}
+	 *
+	 * @see Element::getTagName()
+	 */
 	protected function getTagName()
 	{
 		return 'i';

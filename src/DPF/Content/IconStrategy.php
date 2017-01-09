@@ -16,15 +16,11 @@ class IconStrategy
 {
 
 	/**
-	 * Internal mappsing of icons.
+	 * Internal mapping of icons.
 	 *
 	 * @var array
 	 */
-	private $mappings = [
-		ICON::PLUS => 'dpf-icon-plus',
-		ICON::LOCATION => 'dpf-icon-location',
-		ICON::EDIT => 'dpf-icon-edit'
-	];
+	private $mappings = [];
 
 	/**
 	 * Returns the icon class for the given type.
@@ -41,7 +37,7 @@ class IconStrategy
 			return $this->mappings[$type];
 		}
 
-		return 'dpf-icon-notfound';
+		return 'dpf-icon-' . $type;
 	}
 
 	/**
