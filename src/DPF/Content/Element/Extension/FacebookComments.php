@@ -136,7 +136,7 @@ class FacebookComments extends Element
         parent::__construct($id, $classes, $attributes);
     }
 
-    public function getCorrectLanguage($language)
+    public static function getCorrectLanguage($language)
     {
         $tmpLanguage = $language;
         $tmpLanguage = str_replace('-', '_', $tmpLanguage);
