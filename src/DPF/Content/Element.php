@@ -7,6 +7,8 @@
  */
 namespace DPF\Content;
 
+use DPF\Content\Element\Basic\Container;
+
 class Element
 {
 
@@ -16,7 +18,7 @@ class Element
 	 *
 	 * @var array
 	 */
-	protected $attributes = array();
+	private $attributes = array();
 
 	/**
 	 * The content of the element
@@ -32,10 +34,29 @@ class Element
 	 */
 	private $protectedClasses = array();
 
+	/**
+	 * The prefix.
+	 *
+	 * @var string
+	 */
+	private $prefix = '';
+
+	/**
+	 * The parent.
+	 *
+	 * @var Container
+	 */
+	private $parent = null;
+
 	public function __construct($id, array $classes = [], array $attributes = [])
 	{
 		if (! $id) {
 			throw new \Exception('ID cannot be empty!');
+		}
+
+		if (key_exists('dpf-prefix', $attributes)) {
+			$this->prefix = $attributes['dpf-prefix'];
+			unset($attributes['dpf-prefix']);
 		}
 
 		$this->attributes = $attributes;
@@ -77,18 +98,22 @@ class Element
 		return $attributes;
 	}
 
-	public function getAttribute($name)
+	public function getPrefix()
 	{
-		if (key_exists($name, $this->attributes)) {
-			return $this->attributes[$name];
+		if (! $this->prefix && $this->parent) {
+			return $this->parent->getPrefix();
 		}
-
-		return null;
+		return $this->prefix;
 	}
 
 	public function getContent()
 	{
 		return $this->content;
+	}
+
+	public function setParent(Container $parent)
+	{
+		$this->parent = $parent;
 	}
 
 	/**
@@ -130,9 +155,6 @@ class Element
 
 		// Set the attributes
 		foreach ($instance->getAttributes(true) as $name => $attr) {
-			if ($name == 'dpf-prefix' || ! $attr) {
-				continue;
-			}
 			$root->setAttribute($name, $attr);
 		}
 
@@ -174,22 +196,38 @@ class Element
 
 	private function getPrefixedAttribute($name, $value)
 	{
-		$prefix = key_exists('dpf-prefix', $this->attributes) ? $this->attributes['dpf-prefix'] : '';
+		$prefix = $this->getPrefix();
+
+		// When we don't have a prefix, retunr the value
 		if (! $prefix) {
 			return trim($value);
 		}
 
+		// Ensure array
 		if (! is_array($value)) {
 			$value = explode(' ', $value);
 		}
 
+		// Only unique values are allowed
+		$value = array_unique($value);
+
 		$tmp = '';
 		foreach ($value as $v) {
-			if (strpos($v, $prefix) === 0 || ! $v) {
-				// Has prefix already
+			$v = trim($v);
+
+			// Empty values are ignored
+			if (! $v) {
 				continue;
 			}
-			$tmp .= ($this->canPrefix($name, $v) ? $prefix : '') . $v . ' ';
+
+			if (strpos($v, $prefix) === 0 || ! $this->canPrefix($name, $v)) {
+				// Has prefix already or can't be prefixed
+				$tmp .= $v . ' ';
+				continue;
+			}
+
+			// Prefix the value
+			$tmp .= $prefix . $v . ' ';
 		}
 		return trim($tmp);
 	}
