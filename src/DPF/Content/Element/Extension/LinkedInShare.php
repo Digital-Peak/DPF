@@ -40,7 +40,7 @@ class LinkedInShare extends Element
 
 		$language = '';
 		if (key_exists('language', $attributes)) {
-			$language = '//<![CDATA[{lang:"' . $attributes['language'] . '"}//]]>';
+			$language = '<![CDATA[{lang:"' . $attributes['language'] . '"}]]>';
 		}
 
 		$counter = 'data-counter="right"';
@@ -51,10 +51,8 @@ class LinkedInShare extends Element
 			$counter = '';
 		}
 
-		$this->setContent('
-			<script type="text/javascript" src="//platform.linkedin.com/in.js">' . $language . '</script>
-			<script type="IN/Share" data-url="' . $url . '" ' . $counter . ' data-showzero="true"></script>
-		');
+		$this->setContent('<script type="text/javascript" src="//platform.linkedin.com/in.js">' . $language . '</script>
+			<script type="IN/Share" data-url="' . $url . '" ' . $counter . ' data-showzero="true"></script>');
 	}
 
 	public static function getCorrectLanguage($language)

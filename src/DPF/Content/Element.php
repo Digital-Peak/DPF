@@ -84,10 +84,17 @@ class Element
 	 * @param Framework $framework
 	 *
 	 * @return string
+	 *
+	 * @throws \Exception
 	 */
 	public function render(Framework $framework = null)
 	{
+		$handler = function ($errno, $errstr) {
+			throw new \DOMException($errstr);
+		};
+		$oldHandler = set_error_handler($handler);
 		return $this->build(null, $framework)->ownerDocument->saveHTML();
+		set_error_handler($oldHandler);
 	}
 
 	/**
@@ -212,17 +219,45 @@ class Element
 
 	/**
 	 * Sets the content for the element.
-	 * If append is set to true, the existing content will not being touched.
+	 * If append is set to true, the existing content will not being touched. If the content is invalid XML, an exception is thrown.
 	 *
 	 * @param string $content
 	 * @param boolean $append
 	 *
 	 * @return Element
+	 *
+	 * @throws \Exception
 	 */
 	public function setContent($content, $append = false)
 	{
 		$content = trim($content);
-		$this->content = ($append ? $this->content : '') . $content;
+		$content = ($append ? $this->content : '') . $content;
+
+		if (! $content) {
+			return $this;
+		}
+
+		if (strpos($content, '<') === 0) {
+			libxml_use_internal_errors(true);
+
+			$dom = new \DOMDocument();
+			$fragment = $dom->createDocumentFragment();
+			$fragment->appendXML($content);
+
+			$errors = libxml_get_errors();
+			libxml_clear_errors();
+
+			$errorText = '';
+			foreach ($errors as $error) {
+				$errorText .= trim($error->message) . ' on column ' . $error->column . PHP_EOL;
+			}
+
+			if ($errorText) {
+				throw new \Exception('Error "' . trim($errorText) . '" with content: ' . PHP_EOL . $content);
+			}
+		}
+
+		$this->content = $content;
 
 		return $this;
 	}
