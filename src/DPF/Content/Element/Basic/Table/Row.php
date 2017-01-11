@@ -17,7 +17,7 @@ class Row extends Container
 		return $this->addChild($cell);
 	}
 
-	protected function getTagName()
+	public function getTagName()
 	{
 		return 'tr';
 	}

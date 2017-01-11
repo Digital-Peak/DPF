@@ -121,7 +121,7 @@ class Icon extends Element
 	 *
 	 * @see Element::getTagName()
 	 */
-	protected function getTagName()
+	public function getTagName()
 	{
 		return 'i';
 	}

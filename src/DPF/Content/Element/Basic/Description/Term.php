@@ -12,7 +12,7 @@ use DPF\Content\Element;
 class Term extends Element
 {
 
-    protected function getTagName()
+    public function getTagName()
     {
         return 'dt';
     }

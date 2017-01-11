@@ -13,7 +13,7 @@ use DPF\Content\Element\Basic\Container;
 class Description extends Container
 {
 
-    protected function getTagName()
+    public function getTagName()
     {
         return 'dd';
     }

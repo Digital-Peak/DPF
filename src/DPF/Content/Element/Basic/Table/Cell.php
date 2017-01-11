@@ -11,7 +11,7 @@ use DPF\Content\Element\Basic\Container;
 
 class Cell extends Container
 {
-	protected function getTagName()
+	public function getTagName()
 	{
 		return 'td';
 	}

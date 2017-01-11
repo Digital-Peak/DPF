@@ -53,7 +53,7 @@ class Table extends Container
 		return parent::build($parent, $framework);
 	}
 
-	protected function getTagName()
+	public function getTagName()
 	{
 		return 'table';
 	}

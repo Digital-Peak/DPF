@@ -340,7 +340,7 @@ class Element
 	 *
 	 * @return string
 	 */
-	protected function getTagName()
+	public function getTagName()
 	{
 		return 'div';
 	}

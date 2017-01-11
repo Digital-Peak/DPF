@@ -12,7 +12,7 @@ use DPF\Content\Element;
 class Paragraph extends Container
 {
 
-    protected function getTagName()
+    public function getTagName()
     {
         return 'p';
     }

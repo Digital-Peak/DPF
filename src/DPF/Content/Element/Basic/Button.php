@@ -43,7 +43,7 @@ class Button extends Container
 	 *
 	 * @see Element::getTagName()
 	 */
-	protected function getTagName()
+	public function getTagName()
 	{
 		return 'button';
 	}

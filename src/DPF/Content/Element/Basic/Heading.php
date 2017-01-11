@@ -33,7 +33,7 @@ class Heading extends Container
         parent::__construct($id, $classes, $attributes);
     }
 
-    protected function getTagName()
+    public function getTagName()
     {
         return 'h' . $this->size;
     }

@@ -12,7 +12,7 @@ use DPF\Content\Element;
 class TextBlock extends Container
 {
 
-    protected function getTagName()
+    public function getTagName()
     {
         return 'span';
     }
