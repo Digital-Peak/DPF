@@ -12,7 +12,7 @@ use DPF\Content\Element;
 class XingShare extends Element
 {
 
-	public function __construct($id, $url, array $classes = [], array $attributes = [])
+	public function __construct($id, array $classes = [], array $attributes = [])
 	{
 		$attributes['data-type'] = 'xing/share';
 

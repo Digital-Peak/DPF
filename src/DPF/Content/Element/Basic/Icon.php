@@ -49,7 +49,7 @@ class Icon extends Element
 	 *
 	 * @var string
 	 */
-	const PRINT = 'print';
+	const PRINTING = 'print';
 
 	/**
 	 * The mail icon.
@@ -82,7 +82,7 @@ class Icon extends Element
 		self::LOCATION,
 		self::EDIT,
 		self::DELETE,
-		self::PRINT,
+		self::PRINTING,
 		self::MAIL,
 		self::DOWNLOAD,
 		self::SIGNUP

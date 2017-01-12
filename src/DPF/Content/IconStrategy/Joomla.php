@@ -25,7 +25,7 @@ class Joomla extends IconStrategy
 		$this->setIconClass(Icon::LOCATION, 'icon-location');
 		$this->setIconClass(Icon::EDIT, 'icon-edit');
 		$this->setIconClass(Icon::DELETE, 'icon-remove');
-		$this->setIconClass(Icon::PRINT, 'icon-print');
+		$this->setIconClass(Icon::PRINTING, 'icon-print');
 		$this->setIconClass(Icon::MAIL, 'icon-envelope');
 		$this->setIconClass(Icon::DOWNLOAD, 'icon-download');
 		$this->setIconClass(Icon::SIGNUP, 'icon-signup');
