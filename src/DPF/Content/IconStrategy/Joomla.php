@@ -31,5 +31,6 @@ class Joomla extends IconStrategy
 		$this->setIconClass(Icon::SIGNUP, 'icon-signup');
 		$this->setIconClass(Icon::UP, 'icon-arrow-up');
 		$this->setIconClass(Icon::DOWN, 'icon-arrow-down');
+		$this->setIconClass(Icon::OK, 'icon-ok');
 	}
 }

@@ -87,6 +87,13 @@ class Icon extends Element
 	const DOWN = 'down';
 
 	/**
+	 * The ok icon.
+	 *
+	 * @var string
+	 */
+	const OK = 'ok';
+
+	/**
 	 * Array which holds all available icons.
 	 *
 	 * @var array
@@ -101,7 +108,8 @@ class Icon extends Element
 		self::DOWNLOAD,
 		self::SIGNUP,
 		self::UP,
-		self::DOWN
+		self::DOWN,
+		self::OK
 	];
 
 	/**
