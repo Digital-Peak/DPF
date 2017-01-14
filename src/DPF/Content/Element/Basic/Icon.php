@@ -73,6 +73,20 @@ class Icon extends Element
 	const SIGNUP = 'signup';
 
 	/**
+	 * The up icon.
+	 *
+	 * @var string
+	 */
+	const UP = 'up';
+
+	/**
+	 * The down icon.
+	 *
+	 * @var string
+	 */
+	const DOWN = 'down';
+
+	/**
 	 * Array which holds all available icons.
 	 *
 	 * @var array
@@ -85,7 +99,9 @@ class Icon extends Element
 		self::PRINTING,
 		self::MAIL,
 		self::DOWNLOAD,
-		self::SIGNUP
+		self::SIGNUP,
+		self::UP,
+		self::DOWN
 	];
 
 	/**

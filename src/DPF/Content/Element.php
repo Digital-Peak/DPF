@@ -230,7 +230,6 @@ class Element
 	 */
 	public function setContent($content, $append = false)
 	{
-		$content = trim($content);
 		$content = ($append ? $this->content : '') . $content;
 
 		if (! $content) {

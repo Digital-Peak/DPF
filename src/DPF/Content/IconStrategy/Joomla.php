@@ -29,5 +29,7 @@ class Joomla extends IconStrategy
 		$this->setIconClass(Icon::MAIL, 'icon-envelope');
 		$this->setIconClass(Icon::DOWNLOAD, 'icon-download');
 		$this->setIconClass(Icon::SIGNUP, 'icon-signup');
+		$this->setIconClass(Icon::UP, 'icon-arrow-up');
+		$this->setIconClass(Icon::DOWN, 'icon-arrow-down');
 	}
 }
