@@ -10,16 +10,45 @@ namespace DPF\Content\Element\Basic;
 use DPF\Content\Element\Basic\Container;
 use DPF\Content\Element;
 
+/**
+ * An alert representation.
+ */
 class Alert extends Container
 {
 
+	/**
+	 * The info alert.
+	 *
+	 * @var string
+	 */
+	const INFO = 'info';
+
+	/**
+	 * The warning alert.
+	 *
+	 * @var string
+	 */
 	const WARNING = 'warning';
 
-	private $type = self::WARNING;
+	/**
+	 * The type.
+	 *
+	 * @var unknown
+	 */
+	private $type = self::INFO;
 
+	/**
+	 * Initiates the alert of the given type.
+	 *
+	 * @param string $type
+	 * @param Icon $icon
+	 * @param array $classes
+	 * @param array $attributes
+	 */
 	public function __construct($id, $type, array $classes = [], array $attributes = [])
 	{
 		if (! in_array($type, [
+			self::INFO,
 			self::WARNING
 		])) {
 			$type = self::WARNING;
@@ -33,6 +62,11 @@ class Alert extends Container
 		$this->type = $type;
 	}
 
+	/**
+	 * Returns the type of alert.
+	 *
+	 * @return string
+	 */
 	public function getType()
 	{
 		return $this->type;

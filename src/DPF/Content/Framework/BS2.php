@@ -15,6 +15,7 @@ use DPF\Content\Framework;
 use DPF\Content\Element\Basic\Table;
 use DPF\Content\Element;
 use DPF\Content\Element\Basic\Button;
+use DPF\Content\Element\Basic\Form;
 
 /**
  * The Bootstrap 2 framework implementation.
@@ -64,6 +65,11 @@ class BS2 implements Framework
 			$element->setProtectedClass('btn');
 			$element->addClass('btn-default');
 			$element->setProtectedClass('btn-default');
+		}
+
+		if ($element instanceof Form) {
+			$element->addClass('form-horizontal');
+			$element->setProtectedClass('form-horizontal');
 		}
 
 		return $element;
