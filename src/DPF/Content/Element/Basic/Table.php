@@ -41,6 +41,11 @@ class Table extends Container
 		return $this->body->addChild($row);
 	}
 
+	public function addFooterRow(Row $row)
+	{
+		return $this->footer->addChild($row);
+	}
+
 	public function build(\DOMElement $parent = null, Framework $framework = null)
 	{
 		// Fill the rows with empty cells

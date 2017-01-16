@@ -16,11 +16,12 @@ class Input extends Element
 {
 
 	/**
-	 * Initiates the button with some optional text and icon.
+	 * Initiates the input for a given type and name.
 	 *
 	 * @param string $id
-	 * @param string $text
-	 * @param Icon $icon
+	 * @param string $type
+	 * @param string $name
+	 * @param string $value
 	 * @param array $classes
 	 * @param array $attributes
 	 */

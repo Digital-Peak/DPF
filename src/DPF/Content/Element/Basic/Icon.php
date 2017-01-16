@@ -101,6 +101,13 @@ class Icon extends Element
 	const CANCEL = 'cancel';
 
 	/**
+	 * The info icon.
+	 *
+	 * @var string
+	 */
+	const INFO = 'info';
+
+	/**
 	 * Array which holds all available icons.
 	 *
 	 * @var array
@@ -117,7 +124,8 @@ class Icon extends Element
 		self::UP,
 		self::DOWN,
 		self::OK,
-		self::CANCEL
+		self::CANCEL,
+		self::INFO
 	];
 
 	/**

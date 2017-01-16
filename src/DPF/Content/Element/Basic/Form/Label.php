@@ -5,7 +5,7 @@
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Element\Basic;
+namespace DPF\Content\Element\Basic\Form;
 
 use DPF\Content\Element\Basic\Container;
 use DPF\Content\Element;
@@ -30,6 +30,12 @@ class Label extends Container
 		parent::__construct($id, $classes, $attributes);
 	}
 
+	/**
+	 *
+	 * {@inheritdoc}
+	 *
+	 * @see Element::getTagName()
+	 */
 	public function getTagName()
 	{
 		return 'label';
