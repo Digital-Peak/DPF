@@ -136,12 +136,32 @@ class Element
 	 * Adds the given class to the internal class variable.
 	 *
 	 * @param string $class
+	 * @param boolean $protected
 	 *
 	 * @return Element
 	 */
-	public function addClass($class)
+	public function addClass($class, $protected = false)
 	{
 		$this->attributes['class'] .= ' ' . $class;
+
+		if ($protected) {
+			$this->setProtectedClass($class);
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Adds a new attribute for the given name.
+	 *
+	 * @param string $name
+	 * @param string $value
+	 *
+	 * @return Element
+	 */
+	public function addAttribute($name, $value)
+	{
+		$this->attributes[$name] = $value;
 
 		return $this;
 	}

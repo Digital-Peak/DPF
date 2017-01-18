@@ -16,6 +16,7 @@ use DPF\Content\Element\Basic\Table;
 use DPF\Content\Element;
 use DPF\Content\Element\Basic\Button;
 use DPF\Content\Element\Basic\Form;
+use DPF\Content\Element\Basic\TabContainer;
 
 /**
  * The Bootstrap 2 framework implementation.
@@ -32,44 +33,53 @@ class BS2 implements Framework
 	public function prepareElement(Element $element)
 	{
 		if ($element instanceof DescriptionListHorizontal) {
-			$element->addClass('dl-horizontal');
-			$element->setProtectedClass('dl-horizontal');
+			$element->addClass('dl-horizontal', true);
 		}
 
 		if ($element instanceof Row) {
-			$element->addClass('row-fluid');
-			$element->setProtectedClass('row-fluid');
+			$element->addClass('row-fluid', true);
 		}
 
 		if ($element instanceof Column) {
-			$element->addClass('span' . $element->getWidth());
-			$element->setProtectedClass('span' . $element->getWidth());
+			$element->addClass('span' . $element->getWidth(), true);
 		}
 
 		if ($element instanceof Alert) {
-			$element->addClass('alert');
-			$element->setProtectedClass('alert');
-			$element->addClass('alert-' . $element->getType());
-			$element->setProtectedClass('alert-' . $element->getType());
+			$element->addClass('alert', true);
+			$element->addClass('alert-' . $element->getType(), true);
 		}
 
 		if ($element instanceof Table) {
-			$element->addClass('table');
-			$element->setProtectedClass('table');
-			$element->addClass('table-stripped');
-			$element->setProtectedClass('table-stripped');
+			$element->addClass('table', true);
+			$element->addClass('table-stripped', true);
 		}
 
 		if ($element instanceof Button) {
-			$element->addClass('btn');
-			$element->setProtectedClass('btn');
-			$element->addClass('btn-default');
-			$element->setProtectedClass('btn-default');
+			$element->addClass('btn', true);
+			$element->addClass('btn-default', true);
 		}
 
 		if ($element instanceof Form) {
-			$element->addClass('form-horizontal');
-			$element->setProtectedClass('form-horizontal');
+			$element->addClass('form-horizontal', true);
+		}
+		if ($element instanceof TabContainer) {
+			$tabLinks = $element->getTabLinks();
+			$tabLinks->addClass('nav', true);
+			$tabLinks->addClass('nav-tabs', true);
+			foreach ($tabLinks->getChildren() as $index => $link) {
+				if ($index == 0) {
+					$link->addClass('active', true);
+				}
+				$link->getChildren()[0]->addAttribute('data-toggle', 'tab');
+			}
+
+			$element->getTabs()->addClass('tab-content', true);
+			foreach ($element->getTabs()->getChildren() as $index => $tab) {
+				if ($index == 0) {
+					$tab->addClass('active', true);
+				}
+				$tab->addClass('tab-pane', true);
+			}
 		}
 
 		return $element;
