@@ -24,6 +24,13 @@ class Alert extends Container
 	const INFO = 'info';
 
 	/**
+	 * The success alert.
+	 *
+	 * @var string
+	 */
+	const SUCCESS = 'success';
+
+	/**
 	 * The warning alert.
 	 *
 	 * @var string
@@ -49,9 +56,10 @@ class Alert extends Container
 	{
 		if (! in_array($type, [
 			self::INFO,
+			self::SUCCESS,
 			self::WARNING
 		])) {
-			$type = self::WARNING;
+			$type = self::INFO;
 		}
 
 		$classes[] = 'dpf-alert-' . $type;

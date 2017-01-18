@@ -10,6 +10,9 @@ namespace DPF\Content\Element\Basic\Grid;
 use DPF\Content\Element\Basic\Container;
 use DPF\Content\Element;
 
+/**
+ * A row representation.
+ */
 class Row extends Container
 {
 
@@ -21,6 +24,12 @@ class Row extends Container
 		parent::__construct($id, $classes, $attributes);
 	}
 
+	/**
+	 * Adds the given column to the internal childs and returns it for chaining.
+	 *
+	 * @param Column $column
+	 * @return Column
+	 */
 	public function addColumn(Column $column)
 	{
 		return $this->addChild($column);

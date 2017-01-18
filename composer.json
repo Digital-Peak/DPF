@@ -10,7 +10,10 @@
 	"autoload": {
 		"psr-4": {
 			"DPF\\": "src/DPF"
-		}
+		},
+		"files": [
+        	"libs/htmLawed.php"
+        ]
 	},
 	"autoload-dev": {
 		"psr-4": {

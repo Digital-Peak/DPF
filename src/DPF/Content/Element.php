@@ -232,28 +232,12 @@ class Element
 	{
 		$content = ($append ? $this->content : '') . $content;
 
-		if (! $content) {
+		if ($content === '' || $content === null) {
 			return $this;
 		}
 
 		if (strpos($content, '<') === 0) {
-			libxml_use_internal_errors(true);
-
-			$dom = new \DOMDocument();
-			$fragment = $dom->createDocumentFragment();
-			$fragment->appendXML($content);
-
-			$errors = libxml_get_errors();
-			libxml_clear_errors();
-
-			$errorText = '';
-			foreach ($errors as $error) {
-				$errorText .= trim($error->message) . ' on column ' . $error->column . PHP_EOL;
-			}
-
-			if ($errorText) {
-				throw new \Exception('Error "' . trim($errorText) . '" with content: ' . PHP_EOL . $content);
-			}
+			$content = \htmLawed::hl($content);
 		}
 
 		$this->content = $content;
@@ -294,7 +278,7 @@ class Element
 		// Set the attributes
 		foreach ($instance->getAttributes(true) as $name => $attr) {
 			$attr = trim($attr);
-			if (! $attr) {
+			if ($attr == '' || $attr === null) {
 				continue;
 			}
 

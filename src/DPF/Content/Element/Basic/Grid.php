@@ -10,11 +10,20 @@ namespace DPF\Content\Element\Basic;
 use DPF\Content\Element;
 use DPF\Content\Element\Basic\Grid\Row;
 
+/**
+ * A grid representation.
+ */
 class Grid extends Container
 {
 
-    public function addRow(Row $row)
-    {
-        return $this->addChild($row);
-    }
+	/**
+	 * Adds the given row to the internal childs and returns it for chaining.
+	 *
+	 * @param Row $row
+	 * @return Row
+	 */
+	public function addRow(Row $row)
+	{
+		return $this->addChild($row);
+	}
 }

@@ -108,6 +108,13 @@ class Icon extends Element
 	const INFO = 'info';
 
 	/**
+	 * The users icon.
+	 *
+	 * @var string
+	 */
+	const USERS = 'users';
+
+	/**
 	 * Array which holds all available icons.
 	 *
 	 * @var array
@@ -125,7 +132,8 @@ class Icon extends Element
 		self::DOWN,
 		self::OK,
 		self::CANCEL,
-		self::INFO
+		self::INFO,
+		self::USERS
 	];
 
 	/**

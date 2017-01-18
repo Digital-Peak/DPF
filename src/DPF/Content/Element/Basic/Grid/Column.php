@@ -9,9 +9,17 @@ namespace DPF\Content\Element\Basic\Grid;
 
 use DPF\Content\Element\Basic\Container;
 
+/**
+ * A column representation.
+ */
 class Column extends Container
 {
 
+	/**
+	 * The width of the column.
+	 *
+	 * @var integer
+	 */
 	private $width = 0;
 
 	public function __construct($id, $width, array $classes = [], array $attributes = [])
@@ -24,6 +32,11 @@ class Column extends Container
 		$this->width = $width;
 	}
 
+	/**
+	 * Returns the width of a column.
+	 *
+	 * @return number
+	 */
 	public function getWidth()
 	{
 		return $this->width;
