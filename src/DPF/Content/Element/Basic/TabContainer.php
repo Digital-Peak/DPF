@@ -31,7 +31,7 @@ class TabContainer extends Container
 
 		$li = $this->getTabLinks()->addChild(new Custom($tab->getId() . '-tab', 'li'));
 		$li->addChild(new Link($tab->getId() . '-tab-link', '#' . $tab->getPrefix() . $tab->getId()))
-			->setContent($tab->getName());
+			->setContent($tab->getTitle());
 		return $tab;
 	}
 

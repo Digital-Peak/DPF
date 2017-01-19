@@ -22,7 +22,14 @@ class Tab extends Container
 	 */
 	private $name = '';
 
-	public function __construct($id, $name, array $classes = [], array $attributes = [])
+	/**
+	 * The title of the tab.
+	 *
+	 * @var string
+	 */
+	private $title = '';
+
+	public function __construct($id, $name, $title, array $classes = [], array $attributes = [])
 	{
 		$classes[] = 'dpf-tab';
 		$this->setProtectedClass('dpf-tab');
@@ -30,6 +37,7 @@ class Tab extends Container
 		parent::__construct($id, $classes, $attributes);
 
 		$this->name = $name;
+		$this->title = $title;
 	}
 
 	/**
@@ -40,5 +48,15 @@ class Tab extends Container
 	public function getName()
 	{
 		return $this->name;
+	}
+
+	/**
+	 * Returns the title of the tab.
+	 *
+	 * @return string
+	 */
+	public function getTitle()
+	{
+		return $this->title;
 	}
 }
