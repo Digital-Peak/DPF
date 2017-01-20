@@ -278,7 +278,7 @@ class Element
 	public function build(\DOMElement $parent = null, Framework $framework = null)
 	{
 		// Prepare the domdocument
-		$dom = new \DOMDocument('1.0', 'utf-8');
+		$dom = new \DOMDocument('1.0', 'UTF-8');
 		if ($parent != null) {
 			$dom = $parent->ownerDocument;
 		}
@@ -321,7 +321,7 @@ class Element
 
 				set_error_handler($oldHandler);
 			} else {
-				$root->nodeValue = $instance->getContent();
+				$root->nodeValue = htmlspecialchars($instance->getContent());
 			}
 		}
 		return $root;

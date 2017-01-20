@@ -115,6 +115,13 @@ class Icon extends Element
 	const USERS = 'users';
 
 	/**
+	 * The search icon.
+	 *
+	 * @var string
+	 */
+	const SEARCH = 'search';
+
+	/**
 	 * Array which holds all available icons.
 	 *
 	 * @var array
@@ -133,7 +140,8 @@ class Icon extends Element
 		self::OK,
 		self::CANCEL,
 		self::INFO,
-		self::USERS
+		self::USERS,
+		self::SEARCH
 	];
 
 	/**
