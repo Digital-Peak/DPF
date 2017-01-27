@@ -256,10 +256,6 @@ class Element
 			return $this;
 		}
 
-		if (strpos($content, '<') === 0) {
-			$content = \htmLawed::hl($content);
-		}
-
 		$this->content = $content;
 
 		return $this;
@@ -313,7 +309,7 @@ class Element
 				$oldHandler = set_error_handler($handler);
 
 				$fragment = $dom->createDocumentFragment();
-				$fragment->appendXML($instance->getContent());
+				$fragment->appendXML('<![CDATA[' . $instance->getContent() . ']]>');
 
 				if ($fragment->childNodes->length > 0) {
 					$root->appendChild($fragment);
