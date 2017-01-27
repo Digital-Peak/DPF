@@ -303,13 +303,19 @@ class Element
 
 		if ($instance->getContent()) {
 			if (strpos($instance->getContent(), '<') === 0) {
-				$handler = function ($errno, $errstr) {
-					throw new \DOMException($errstr);
+				$handler = function ($errno, $errstr, $errfile, $errline) use ($instance) {
+					throw new \DOMException($errstr . ' in file ' . $errfile . ' on line ' . $errline . PHP_EOL . htmlentities($instance->getContent()));
 				};
 				$oldHandler = set_error_handler($handler);
 
 				$fragment = $dom->createDocumentFragment();
-				$fragment->appendXML('<![CDATA[' . $instance->getContent() . ']]>');
+
+				// If the content contains alrady cdata, then we assume it wil be valid at all
+				if (strpos($instance->getContent(), '<![CDATA[') !== false) {
+					$fragment->appendXML($instance->getContent());
+				} else {
+					$fragment->appendXML('<![CDATA[' . $instance->getContent() . ']]>');
+				}
 
 				if ($fragment->childNodes->length > 0) {
 					$root->appendChild($fragment);
