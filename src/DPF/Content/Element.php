@@ -302,7 +302,7 @@ class Element
 		}
 
 		if ($instance->getContent()) {
-			if (strpos($instance->getContent(), '<') === 0) {
+			if (strpos($instance->getContent(), '<') >= 0) {
 				$handler = function ($errno, $errstr, $errfile, $errline) use ($instance) {
 					throw new \DOMException($errstr . ' in file ' . $errfile . ' on line ' . $errline . PHP_EOL . htmlentities($instance->getContent()));
 				};
