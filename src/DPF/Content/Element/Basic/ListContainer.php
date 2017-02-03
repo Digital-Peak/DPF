@@ -13,36 +13,29 @@ use DPF\Content\Element;
 /**
  * An alert representation.
  */
-class Alert extends Container
+class ListContainer extends Container
 {
 
 	/**
-	 * The info alert.
+	 * The ordered type.
 	 *
 	 * @var string
 	 */
-	const INFO = 'info';
+	const ORDERED = 'ordered';
 
 	/**
-	 * The success alert.
+	 * The unordered type.
 	 *
 	 * @var string
 	 */
-	const SUCCESS = 'success';
-
-	/**
-	 * The warning alert.
-	 *
-	 * @var string
-	 */
-	const WARNING = 'warning';
+	const UNORDERED = 'unordered';
 
 	/**
 	 * The type.
 	 *
 	 * @var unknown
 	 */
-	private $type = self::INFO;
+	private $type = self::UNORDERED;
 
 	/**
 	 * Initiates the alert of the given type.
@@ -54,15 +47,14 @@ class Alert extends Container
 	public function __construct($id, $type, array $classes = [], array $attributes = [])
 	{
 		if (! in_array($type, [
-			self::INFO,
-			self::SUCCESS,
-			self::WARNING
+			self::UNORDERED,
+			self::ORDERED
 		])) {
-			$type = self::INFO;
+			$type = self::UNORDERED;
 		}
 
-		$classes[] = 'dpf-alert-' . $type;
-		$this->setProtectedClass('dpf-alert-' . $type);
+		$classes[] = 'dpf-list-' . $type;
+		$this->setProtectedClass('dpf-list-' . $type);
 
 		parent::__construct($id, $classes, $attributes);
 
@@ -70,12 +62,34 @@ class Alert extends Container
 	}
 
 	/**
-	 * Returns the type of alert.
+	 * Returns the type of the list.
 	 *
 	 * @return string
 	 */
 	public function getType()
 	{
 		return $this->type;
+	}
+
+	/**
+	 * Adds the given list item to the children and returns it for chaining.
+	 *
+	 * @param ListItem $listItem
+	 * @return ListItem
+	 */
+	public function addListItem(ListItem $listItem)
+	{
+		return $this->addChild($listItem);
+	}
+
+	/**
+	 *
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\Content\Element::getTagName()
+	 */
+	public function getTagName()
+	{
+		return $this->getType() == self::UNORDERED ? 'ul' : 'ol';
 	}
 }

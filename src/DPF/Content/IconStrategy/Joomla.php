@@ -36,5 +36,7 @@ class Joomla extends IconStrategy
 		$this->setIconClass(Icon::INFO, 'icon-info');
 		$this->setIconClass(Icon::USERS, 'icon-users');
 		$this->setIconClass(Icon::SEARCH, 'icon-search');
+		$this->setIconClass(Icon::FILE, 'icon-file');
+		$this->setIconClass(Icon::CALENDAR, 'icon-calendar');
 	}
 }

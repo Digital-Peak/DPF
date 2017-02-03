@@ -122,6 +122,20 @@ class Icon extends Element
 	const SEARCH = 'search';
 
 	/**
+	 * The file icon.
+	 *
+	 * @var string
+	 */
+	const FILE = 'file';
+
+	/**
+	 * The calendar icon.
+	 *
+	 * @var string
+	 */
+	const CALENDAR = 'calendar';
+
+	/**
 	 * Array which holds all available icons.
 	 *
 	 * @var array
@@ -141,7 +155,9 @@ class Icon extends Element
 		self::CANCEL,
 		self::INFO,
 		self::USERS,
-		self::SEARCH
+		self::SEARCH,
+		self::FILE,
+		self::CALENDAR
 	];
 
 	/**

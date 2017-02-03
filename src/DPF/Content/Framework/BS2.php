@@ -17,6 +17,7 @@ use DPF\Content\Element;
 use DPF\Content\Element\Basic\Button;
 use DPF\Content\Element\Basic\Form;
 use DPF\Content\Element\Basic\TabContainer;
+use DPF\Content\Element\Basic\Badge;
 
 /**
  * The Bootstrap 2 framework implementation.
@@ -47,6 +48,11 @@ class BS2 implements Framework
 		if ($element instanceof Alert) {
 			$element->addClass('alert', true);
 			$element->addClass('alert-' . $element->getType(), true);
+		}
+
+		if ($element instanceof Badge) {
+			$element->addClass('badge', true);
+			$element->addClass('badge-' . $element->getType(), true);
 		}
 
 		if ($element instanceof Table) {

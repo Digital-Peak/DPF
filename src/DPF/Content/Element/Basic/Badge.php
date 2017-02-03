@@ -11,9 +11,9 @@ use DPF\Content\Element\Basic\Container;
 use DPF\Content\Element;
 
 /**
- * An alert representation.
+ * A badge representation.
  */
-class Alert extends Container
+class Badge extends Container
 {
 
 	/**
@@ -61,8 +61,8 @@ class Alert extends Container
 			$type = self::INFO;
 		}
 
-		$classes[] = 'dpf-alert-' . $type;
-		$this->setProtectedClass('dpf-alert-' . $type);
+		$classes[] = 'dpf-badge-' . $type;
+		$this->setProtectedClass('dpf-badge-' . $type);
 
 		parent::__construct($id, $classes, $attributes);
 
@@ -70,7 +70,7 @@ class Alert extends Container
 	}
 
 	/**
-	 * Returns the type of alert.
+	 * Returns the type of the badge.
 	 *
 	 * @return string
 	 */
