@@ -52,13 +52,6 @@ class Element
 	private $protectedClasses = array();
 
 	/**
-	 * The prefix.
-	 *
-	 * @var string
-	 */
-	private $prefix = '';
-
-	/**
 	 * The parent.
 	 *
 	 * @var Container
@@ -78,11 +71,6 @@ class Element
 	{
 		if (! $id) {
 			throw new \Exception('ID cannot be empty!');
-		}
-
-		if (key_exists('dpf-prefix', $attributes)) {
-			$this->prefix = $attributes['dpf-prefix'];
-			unset($attributes['dpf-prefix']);
 		}
 
 		$this->id = $id;
@@ -182,18 +170,23 @@ class Element
 
 	/**
 	 * Returns the attributes of the element.
-	 * If prefix is set to true, then all attributes which are allowed, are prefixed.
+	 * If prefix is set to true, then all classes which are not protected, are prefixed.
 	 *
-	 * @param boolean $prefix
+	 * @param boolean $prefixClasses
 	 *
 	 * @return string
 	 *
 	 * @see Element::getPrefix
 	 * @see Element::setProtectedClass
 	 */
-	public function getAttributes($prefix = false)
+	public function getAttributes($prefixClasses = false)
 	{
 		$attributes = $this->attributes;
+
+		$prefix = null;
+		if (key_exists('dpf-prefix', $attributes)) {
+			unset($attributes['dpf-prefix']);
+		}
 
 		foreach ($this->classes as $class) {
 			$class = trim($class);
@@ -206,7 +199,7 @@ class Element
 			if (! key_exists('class', $attributes)) {
 				$attributes['class'] = '';
 			}
-			$attributes['class'] .= ($prefix && ! in_array($class, $this->protectedClasses) && $this->getPrefix() ? $this->getPrefix() . $class : $class) . ' ';
+			$attributes['class'] .= ($prefixClasses && ! in_array($class, $this->protectedClasses) && $this->getPrefix() ? $this->getPrefix() . $class : $class) . ' ';
 		}
 
 		$attributes['id'] = $this->getId();
@@ -221,10 +214,15 @@ class Element
 	 */
 	public function getPrefix()
 	{
-		if (! $this->prefix && $this->parent) {
+		$prefix = '';
+		if (key_exists('dpf-prefix', $this->attributes)) {
+			$prefix = $this->attributes['dpf-prefix'];
+		}
+
+		if (! $prefix && $this->parent) {
 			return $this->parent->getPrefix();
 		}
-		return $this->prefix;
+		return $prefix;
 	}
 
 	/**
