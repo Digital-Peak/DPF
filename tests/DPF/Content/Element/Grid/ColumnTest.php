@@ -30,6 +30,6 @@ class ColumnTest extends TestCase
             'dpf-prefix' => 'foo-'
         ));
 
-        $this->assertXmlStringEqualsXmlString('<div id="foo-test" class="foo-unit dpf-col-4"></div>', $e->render());
+        $this->assertXmlStringEqualsXmlString('<div id="test" class="foo-unit dpf-col-4"></div>', $e->render());
     }
 }

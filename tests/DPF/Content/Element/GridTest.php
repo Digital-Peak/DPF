@@ -22,7 +22,7 @@ class GridTest extends TestCase
         $e = new Grid('test');
         $e->addRow(new Row('row'))->addColumn(new Column('col', 3));
 
-        $this->assertXmlStringEqualsXmlString('<div id="test"><div id="row" class="dpf-row"><div id="col" class="dpf-col-3"></div></div></div>', $e->render());
+        $this->assertXmlStringEqualsXmlString('<div id="test"><div id="test-row" class="dpf-row"><div id="test-row-col" class="dpf-col-3"></div></div></div>', $e->render());
     }
 
     public function testRenderNoChildren()

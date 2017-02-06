@@ -20,7 +20,7 @@ class ContainerTest extends TestCase
         $el = $e->addChild(new Element('unit'));
         $el->setContent('unit test');
 
-        $this->assertXmlStringEqualsXmlString('<div id="test"><div id="unit">unit test</div></div>', $e->render());
+        $this->assertXmlStringEqualsXmlString('<div id="test"><div id="test-unit">unit test</div></div>', $e->render());
     }
 
     public function testRenderNoChildren()
@@ -38,7 +38,7 @@ class ContainerTest extends TestCase
         $c->addChild(new Container('unit2.1'));
         $c->addChild(new Container('unit2.2'));
 
-        $this->assertXmlStringEqualsXmlString('<div id="test"><div id="unit1"><div id="unit1.1"></div></div><div id="unit2"><div id="unit2.1"></div><div id="unit2.2"></div></div></div>', $e->render());
+        $this->assertXmlStringEqualsXmlString('<div id="test"><div id="test-unit1"><div id="test-unit1-unit1.1"></div></div><div id="test-unit2"><div id="test-unit2-unit2.1"></div><div id="test-unit2-unit2.2"></div></div></div>', $e->render());
     }
 
     public function testRenderWithPrefix()
@@ -52,6 +52,6 @@ class ContainerTest extends TestCase
         )))
             ->addChild(new Element('john'));
 
-        $this->assertXmlStringEqualsXmlString('<div id="foo-test"><div id="foo-unit"><div id="foo-bar" class="foo-doo"><div id="foo-john"></div></div></div></div>', $e->render());
+        $this->assertXmlStringEqualsXmlString('<div id="test"><div id="test-unit"><div id="test-unit-bar" class="foo-doo"><div id="test-unit-bar-john"></div></div></div></div>', $e->render());
     }
 }

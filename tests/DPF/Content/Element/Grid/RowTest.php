@@ -21,7 +21,7 @@ class RowTest extends TestCase
         $e = new Row('test');
         $e->addColumn(new Column('col', 3));
 
-        $this->assertXmlStringEqualsXmlString('<div id="test" class="dpf-row"><div id="col" class="dpf-col-3"></div></div>', $e->render());
+        $this->assertXmlStringEqualsXmlString('<div id="test" class="dpf-row"><div id="test-col" class="dpf-col-3"></div></div>', $e->render());
     }
 
     public function testRenderNoColumns()
@@ -39,6 +39,6 @@ class RowTest extends TestCase
             'dpf-prefix' => 'foo-'
         ));
 
-        $this->assertXmlStringEqualsXmlString('<div id="foo-test" class="foo-unit dpf-row"></div>', $e->render());
+        $this->assertXmlStringEqualsXmlString('<div id="test" class="foo-unit dpf-row"></div>', $e->render());
     }
 }

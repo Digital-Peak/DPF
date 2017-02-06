@@ -38,13 +38,13 @@ class ElementTest extends TestCase
 	}
 
 	/**
-	 * @expectedException DOMException
 	 */
 	public function testRenderWithInvalidHTMLContent()
 	{
 		$e = new Element('test');
 		$e->setContent('<p>unit');
-		$e->render();
+
+		$this->assertEquals('<div id="test"><p>unit</div>', $e->render());
 	}
 
 	public function testRenderWithPrefix()
@@ -55,7 +55,7 @@ class ElementTest extends TestCase
 			'dpf-prefix' => 'foo-'
 		));
 
-		$this->assertXmlStringEqualsXmlString('<div id="foo-test" class="foo-unit"></div>', $e->render());
+		$this->assertXmlStringEqualsXmlString('<div id="test" class="foo-unit"></div>', $e->render());
 	}
 
 	public function testRenderWithPrefixProtectedClass()
@@ -68,7 +68,7 @@ class ElementTest extends TestCase
 		));
 		$e->setProtectedClass('bar');
 
-		$this->assertXmlStringEqualsXmlString('<div id="unit-test" class="unit-foo bar"></div>', $e->render());
+		$this->assertXmlStringEqualsXmlString('<div id="test" class="unit-foo bar"></div>', $e->render());
 	}
 
 	public function testRenderWithFramework()
@@ -83,7 +83,7 @@ class ElementTest extends TestCase
 		));
 
 		$framework = $this->getMockBuilder(Framework::class)->getMock();
-		$framework->method('getElement')->willReturn($override);
+		$framework->method('prepareElement')->willReturn($override);
 
 		$this->assertXmlStringEqualsXmlString('<div id="override" class="ovbar"></div>', $e->render($framework));
 	}

@@ -16,6 +16,20 @@ class Element
 {
 
 	/**
+	 * The id of the element
+	 *
+	 * @var string
+	 */
+	private $id = '';
+
+	/**
+	 * The classes of the element.
+	 *
+	 * @var array
+	 */
+	private $classes = array();
+
+	/**
 	 * The attributes of the element.
 	 * The key is the name and the value the value.
 	 *
@@ -71,10 +85,10 @@ class Element
 			unset($attributes['dpf-prefix']);
 		}
 
-		$this->attributes = $attributes;
+		$this->id = $id;
+		$this->classes = $classes;
 
-		$this->attributes['id'] = $id;
-		$this->attributes['class'] = implode(' ', $classes);
+		$this->attributes = $attributes;
 	}
 
 	/**
@@ -93,7 +107,7 @@ class Element
 			throw new \DOMException($errstr);
 		};
 		$oldHandler = set_error_handler($handler);
-		return $this->build(null, $framework)->ownerDocument->saveHTML();
+		return trim($this->build(null, $framework)->ownerDocument->saveHTML());
 		set_error_handler($oldHandler);
 	}
 
@@ -104,7 +118,7 @@ class Element
 	 */
 	public function getId()
 	{
-		return $this->attributes['id'];
+		return $this->getParent() ? $this->getParent()->getId() . '-' . $this->id : $this->id;
 	}
 
 	/**
@@ -114,7 +128,7 @@ class Element
 	 */
 	public function getClasses()
 	{
-		return explode(' ', $this->attributes['class']);
+		return $this->classes;
 	}
 
 	/**
@@ -142,7 +156,7 @@ class Element
 	 */
 	public function addClass($class, $protected = false)
 	{
-		$this->attributes['class'] .= ' ' . $class;
+		$this->classes[] = $class;
 
 		if ($protected) {
 			$this->setProtectedClass($class);
@@ -180,11 +194,22 @@ class Element
 	public function getAttributes($prefix = false)
 	{
 		$attributes = $this->attributes;
-		if ($prefix) {
-			foreach ($attributes as $key => $attribute) {
-				$attributes[$key] = $this->getPrefixedAttribute($key, $attribute);
+
+		foreach ($this->classes as $class) {
+			$class = trim($class);
+
+			// Empty class is ignored
+			if (! $class) {
+				continue;
 			}
+
+			if (! key_exists('class', $attributes)) {
+				$attributes['class'] = '';
+			}
+			$attributes['class'] .= ($prefix && ! in_array($class, $this->protectedClasses) && $this->getPrefix() ? $this->getPrefix() . $class : $class) . ' ';
 		}
+
+		$attributes['id'] = $this->getId();
 		return $attributes;
 	}
 
@@ -280,7 +305,7 @@ class Element
 		}
 		$dom->formatOutput = true;
 
-		$instance = $framework->prepareElement($this);
+		$instance = $framework ? $framework->prepareElement($this) : $this;
 
 		// Create the root element
 		$domElement = $dom->createElement($instance->getTagName());
@@ -348,74 +373,5 @@ class Element
 	public function getTagName()
 	{
 		return 'div';
-	}
-
-	/**
-	 * Determines if the attribute with the given name and value can be prefixed.
-	 *
-	 * @param string $name
-	 * @param string $value
-	 *
-	 * @return boolean
-	 *
-	 * @see Element::getPrefix
-	 * @see Element::setProtectedClass
-	 */
-	protected function canPrefix($name, $value)
-	{
-		if ($name == 'class') {
-			// Is the value protected
-			return ! in_array($value, $this->protectedClasses);
-		}
-		return $name == 'id';
-	}
-
-	/**
-	 * Returns the prefixed value for the given name.
-	 *
-	 * @param string $name
-	 * @param string $value
-	 *
-	 * @return string
-	 *
-	 * @see Element::getPrefix
-	 * @see Element::setProtectedClass
-	 */
-	private function getPrefixedAttribute($name, $value)
-	{
-		$prefix = $this->getPrefix();
-
-		// When we don't have a prefix, retunr the value
-		if (! $prefix) {
-			return trim($value);
-		}
-
-		// Ensure array
-		if (! is_array($value)) {
-			$value = explode(' ', $value);
-		}
-
-		// Only unique values are allowed
-		$value = array_unique($value);
-
-		$tmp = '';
-		foreach ($value as $v) {
-			$v = trim($v);
-
-			// Empty values are ignored
-			if (! $v) {
-				continue;
-			}
-
-			if (strpos($v, $prefix) === 0 || ! $this->canPrefix($name, $v)) {
-				// Has prefix already or can't be prefixed
-				$tmp .= $v . ' ';
-				continue;
-			}
-
-			// Prefix the value
-			$tmp .= $prefix . $v . ' ';
-		}
-		return trim($tmp);
 	}
 }
