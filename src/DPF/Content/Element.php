@@ -75,7 +75,6 @@ class Element
 
 		$this->id = $id;
 		$this->classes = $classes;
-
 		$this->attributes = $attributes;
 	}
 

@@ -33,7 +33,7 @@ class Button extends Container
 			$this->addChild($icon);
 		}
 		if ($text) {
-			$this->addChild(new TextBlock($id . '-text'))->setContent($text);
+			$this->addChild(new TextBlock('text'))->setContent($text);
 		}
 	}
 

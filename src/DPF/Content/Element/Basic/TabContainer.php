@@ -29,8 +29,9 @@ class TabContainer extends Container
 	{
 		$this->getTabs()->addChild($tab);
 
-		$li = $this->getTabLinks()->addChild(new Custom($tab->getId() . '-tab', 'li'));
-		$li->addChild(new Link($tab->getId() . '-tab-link', '#' . $tab->getPrefix() . $tab->getId()))
+		$li = $this->getTabLinks()->addChild(new Custom('tab-' . (count($this->getTabLinks()
+			->getChildren()) + 1), 'li'));
+		$li->addChild(new Link('link', '#' . $tab->getId()))
 			->setContent($tab->getTitle());
 		return $tab;
 	}
@@ -38,7 +39,7 @@ class TabContainer extends Container
 	public function getTabLinks()
 	{
 		if ($this->tabLinks === null) {
-			$this->tabLinks = new Custom($this->getId() . '-tabs-links', 'ul');
+			$this->tabLinks = new Custom('links', 'ul');
 			$this->addChild($this->tabLinks);
 		}
 
@@ -50,7 +51,7 @@ class TabContainer extends Container
 		if ($this->tabs === null) {
 			$this->getTabLinks();
 
-			$this->tabs = new Container($this->getId() . '-tabs');
+			$this->tabs = new Container('tabs');
 			$this->addChild($this->tabs);
 		}
 

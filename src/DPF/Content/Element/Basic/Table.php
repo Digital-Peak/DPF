@@ -25,14 +25,14 @@ class Table extends Container
 	{
 		parent::__construct($id, $classes, $attributes);
 
-		$this->head = $this->addChild(new Custom($id . '-head', 'thead'));
-		$this->body = $this->addChild(new Custom($id . '-body', 'tbody'));
-		$this->footer = $this->addChild(new Custom($id . '-footer', 'tfoot'));
+		$this->head = $this->addChild(new Custom('head', 'thead'));
+		$this->body = $this->addChild(new Custom('body', 'tbody'));
+		$this->footer = $this->addChild(new Custom('footer', 'tfoot'));
 
-		$row = $this->head->addChild(new Row($id . '-head-row'));
+		$row = $this->head->addChild(new Row('row'));
 
 		foreach ($columns as $index => $column) {
-			$row->addChild(new Custom($id . '-head-row-cell-' . $index, 'th'))->setContent($column);
+			$row->addChild(new Custom('cell-' . $index, 'th'))->setContent($column);
 		}
 	}
 
@@ -52,7 +52,7 @@ class Table extends Container
 		$count = count($this->head->getChildren()[0]->getChildren());
 		foreach ($this->body->getChildren() as $row) {
 			while (count($row->getChildren()) < $count) {
-				$row->addChild(new Cell($this->getId() . '-body-row-cell-' . count($row->getChildren())));
+				$row->addChild(new Cell('cell-' . count($row->getChildren())));
 			}
 		}
 		return parent::build($parent, $framework);
