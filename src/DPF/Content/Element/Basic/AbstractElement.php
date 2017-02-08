@@ -374,6 +374,9 @@ class AbstractElement implements Element
 	 */
 	public function accept(ElementVisitor $visitor)
 	{
-		$visitor->visitElement($this);
+		$name = str_replace(__NAMESPACE__ . '\\', '', get_class($this));
+		$name = 'visit' . str_replace('\\', '', $name);
+
+		$visitor->{$name}($this);
 	}
 }

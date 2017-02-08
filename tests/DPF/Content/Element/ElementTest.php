@@ -9,6 +9,8 @@ namespace DPF\Tests\Content\Element;
 
 use PHPUnit\Framework\TestCase;
 use DPF\Content\Element\Basic\AbstractElement;
+use DPF\Content\Visitor\Basic\ElementVisitor;
+use DPF\Content\Element\Basic\Grid\Row;
 
 class ElementTest extends TestCase
 {
@@ -68,6 +70,23 @@ class ElementTest extends TestCase
 		$this->assertXmlStringEqualsXmlString('<div id="test" class="unit-foo bar"></div>', $e->render());
 	}
 
+	public function testAccept()
+	{
+		$visitor = $this->getMockBuilder(ElementVisitor::class)->getMock();
+		$visitor->expects($this->once())
+			->method('visitGridRow');
+		$e = new Row('test');
+		$e->accept($visitor);
+	}
+
+	/**
+	 *
+	 * @param unknown $id
+	 * @param array $classes
+	 * @param array $attributes
+	 *
+	 * @return AbstractElement
+	 */
 	private function getElement($id, $classes = [], $attributes = [])
 	{
 		return $this->getMockForAbstractClass(AbstractElement::class, [
