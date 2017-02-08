@@ -7,34 +7,32 @@
  */
 namespace DPF\Content\Element\Basic;
 
-
-
 class Heading extends Container
 {
 
-    /**
-     * The heading size 1-6.
-     *
-     * @var integer
-     */
-    private $size = 1;
+	/**
+	 * The heading size 1-6.
+	 *
+	 * @var integer
+	 */
+	private $size = 1;
 
-    public function __construct($id, $size, array $classes = [], array $attributes = [])
-    {
-        if ($size < 1) {
-            $size = 1;
-        }
-        if ($size > 6) {
-            $size = 6;
-        }
+	public function __construct($id, $size, array $classes = [], array $attributes = [])
+	{
+		if ($size < 1) {
+			$size = 1;
+		}
+		if ($size > 6) {
+			$size = 6;
+		}
 
-        $this->size = $size;
+		$this->size = $size;
 
-        parent::__construct($id, $classes, $attributes);
-    }
+		parent::__construct($id, $classes, $attributes);
+	}
 
-    public function getTagName()
-    {
-        return 'h' . $this->size;
-    }
+	public function getTagName()
+	{
+		return 'h' . $this->size;
+	}
 }

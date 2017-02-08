@@ -7,8 +7,6 @@
  */
 namespace DPF\Content\Element\Basic;
 
-
-
 class DescriptionListHorizontal extends DescriptionList
 {
 

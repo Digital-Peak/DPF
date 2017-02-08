@@ -7,24 +7,22 @@
  */
 namespace DPF\Content\Element\Basic;
 
-
-
 class Link extends Container
 {
 
-    public function __construct($id, $link, $target = null, array $classes = [], array $attributes = [])
-    {
-        $attributes['href'] = $link;
+	public function __construct($id, $link, $target = null, array $classes = [], array $attributes = [])
+	{
+		$attributes['href'] = $link;
 
-        if ($target) {
-            $attributes['target'] = $target;
-        }
+		if ($target) {
+			$attributes['target'] = $target;
+		}
 
-        parent::__construct($id, $classes, $attributes);
-    }
+		parent::__construct($id, $classes, $attributes);
+	}
 
-    public function getTagName()
-    {
-        return 'a';
-    }
+	public function getTagName()
+	{
+		return 'a';
+	}
 }

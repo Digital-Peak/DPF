@@ -33,24 +33,35 @@ class ContainerTest extends TestCase
 	{
 		$e = new Container('test');
 		$e->addChild(new Container('unit1'))->addChild(new Container('unit1.1'));
+
 		$c = $e->addChild(new Container('unit2'));
 		$c->addChild(new Container('unit2.1'));
 		$c->addChild(new Container('unit2.2'));
 
-		$this->assertXmlStringEqualsXmlString('<div id="test"><div id="test-unit1"><div id="test-unit1-unit1.1"></div></div><div id="test-unit2"><div id="test-unit2-unit2.1"></div><div id="test-unit2-unit2.2"></div></div></div>', $e->render());
+		$string  = '<div id="test">';
+		$string .= '<div id="test-unit1"><div id="test-unit1-unit1.1"></div></div>';
+		$string .= '<div id="test-unit2"><div id="test-unit2-unit2.1"></div><div id="test-unit2-unit2.2"></div></div>';
+		$string .= '</div>';
+
+		$this->assertXmlStringEqualsXmlString($string, $e->render());
 	}
 
 	public function testRenderWithPrefix()
 	{
-		$e = new Container('test', array(), array(
-			'dpf-prefix' => 'foo-'
-		));
+		$e = new Container('test', array(), array('dpf-prefix' => 'foo-'));
 		$e->addChild(new Container('unit'))
-			->addChild(new Container('bar', array(
-			'doo'
-		)))
+			->addChild(new Container('bar', array('doo')))
 			->addChild(new Container('john'));
 
-		$this->assertXmlStringEqualsXmlString('<div id="test"><div id="test-unit"><div id="test-unit-bar" class="foo-doo"><div id="test-unit-bar-john"></div></div></div></div>', $e->render());
+
+		$string  = '<div id="test">';
+		$string .= '<div id="test-unit">';
+		$string .= '<div id="test-unit-bar" class="foo-doo">';
+		$string .= '<div id="test-unit-bar-john"></div>';
+		$string .= '</div>';
+		$string .= '</div>';
+		$string .= '</div>';
+
+		$this->assertXmlStringEqualsXmlString($string, $e->render());
 	}
 }

@@ -7,22 +7,20 @@
  */
 namespace DPF\Content\Element\Basic;
 
-
-
 class Form extends Container
 {
 
-    public function __construct($id, $action, $name, $method = 'POST', array $classes = [], array $attributes = [])
-    {
-        $attributes['action'] = $action;
-        $attributes['name']   = $name;
-        $attributes['method'] = $method;
+	public function __construct($id, $action, $name, $method = 'POST', array $classes = [], array $attributes = [])
+	{
+		$attributes['action'] = $action;
+		$attributes['name']   = $name;
+		$attributes['method'] = $method;
 
-        parent::__construct($id, $classes, $attributes);
-    }
+		parent::__construct($id, $classes, $attributes);
+	}
 
-    public function getTagName()
-    {
-        return 'form';
-    }
+	public function getTagName()
+	{
+		return 'form';
+	}
 }

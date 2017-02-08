@@ -7,8 +7,6 @@
  */
 namespace DPF\Content\Element\Basic;
 
-
-
 class Custom extends Container
 {
 

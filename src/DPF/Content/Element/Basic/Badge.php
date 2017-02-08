@@ -9,7 +9,6 @@ namespace DPF\Content\Element\Basic;
 
 use DPF\Content\Element\Basic\Container;
 
-
 /**
  * A badge representation.
  */

@@ -7,7 +7,6 @@
  */
 namespace DPF\Content\Element\Basic;
 
-
 use DPF\Content\Element\Basic\Grid\Row;
 
 /**

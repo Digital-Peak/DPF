@@ -7,7 +7,6 @@
  */
 namespace DPF\Tests\Content\Element\Grid;
 
-
 use DPF\Content\Element\Basic\Grid;
 use DPF\Content\Element\Basic\Grid\Column;
 use PHPUnit\Framework\TestCase;
@@ -15,21 +14,21 @@ use PHPUnit\Framework\TestCase;
 class ColumnTest extends TestCase
 {
 
-    public function testRender()
-    {
-        $e = new Column('test', 4);
+	public function testRender()
+	{
+		$e = new Column('test', 4);
 
-        $this->assertXmlStringEqualsXmlString('<div id="test" class="dpf-col-4"></div>', $e->render());
-    }
+		$this->assertXmlStringEqualsXmlString('<div id="test" class="dpf-col-4"></div>', $e->render());
+	}
 
-    public function testRenderWithPrefix()
-    {
-        $e = new Column('test', 4, array(
-            'unit'
-        ), array(
-            'dpf-prefix' => 'foo-'
-        ));
+	public function testRenderWithPrefix()
+	{
+		$e = new Column('test', 4, array(
+			'unit'
+		), array(
+			'dpf-prefix' => 'foo-'
+		));
 
-        $this->assertXmlStringEqualsXmlString('<div id="test" class="foo-unit dpf-col-4"></div>', $e->render());
-    }
+		$this->assertXmlStringEqualsXmlString('<div id="test" class="foo-unit dpf-col-4"></div>', $e->render());
+	}
 }

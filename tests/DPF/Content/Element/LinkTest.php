@@ -7,17 +7,16 @@
  */
 namespace DPF\Tests\Content\Element;
 
-
 use DPF\Content\Element\Basic\Link;
 use PHPUnit\Framework\TestCase;
 
 class LinkTest extends TestCase
 {
 
-    public function testRender()
-    {
-        $e = new Link('test', 'https://digital-peak.com');
+	public function testRender()
+	{
+		$e = new Link('test', 'https://digital-peak.com');
 
-        $this->assertXmlStringEqualsXmlString('<a id="test" href="https://digital-peak.com"></a>', $e->render());
-    }
+		$this->assertXmlStringEqualsXmlString('<a id="test" href="https://digital-peak.com"></a>', $e->render());
+	}
 }

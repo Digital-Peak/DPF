@@ -7,7 +7,6 @@
  */
 namespace DPF\Content\Element\Basic;
 
-
 use DPF\Content\Element\Basic\Table\Row;
 use DPF\Content\Element\Basic\Table\Cell;
 use DPF\Content\Framework;

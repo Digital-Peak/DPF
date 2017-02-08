@@ -196,7 +196,11 @@ class AbstractElement implements Element
 			if (! key_exists('class', $attributes)) {
 				$attributes['class'] = '';
 			}
-			$attributes['class'] .= ($prefixClasses && ! in_array($class, $this->protectedClasses) && $this->getPrefix() ? $this->getPrefix() . $class : $class) . ' ';
+
+			if ($prefixClasses && ! in_array($class, $this->protectedClasses) && $this->getPrefix()) {
+				$class = $this->getPrefix() . $class;
+			}
+			$attributes['class'] .= $class . ' ';
 		}
 
 		$attributes['id'] = $this->getId();

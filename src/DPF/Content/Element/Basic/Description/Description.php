@@ -12,8 +12,8 @@ use DPF\Content\Element\Basic\Container;
 class Description extends Container
 {
 
-    public function getTagName()
-    {
-        return 'dd';
-    }
+	public function getTagName()
+	{
+		return 'dd';
+	}
 }

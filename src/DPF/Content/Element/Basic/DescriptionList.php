@@ -7,35 +7,34 @@
  */
 namespace DPF\Content\Element\Basic;
 
-
 use DPF\Content\Element\Basic\Description\Description;
 use DPF\Content\Element\Basic\Description\Term;
 
 class DescriptionList extends Container
 {
 
-    /**
-     *
-     * @param Term $term
-     * @return Term
-     */
-    public function setTerm(Term $term)
-    {
-        return $this->addChild($term);
-    }
+	/**
+	 *
+	 * @param Term $term
+	 * @return Term
+	 */
+	public function setTerm(Term $term)
+	{
+		return $this->addChild($term);
+	}
 
-    /**
-     *
-     * @param Description $description
-     * @return Description
-     */
-    public function setDescription(Description $description)
-    {
-        return $this->addChild($description);
-    }
+	/**
+	 *
+	 * @param Description $description
+	 * @return Description
+	 */
+	public function setDescription(Description $description)
+	{
+		return $this->addChild($description);
+	}
 
-    public function getTagName()
-    {
-        return 'dl';
-    }
+	public function getTagName()
+	{
+		return 'dl';
+	}
 }
