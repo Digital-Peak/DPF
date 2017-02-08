@@ -7,28 +7,26 @@
  */
 namespace DPF\Tests\Content\Element;
 
-
-use DPF\Content\Element\Basic\Container;
 use DPF\Content\Element\Basic\Grid;
-use PHPUnit\Framework\TestCase;
-use DPF\Content\Element\Basic\Grid\Row;
 use DPF\Content\Element\Basic\Grid\Column;
+use DPF\Content\Element\Basic\Grid\Row;
+use PHPUnit\Framework\TestCase;
 
 class GridTest extends TestCase
 {
 
-    public function testRender()
-    {
-        $e = new Grid('test');
-        $e->addRow(new Row('row'))->addColumn(new Column('col', 3));
+	public function testRender()
+	{
+		$e = new Grid('test');
+		$e->addRow(new Row('row'))->addColumn(new Column('col', 3));
 
-        $this->assertXmlStringEqualsXmlString('<div id="test"><div id="test-row" class="dpf-row"><div id="test-row-col" class="dpf-col-3"></div></div></div>', $e->render());
-    }
+		$this->assertXmlStringEqualsXmlString('<div id="test"><div id="test-row" class="dpf-row"><div id="test-row-col" class="dpf-col-3"></div></div></div>', $e->render());
+	}
 
-    public function testRenderNoChildren()
-    {
-        $e = new Container('test');
+	public function testRenderNoChildren()
+	{
+		$e = new Grid('test');
 
-        $this->assertXmlStringEqualsXmlString('<div id="test"></div>', $e->render());
-    }
+		$this->assertXmlStringEqualsXmlString('<div id="test"></div>', $e->render());
+	}
 }

@@ -7,23 +7,22 @@
  */
 namespace DPF\Tests\Content\Element;
 
-
 use PHPUnit\Framework\TestCase;
-use DPF\Content\Framework;
+use DPF\Content\Element\Basic\AbstractElement;
 
 class ElementTest extends TestCase
 {
 
 	public function testRender()
 	{
-		$e = new Element('test');
+		$e = $this->getElement('test');
 
 		$this->assertXmlStringEqualsXmlString('<div id="test"></div>', $e->render());
 	}
 
 	public function testRenderWithContent()
 	{
-		$e = new Element('test');
+		$e = $this->getElement('test');
 		$e->setContent('unit');
 
 		$this->assertXmlStringEqualsXmlString('<div id="test">unit</div>', $e->render());
@@ -31,17 +30,15 @@ class ElementTest extends TestCase
 
 	public function testRenderWithHTMLContent()
 	{
-		$e = new Element('test');
+		$e = $this->getElement('test');
 		$e->setContent('<p>unit</p>');
 
 		$this->assertXmlStringEqualsXmlString('<div id="test"><p>unit</p></div>', $e->render());
 	}
 
-	/**
-	 */
 	public function testRenderWithInvalidHTMLContent()
 	{
-		$e = new Element('test');
+		$e = $this->getElement('test');
 		$e->setContent('<p>unit');
 
 		$this->assertEquals('<div id="test"><p>unit</div>', $e->render());
@@ -49,7 +46,7 @@ class ElementTest extends TestCase
 
 	public function testRenderWithPrefix()
 	{
-		$e = new Element('test', array(
+		$e = $this->getElement('test', array(
 			'unit'
 		), array(
 			'dpf-prefix' => 'foo-'
@@ -60,7 +57,7 @@ class ElementTest extends TestCase
 
 	public function testRenderWithPrefixProtectedClass()
 	{
-		$e = new Element('test', array(
+		$e = $this->getElement('test', array(
 			'foo',
 			'bar'
 		), array(
@@ -71,20 +68,12 @@ class ElementTest extends TestCase
 		$this->assertXmlStringEqualsXmlString('<div id="test" class="unit-foo bar"></div>', $e->render());
 	}
 
-	public function testRenderWithFramework()
+	private function getElement($id, $classes = [], $attributes = [])
 	{
-		$e = new Element('test', array(
-			'foo',
-			'bar'
-		));
-
-		$override = new Element('override', array(
-			'ovbar'
-		));
-
-		$framework = $this->getMockBuilder(Framework::class)->getMock();
-		$framework->method('prepareElement')->willReturn($override);
-
-		$this->assertXmlStringEqualsXmlString('<div id="override" class="ovbar"></div>', $e->render($framework));
+		return $this->getMockForAbstractClass(AbstractElement::class, [
+			$id,
+			$classes,
+			$attributes
+		]);
 	}
 }

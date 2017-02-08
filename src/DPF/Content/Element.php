@@ -7,6 +7,8 @@
  */
 namespace DPF\Content;
 
+use DPF\Content\Visitor\Basic\ElementVisitor;
+
 /**
  * Interface which defines an element.
  */

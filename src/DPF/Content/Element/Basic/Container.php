@@ -7,8 +7,7 @@
  */
 namespace DPF\Content\Element\Basic;
 
-
-use DPF\Content\Framework;
+use DPF\Content\Element;
 
 /**
  * A container element which can hold child elements.
@@ -76,12 +75,18 @@ class Container extends AbstractElement
 		return $this->children;
 	}
 
-	public function build(\DOMElement $parent = null, Framework $framework = null)
+	/**
+	 *
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\Content\Element\Basic\AbstractElement::build()
+	 */
+	public function build(\DOMElement $parent = null)
 	{
-		$root = parent::build($parent, $framework);
+		$root = parent::build($parent);
 
 		foreach ($this->getChildren() as $child) {
-			$child->build($root, $framework);
+			$child->build($root);
 		}
 
 		return $root;
@@ -91,7 +96,7 @@ class Container extends AbstractElement
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see Element::__toString()
+	 * @see \DPF\Content\Element\Basic\AbstractElement::__toString()
 	 */
 	public function __toString()
 	{

@@ -5,7 +5,7 @@
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Framework;
+namespace DPF\Content\Visitor\Framework;
 
 use DPF\Content\Element\Basic\Alert;
 use DPF\Content\Element\Basic\Badge;

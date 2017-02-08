@@ -7,7 +7,8 @@
  */
 namespace DPF\Content\Element\Basic;
 
-
+use DPF\Content\Element;
+use DPF\Content\Visitor\Basic\ElementVisitor;
 
 /**
  * An element represents a node in an HTML tree.
@@ -79,10 +80,7 @@ class AbstractElement implements Element
 	}
 
 	/**
-	 * Renders itself with the given framework.
-	 * A HTML string is returned.
-	 *
-	 * @param Framework $framework
+	 * Renders itself and returns a HTML string.
 	 *
 	 * @return string
 	 *
@@ -94,7 +92,7 @@ class AbstractElement implements Element
 			throw new \DOMException($errstr);
 		};
 		$oldHandler = set_error_handler($handler);
-		return trim($this->build(null, $framework)->ownerDocument->saveHTML());
+		return trim($this->build(null)->ownerDocument->saveHTML());
 		set_error_handler($oldHandler);
 	}
 
@@ -284,16 +282,15 @@ class AbstractElement implements Element
 	}
 
 	/**
-	 * Builds the element as DOMElement under the given parent with the given framework.
+	 * Builds the element as DOMElement under the given parent.
 	 *
 	 * @param \DOMElement $parent
-	 * @param Framework $framework
 	 *
 	 * @return \DOMNode
 	 *
 	 * @throws \DOMException
 	 */
-	public function build(\DOMElement $parent = null, Framework $framework = null)
+	public function build(\DOMElement $parent = null)
 	{
 		// Prepare the domdocument
 		$dom = new \DOMDocument('1.0', 'UTF-8');
@@ -302,10 +299,8 @@ class AbstractElement implements Element
 		}
 		$dom->formatOutput = true;
 
-		$instance = $framework ? $framework->prepareElement($this) : $this;
-
 		// Create the root element
-		$domElement = $dom->createElement($instance->getTagName());
+		$domElement = $dom->createElement($this->getTagName());
 
 		if ($parent == null) {
 			$parent = $dom;
@@ -314,7 +309,7 @@ class AbstractElement implements Element
 		$root = $parent->appendChild($domElement);
 
 		// Set the attributes
-		foreach ($instance->getAttributes(true) as $name => $attr) {
+		foreach ($this->getAttributes(true) as $name => $attr) {
 			$attr = trim($attr);
 			if ($attr == '' || $attr === null) {
 				continue;
@@ -323,20 +318,21 @@ class AbstractElement implements Element
 			$root->setAttribute($name, $attr);
 		}
 
-		if ($instance->getContent()) {
-			if (strpos($instance->getContent(), '<') >= 0) {
+		if ($this->getContent()) {
+			if (strpos($this->getContent(), '<') >= 0) {
+				$instance = $this;
 				$handler = function ($errno, $errstr, $errfile, $errline) use ($instance) {
-					throw new \DOMException($errstr . ' in file ' . $errfile . ' on line ' . $errline . PHP_EOL . htmlentities($instance->getContent()));
+					throw new \DOMException($errstr . ' in file ' . $errfile . ' on line ' . $errline . PHP_EOL . htmlentities($this->getContent()));
 				};
 				$oldHandler = set_error_handler($handler);
 
 				$fragment = $dom->createDocumentFragment();
 
 				// If the content contains alrady cdata, then we assume it wil be valid at all
-				if (strpos($instance->getContent(), '<![CDATA[') !== false) {
-					$fragment->appendXML($instance->getContent());
+				if (strpos($this->getContent(), '<![CDATA[') !== false) {
+					$fragment->appendXML($this->getContent());
 				} else {
-					$fragment->appendXML('<![CDATA[' . $instance->getContent() . ']]>');
+					$fragment->appendXML('<![CDATA[' . $this->getContent() . ']]>');
 				}
 
 				if ($fragment->childNodes->length > 0) {
@@ -345,7 +341,7 @@ class AbstractElement implements Element
 
 				set_error_handler($oldHandler);
 			} else {
-				$root->nodeValue = htmlspecialchars($instance->getContent());
+				$root->nodeValue = htmlspecialchars($this->getContent());
 			}
 		}
 		return $root;
