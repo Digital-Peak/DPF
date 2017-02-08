@@ -7,9 +7,9 @@
  */
 namespace DPF\Content\Element\Extension;
 
-use DPF\Content\Element\Basic\AbstractElement;
+use DPF\Content\Element\Basic\Element;
 
-class GoogleLike extends AbstractElement
+class GoogleLike extends Element
 {
 
 	const LANGUAGES = array(

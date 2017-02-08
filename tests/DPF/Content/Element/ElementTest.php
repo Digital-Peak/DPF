@@ -8,23 +8,22 @@
 namespace DPF\Tests\Content\Element;
 
 use PHPUnit\Framework\TestCase;
-use DPF\Content\Element\Basic\AbstractElement;
 use DPF\Content\Visitor\Basic\ElementVisitor;
-use DPF\Content\Element\Basic\Grid\Row;
+use DPF\Content\Element\Basic\Element;
 
 class ElementTest extends TestCase
 {
 
 	public function testRender()
 	{
-		$e = $this->getElement('test');
+		$e = new Element('test');
 
 		$this->assertXmlStringEqualsXmlString('<div id="test"></div>', $e->render());
 	}
 
 	public function testRenderWithContent()
 	{
-		$e = $this->getElement('test');
+		$e = new Element('test');
 		$e->setContent('unit');
 
 		$this->assertXmlStringEqualsXmlString('<div id="test">unit</div>', $e->render());
@@ -32,7 +31,7 @@ class ElementTest extends TestCase
 
 	public function testRenderWithHTMLContent()
 	{
-		$e = $this->getElement('test');
+		$e = new Element('test');
 		$e->setContent('<p>unit</p>');
 
 		$this->assertXmlStringEqualsXmlString('<div id="test"><p>unit</p></div>', $e->render());
@@ -40,7 +39,7 @@ class ElementTest extends TestCase
 
 	public function testRenderWithInvalidHTMLContent()
 	{
-		$e = $this->getElement('test');
+		$e = new Element('test');
 		$e->setContent('<p>unit');
 
 		$this->assertEquals('<div id="test"><p>unit</div>', $e->render());
@@ -48,7 +47,7 @@ class ElementTest extends TestCase
 
 	public function testRenderWithPrefix()
 	{
-		$e = $this->getElement('test', array(
+		$e = new Element('test', array(
 			'unit'
 		), array(
 			'dpf-prefix' => 'foo-'
@@ -59,7 +58,7 @@ class ElementTest extends TestCase
 
 	public function testRenderWithPrefixProtectedClass()
 	{
-		$e = $this->getElement('test', array(
+		$e = new Element('test', array(
 			'foo',
 			'bar'
 		), array(
@@ -73,26 +72,9 @@ class ElementTest extends TestCase
 	public function testAccept()
 	{
 		$visitor = $this->getMockBuilder(ElementVisitor::class)->getMock();
-		$visitor->expects($this->once())
-			->method('visitGridRow');
-		$e = new Row('test');
-		$e->accept($visitor);
-	}
+		$visitor->expects($this->once())->method('visitElement');
 
-	/**
-	 *
-	 * @param unknown $id
-	 * @param array $classes
-	 * @param array $attributes
-	 *
-	 * @return AbstractElement
-	 */
-	private function getElement($id, $classes = [], $attributes = [])
-	{
-		return $this->getMockForAbstractClass(AbstractElement::class, [
-			$id,
-			$classes,
-			$attributes
-		]);
+		$e = new Element('test');
+		$e->accept($visitor);
 	}
 }

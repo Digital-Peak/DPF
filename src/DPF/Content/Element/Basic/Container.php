@@ -7,12 +7,12 @@
  */
 namespace DPF\Content\Element\Basic;
 
-use DPF\Content\Element;
+use DPF\Content\Visitor\Basic\ElementVisitor;
 
 /**
  * A container element which can hold child elements.
  */
-class Container extends AbstractElement
+class Container extends Element
 {
 
 	/**
@@ -76,7 +76,6 @@ class Container extends AbstractElement
 	}
 
 	/**
-	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\Content\Element\Basic\AbstractElement::build()
@@ -93,7 +92,20 @@ class Container extends AbstractElement
 	}
 
 	/**
+	 * {@inheritDoc}
 	 *
+	 * @see \DPF\Content\Element\AbstractElement::accept()
+	 */
+	public function accept(ElementVisitor $visitor)
+	{
+		parent::accept($visitor);
+
+		foreach ($this->getChildren() as $child) {
+			$child->accept($visitor);
+		}
+	}
+
+	/**
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\Content\Element\Basic\AbstractElement::__toString()

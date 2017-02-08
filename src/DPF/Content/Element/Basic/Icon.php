@@ -7,10 +7,12 @@
  */
 namespace DPF\Content\Element\Basic;
 
+use DPF\Content\Element\Basic\Element;
+
 /**
  * An icon representation.
  */
-class Icon extends AbstractElement
+class Icon extends Element
 {
 
 	/**

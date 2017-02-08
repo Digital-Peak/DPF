@@ -77,6 +77,13 @@ interface ElementVisitor
 	public function visitDescriptionListHorizontal(\DPF\Content\Element\Basic\DescriptionListHorizontal $descriptionListHorizontal);
 
 	/**
+	 * Visit the Element
+	 *
+	 * @param \DPF\Content\Element\Basic\Element $element
+	 */
+	public function visitElement(\DPF\Content\Element\Basic\Element $element);
+
+	/**
 	 * Visit the Font
 	 *
 	 * @param \DPF\Content\Element\Basic\Font $font

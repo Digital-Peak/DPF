@@ -6,7 +6,7 @@ $files = [];
 
 foreach ($rii as $file) {
 
-	if ($file->isDir() || $file->getFileName() == 'AbstractElement.php') {
+	if ($file->isDir()) {
 		continue;
 	}
 
@@ -38,7 +38,8 @@ foreach ($files as $file) {
 	 * @see \\DPF\\DPF\\Content\\Visitor\\Basic\\ElementVisitor::visit" . $name . "()
 	 */
 	public function visit" . $name . "(" . $namespace . " \$" . lcfirst($name) . ")
-	{}
+	{
+	}
 ";
 
 	$functionsI[] = "	/**

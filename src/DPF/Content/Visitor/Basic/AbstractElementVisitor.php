@@ -97,6 +97,15 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
+	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitElement()
+	 */
+	public function visitElement(\DPF\Content\Element\Basic\Element $element)
+	{
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
 	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitFont()
 	 */
 	public function visitFont(\DPF\Content\Element\Basic\Font $font)

@@ -9,6 +9,8 @@ namespace DPF\Tests\Content\Container;
 
 use PHPUnit\Framework\TestCase;
 use DPF\Content\Element\Basic\Container;
+use DPF\Content\Element\Basic\TextBlock;
+use DPF\Content\Visitor\Basic\ElementVisitor;
 
 class ContainerTest extends TestCase
 {
@@ -63,5 +65,16 @@ class ContainerTest extends TestCase
 		$string .= '</div>';
 
 		$this->assertXmlStringEqualsXmlString($string, $e->render());
+	}
+
+	public function testAccept()
+	{
+		$visitor = $this->getMockBuilder(ElementVisitor::class)->getMock();
+		$visitor->expects($this->once())->method('visitContainer');
+		$visitor->expects($this->once())->method('visitTextBlock');
+
+		$e = new Container('test');
+		$e->addChild(new TextBlock('unit'));
+		$e->accept($visitor);
 	}
 }

@@ -7,12 +7,12 @@
  */
 namespace DPF\Content\Element\Basic\Form;
 
-use DPF\Content\Element\Basic\AbstractElement;
+use DPF\Content\Element\Basic\Element;
 
 /**
  * A input representation.
  */
-class Input extends AbstractElement
+class Input extends Element
 {
 
 	/**

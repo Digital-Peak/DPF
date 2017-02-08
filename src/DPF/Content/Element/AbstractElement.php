@@ -5,15 +5,15 @@
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Element\Basic;
+namespace DPF\Content\Element;
 
-use DPF\Content\Element;
 use DPF\Content\Visitor\Basic\ElementVisitor;
+use DPF\Content\Element\Basic\Element;
 
 /**
  * An element represents a node in an HTML tree.
  */
-class AbstractElement implements Element
+abstract class AbstractElement implements ElementInterface
 {
 
 	/**
@@ -78,6 +78,13 @@ class AbstractElement implements Element
 		$this->classes = $classes;
 		$this->attributes = $attributes;
 	}
+
+	/**
+	 * The tag name of the element.
+	 *
+	 * @return string
+	 */
+	public abstract function getTagName();
 
 	/**
 	 * Renders itself and returns a HTML string.
@@ -362,24 +369,18 @@ class AbstractElement implements Element
 	}
 
 	/**
-	 * The tag name of the element.
-	 * Subclasses can define here another one.
-	 *
-	 * @return string
-	 */
-	public function getTagName()
-	{
-		return 'div';
-	}
-
-	/**
 	 *
 	 * @param ElementVisitor $visitor
 	 */
 	public function accept(ElementVisitor $visitor)
 	{
-		$name = str_replace(__NAMESPACE__ . '\\', '', get_class($this));
+		$name = str_replace(__NAMESPACE__ . '\\Basic\\', '', get_class($this));
 		$name = 'visit' . str_replace('\\', '', $name);
+
+		if (!method_exists($visitor, $name))
+		{
+			return;
+		}
 
 		$visitor->{$name}($this);
 	}

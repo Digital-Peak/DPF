@@ -7,10 +7,12 @@
  */
 namespace DPF\Content\Element\Basic;
 
+use DPF\Content\Element\Basic\Element;
+
 /**
  * A meta representation.
  */
-class Meta extends AbstractElement
+class Meta extends Element
 {
 
 	/**
