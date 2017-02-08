@@ -7,9 +7,9 @@
  */
 namespace DPF\Content\Element\Extension;
 
-use DPF\Content\Element;
+use DPF\Content\Element\Basic\AbstractElement;
 
-class FacebookLike extends Element
+class FacebookLike extends AbstractElement
 {
 
 	public function __construct($id, $url, array $classes = [], array $attributes = [])

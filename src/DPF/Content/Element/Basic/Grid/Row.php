@@ -8,7 +8,6 @@
 namespace DPF\Content\Element\Basic\Grid;
 
 use DPF\Content\Element\Basic\Container;
-use DPF\Content\Element;
 
 /**
  * A row representation.

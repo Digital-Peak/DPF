@@ -7,9 +7,9 @@
  */
 namespace DPF\Content\Element\Extension;
 
-use DPF\Content\Element;
+use DPF\Content\Element\Basic\AbstractElement;
 
-class LinkedInShare extends Element
+class LinkedInShare extends AbstractElement
 {
 
 	const LANGUAGES = array(

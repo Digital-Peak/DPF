@@ -7,7 +7,7 @@
  */
 namespace DPF\Content\Element\Basic;
 
-use DPF\Content\Element;
+
 use DPF\Content\Element\Basic\Description\Description;
 use DPF\Content\Element\Basic\Description\Term;
 

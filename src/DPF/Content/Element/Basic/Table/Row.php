@@ -17,6 +17,11 @@ class Row extends Container
 		return $this->addChild($cell);
 	}
 
+	/**
+	 *
+	 * {@inheritDoc}
+	 * @see \DPF\Content\Element\Basic\AbstractElement::getTagName()
+	 */
 	public function getTagName()
 	{
 		return 'tr';

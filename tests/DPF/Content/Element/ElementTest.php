@@ -7,7 +7,7 @@
  */
 namespace DPF\Tests\Content\Element;
 
-use DPF\Content\Element;
+
 use PHPUnit\Framework\TestCase;
 use DPF\Content\Framework;
 

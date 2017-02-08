@@ -7,9 +7,9 @@
  */
 namespace DPF\Content\Element\Extension;
 
-use DPF\Content\Element;
+use DPF\Content\Element\Basic\AbstractElement;
 
-class XingShare extends Element
+class XingShare extends AbstractElement
 {
 
 	public function __construct($id, array $classes = [], array $attributes = [])

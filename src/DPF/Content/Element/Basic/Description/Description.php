@@ -7,7 +7,6 @@
  */
 namespace DPF\Content\Element\Basic\Description;
 
-use DPF\Content\Element;
 use DPF\Content\Element\Basic\Container;
 
 class Description extends Container

@@ -7,13 +7,13 @@
  */
 namespace DPF\Content\Element\Basic;
 
-use DPF\Content\Element;
+
 use DPF\Content\Framework;
 
 /**
  * A container element which can hold child elements.
  */
-class Container extends Element
+class Container extends AbstractElement
 {
 
 	/**

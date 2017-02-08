@@ -8,7 +8,7 @@
 namespace DPF\Content\Element\Basic;
 
 use DPF\Content\Element\Basic\Container;
-use DPF\Content\Element;
+
 
 /**
  * An alert representation.

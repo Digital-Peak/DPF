@@ -7,12 +7,12 @@
  */
 namespace DPF\Content\Element\Basic;
 
-use DPF\Content\Element;
+
 
 /**
  * A image representation.
  */
-class Image extends Element
+class Image extends AbstractElement
 {
 
 	/**

@@ -7,7 +7,6 @@
  */
 namespace DPF\Content\Element\Extension;
 
-use DPF\Content\Element;
 use DPF\Content\Element\Basic\Link;
 
 class TwitterShare extends Link

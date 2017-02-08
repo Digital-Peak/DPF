@@ -7,13 +7,10 @@
  */
 namespace DPF\Content\Element\Basic;
 
-use DPF\Content\Element;
-use DPF\Content\IconStrategy;
-
 /**
  * An icon representation.
  */
-class Icon extends Element
+class Icon extends AbstractElement
 {
 
 	/**
@@ -161,30 +158,41 @@ class Icon extends Element
 	];
 
 	/**
+	 * The type of the icon.
+	 *
+	 * @var string
+	 */
+	private $type = self::PLUS;
+
+	/**
 	 * Prepares the icon with the given strategy if available.
 	 *
 	 * @param string $id
 	 * @param string $type
-	 * @param IconStrategy $iconStrategy
 	 * @param array $classes
 	 * @param array $attributes
 	 */
-	public function __construct($id, $type, IconStrategy $iconStrategy = null, array $classes = [], array $attributes = [])
+	public function __construct($id, $type, array $classes = [], array $attributes = [])
 	{
+		parent::__construct($id, $classes, $attributes);
+
 		if (! in_array($type, self::$ALL_ICONS)) {
 			$type = self::PLUS;
 		}
 
-		$class = 'dpf-icon-' . $type;
+		$this->type = $type;
 
-		if ($iconStrategy) {
-			$class = $iconStrategy->getIconClass($type);
-		}
+		$this->addClass('dpf-icon-' . $type, true);
+	}
 
-		$classes[] = $class;
-		$this->setProtectedClass($class);
-
-		parent::__construct($id, $classes, $attributes);
+	/**
+	 * Returns the type of the icon.
+	 *
+	 * @return string
+	 */
+	public function getType()
+	{
+		return $this->type;
 	}
 
 	/**

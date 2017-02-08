@@ -7,9 +7,9 @@
  */
 namespace DPF\Content\Element\Extension;
 
-use DPF\Content\Element;
+use DPF\Content\Element\Basic\AbstractElement;
 
-class FacebookComments extends Element
+class FacebookComments extends AbstractElement
 {
 
     const LANGUAGES = array(

@@ -7,7 +7,6 @@
  */
 namespace DPF\Content\Element\Basic\Form;
 
-use DPF\Content\Element;
 use DPF\Content\Element\Basic\Container;
 use DPF\Content\Element\Basic\Custom;
 
@@ -41,7 +40,7 @@ class Select extends Container
 	 * @param string $value
 	 * @param boolean $selected
 	 *
-	 * @return Element
+	 * @return \DPF\Content\Element
 	 */
 	public function addOption($text, $value, $selected = false)
 	{
@@ -52,14 +51,17 @@ class Select extends Container
 		if ($selected) {
 			$attributes['selected'] = 'selected';
 		}
-		$this->addChild(new Custom($this->getId() . '-' . $this->optionCounter, 'option', array(), $attributes))->setContent($text);
+		$option = $this->addChild(new Custom($this->getId() . '-' . $this->optionCounter, 'option', array(), $attributes));
+		$option->setContent($text);
+
+		return $option;
 	}
 
 	/**
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see Element::getTagName()
+	 * @see \DPF\Content\Element\Basic\AbstractElement::getTagName()
 	 */
 	public function getTagName()
 	{

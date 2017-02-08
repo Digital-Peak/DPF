@@ -7,12 +7,12 @@
  */
 namespace DPF\Content\Element\Basic\Form;
 
-use DPF\Content\Element;
+use DPF\Content\Element\Basic\AbstractElement;
 
 /**
  * A input representation.
  */
-class Input extends Element
+class Input extends AbstractElement
 {
 
 	/**
@@ -36,9 +36,7 @@ class Input extends Element
 
 	/**
 	 *
-	 * {@inheritdoc}
-	 *
-	 * @see Element::getTagName()
+	 * @return string
 	 */
 	public function getTagName()
 	{

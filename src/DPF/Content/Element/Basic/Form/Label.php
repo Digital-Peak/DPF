@@ -8,7 +8,6 @@
 namespace DPF\Content\Element\Basic\Form;
 
 use DPF\Content\Element\Basic\Container;
-use DPF\Content\Element;
 
 /**
  * A form label representation.
@@ -34,7 +33,7 @@ class Label extends Container
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see Element::getTagName()
+	 * @see \DPF\Content\Element\Basic\AbstractElement::getTagName()
 	 */
 	public function getTagName()
 	{

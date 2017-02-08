@@ -7,7 +7,7 @@
  */
 namespace DPF\Tests\Content\Element\Grid;
 
-use DPF\Content\Element;
+
 use DPF\Content\Element\Basic\Grid;
 use DPF\Content\Element\Basic\Grid\Column;
 use DPF\Content\Element\Basic\Grid\Row;
