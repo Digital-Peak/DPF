@@ -411,11 +411,51 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableBody()
+	 */
+	public function visitTableBody(\DPF\Content\Element\Basic\Table\Body $tableBody)
+	{
+		$this->build($tableBody, 'tbody');
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
 	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableCell()
 	 */
 	public function visitTableCell(\DPF\Content\Element\Basic\Table\Cell $tableCell)
 	{
 		$this->build($tableCell, 'td');
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableFooter()
+	 */
+	public function visitTableFooter(\DPF\Content\Element\Basic\Table\Footer $tableFooter)
+	{
+		$this->build($tableFooter, 'tfoot');
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableHead()
+	 */
+	public function visitTableHead(\DPF\Content\Element\Basic\Table\Head $tableHead)
+	{
+		$this->build($tableHead, 'thead');
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableHeadCell()
+	 */
+	public function visitTableHeadCell(\DPF\Content\Element\Basic\Table\HeadCell $tableHeadCell)
+	{
+		$this->build($tableHeadCell, 'th');
 	}
 
 	/**

@@ -8,7 +8,7 @@
 namespace DPF\Content\Visitor;
 
 /**
- * Abstract class which implements ElementVisitor.
+ * Abstract class which implements ElementVisitorInterface.
  */
 abstract class AbstractElementVisitor implements ElementVisitorInterface
 {
@@ -277,9 +277,45 @@ abstract class AbstractElementVisitor implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableBody()
+	 */
+	public function visitTableBody(\DPF\Content\Element\Basic\Table\Body $tableBody)
+	{
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
 	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableCell()
 	 */
 	public function visitTableCell(\DPF\Content\Element\Basic\Table\Cell $tableCell)
+	{
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableFooter()
+	 */
+	public function visitTableFooter(\DPF\Content\Element\Basic\Table\Footer $tableFooter)
+	{
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableHead()
+	 */
+	public function visitTableHead(\DPF\Content\Element\Basic\Table\Head $tableHead)
+	{
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableHeadCell()
+	 */
+	public function visitTableHeadCell(\DPF\Content\Element\Basic\Table\HeadCell $tableHeadCell)
 	{
 	}
 

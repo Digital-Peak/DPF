@@ -61,9 +61,9 @@ $buffer = "<?php
 namespace DPF\Content\Visitor;
 
 /**
- * Abstract class which implements ElementVisitor.
+ * Abstract class which implements ElementVisitorInterface.
  */
-abstract class AbstractElementVisitor implements ElementVisitor
+abstract class AbstractElementVisitor implements ElementVisitorInterface
 {
 
 " . implode(PHP_EOL, $functions) . "}

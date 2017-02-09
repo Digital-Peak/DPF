@@ -217,11 +217,39 @@ interface ElementVisitorInterface
 	public function visitTable(\DPF\Content\Element\Basic\Table $table);
 
 	/**
+	 * Visit the TableBody
+	 *
+	 * @param \DPF\Content\Element\Basic\Table\Body $tableBody
+	 */
+	public function visitTableBody(\DPF\Content\Element\Basic\Table\Body $tableBody);
+
+	/**
 	 * Visit the TableCell
 	 *
 	 * @param \DPF\Content\Element\Basic\Table\Cell $tableCell
 	 */
 	public function visitTableCell(\DPF\Content\Element\Basic\Table\Cell $tableCell);
+
+	/**
+	 * Visit the TableFooter
+	 *
+	 * @param \DPF\Content\Element\Basic\Table\Footer $tableFooter
+	 */
+	public function visitTableFooter(\DPF\Content\Element\Basic\Table\Footer $tableFooter);
+
+	/**
+	 * Visit the TableHead
+	 *
+	 * @param \DPF\Content\Element\Basic\Table\Head $tableHead
+	 */
+	public function visitTableHead(\DPF\Content\Element\Basic\Table\Head $tableHead);
+
+	/**
+	 * Visit the TableHeadCell
+	 *
+	 * @param \DPF\Content\Element\Basic\Table\HeadCell $tableHeadCell
+	 */
+	public function visitTableHeadCell(\DPF\Content\Element\Basic\Table\HeadCell $tableHeadCell);
 
 	/**
 	 * Visit the TableRow
