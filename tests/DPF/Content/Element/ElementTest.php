@@ -45,6 +45,13 @@ class ElementTest extends TestCase
 		$this->assertEquals('<p>unit', $e->getContent());
 	}
 
+	public function testGetAttributes()
+	{
+		$e = new Element('test');
+
+		$this->assertEquals('test', $e->getAttributes()['id']);
+	}
+
 	public function testGetClassFromAttributes()
 	{
 		$e = new Element('test', array('unit'));

@@ -163,6 +163,7 @@ class Element implements ElementInterface
 			unset($attributes['dpf-prefix']);
 		}
 
+		// Create the class attribute
 		foreach ($this->classes as $class) {
 			$class = trim($class);
 
@@ -181,11 +182,14 @@ class Element implements ElementInterface
 			$attributes['class'] .= $class . ' ';
 		}
 
+		// Cleanup the class attribute
 		if (key_exists('class', $attributes)) {
 			$attributes['class'] = trim($attributes['class']);
 		}
 
+		// Add the id to the attributes as well
 		$attributes['id'] = $this->getId();
+
 		return $attributes;
 	}
 
