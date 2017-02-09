@@ -93,7 +93,8 @@ class DomBuilder implements ElementVisitorInterface
 		if ($element->getContent()) {
 			if (strpos($element->getContent(), '<') >= 0) {
 				$handler = function ($errno, $errstr, $errfile, $errline) use ($element) {
-					throw new \DOMException($errstr . ' in file ' . $errfile . ' on line ' . $errline . PHP_EOL . htmlentities($element->getContent()));
+					throw new \DOMException($errstr . ' in file ' . $errfile .
+						' on line ' . $errline . PHP_EOL . htmlentities($element->getContent()));
 				};
 				$oldHandler = set_error_handler($handler);
 

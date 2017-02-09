@@ -280,8 +280,7 @@ class Element implements ElementInterface
 		$name = str_replace(__NAMESPACE__, '', get_class($this));
 		$name = 'visit' . str_replace('\\', '', $name);
 
-		if (!method_exists($visitor, $name))
-		{
+		if (!method_exists($visitor, $name)) {
 			return;
 		}
 
