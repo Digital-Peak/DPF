@@ -3,8 +3,8 @@ DPF a simple framework for CMS extensions
 
 Build Status
 ---------------------
-Travis-CI: [![Build Status](https://travis-ci.org/Digital-Peak/dpf.svg?branch=unstable)](https://travis-ci.org/Digital-Peak/dpf)
-
+[![Build Status](https://travis-ci.org/Digital-Peak/dpf.svg?branch=unstable)](https://travis-ci.org/Digital-Peak/dpf)
+[![Coverage Status](https://coveralls.io/repos/github/Digital-Peak/dpf/badge.svg?branch=unstable)](https://coveralls.io/github/Digital-Peak/dpf?branch=unstable)
 
 Status
 ---------------------

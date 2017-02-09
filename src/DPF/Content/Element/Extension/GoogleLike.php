@@ -12,7 +12,7 @@ use DPF\Content\Element\Basic\Element;
 class GoogleLike extends Element
 {
 
-	const LANGUAGES = array(
+	public static $LANGUAGES = array(
 		'ar',
 		'bg',
 		'ca',
@@ -79,10 +79,10 @@ class GoogleLike extends Element
 	public static function getCorrectLanguage($language)
 	{
 		$tmpLanguage = $language;
-		if (! in_array($tmpLanguage, self::LANGUAGES)) {
+		if (! in_array($tmpLanguage, self::$LANGUAGES)) {
 			$tmpLanguage = substr($language, 0, strpos($language, '-'));
 		}
-		if (! in_array($tmpLanguage, self::LANGUAGES)) {
+		if (! in_array($tmpLanguage, self::$LANGUAGES)) {
 			$tmpLanguage = 'en';
 		}
 

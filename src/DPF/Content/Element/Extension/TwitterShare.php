@@ -12,7 +12,7 @@ use DPF\Content\Element\Basic\Link;
 class TwitterShare extends Link
 {
 
-	const LANGUAGES = array(
+	public static $LANGUAGES = array(
 		'ko',
 		'fr',
 		'ja',
@@ -41,7 +41,7 @@ class TwitterShare extends Link
 	{
 		$tmpLanguage = $language;
 		$tmpLanguage = substr($language, 0, strpos($language, '-'));
-		if (! in_array($tmpLanguage, self::LANGUAGES)) {
+		if (! in_array($tmpLanguage, self::$LANGUAGES)) {
 			$tmpLanguage = 'en';
 		}
 		return $tmpLanguage;

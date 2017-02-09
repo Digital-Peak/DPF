@@ -12,7 +12,7 @@ use DPF\Content\Element\Basic\Element;
 class FacebookComments extends Element
 {
 
-	const LANGUAGES = array(
+	public static $LANGUAGES = array(
 		'ca_ES',
 		'cs_CZ',
 		'cy_GB',
@@ -140,7 +140,7 @@ class FacebookComments extends Element
 	{
 		$tmpLanguage = $language;
 		$tmpLanguage = str_replace('-', '_', $tmpLanguage);
-		if (! in_array($tmpLanguage, self::LANGUAGES)) {
+		if (! in_array($tmpLanguage, self::$LANGUAGES)) {
 			$tmpLanguage = 'en_US';
 		}
 		return $tmpLanguage;

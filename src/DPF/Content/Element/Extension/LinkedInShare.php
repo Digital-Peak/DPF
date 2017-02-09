@@ -12,7 +12,7 @@ use DPF\Content\Element\Basic\Element;
 class LinkedInShare extends Element
 {
 
-	const LANGUAGES = array(
+	public static $LANGUAGES = array(
 		'en' => 'en_US',
 		'fr' => 'fr_FR',
 		'es' => 'es_ES',
@@ -58,10 +58,10 @@ class LinkedInShare extends Element
 	public static function getCorrectLanguage($language)
 	{
 		$tmpLanguage = substr($language, 0, strpos($language, '-'));
-		if (! array_key_exists($tmpLanguage, self::LANGUAGES)) {
+		if (! array_key_exists($tmpLanguage, self::$LANGUAGES)) {
 			$tmpLanguage = 'en_US';
 		} else {
-			$tmpLanguage = self::LANGUAGES[$tmpLanguage];
+			$tmpLanguage = self::$LANGUAGES[$tmpLanguage];
 		}
 
 		return $tmpLanguage;
