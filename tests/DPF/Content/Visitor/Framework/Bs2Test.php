@@ -10,15 +10,15 @@ namespace DPF\Tests\Content\Visitor\Framework;
 use DPF\Content\Framework;
 use PHPUnit\Framework\TestCase;
 use DPF\Content\Element\Basic\Alert;
-use DPF\Content\Visitor\Framework\BS2;
+use DPF\Content\Visitor\Framework\Bs2;
 
-class BS2Test extends TestCase
+class Bs2Test extends TestCase
 {
 
 	public function testBS2Alert()
 	{
 		$a = new Alert('test', Alert::INFO);
-		$f = new BS2();
+		$f = new Bs2();
 
 		$f->visitAlert($a);
 		$this->assertEquals('dpf-alert-info alert alert-info', $a->getAttributes()['class']);

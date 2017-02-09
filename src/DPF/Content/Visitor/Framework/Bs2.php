@@ -23,7 +23,7 @@ use DPF\Content\Visitor\AbstractElementVisitor;
 /**
  * The Bootstrap 2 framework visitor.
  */
-class BS2 extends AbstractElementVisitor
+class Bs2 extends AbstractElementVisitor
 {
 
 	/**

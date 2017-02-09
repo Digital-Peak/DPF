@@ -23,7 +23,7 @@ use DPF\Content\Visitor\AbstractElementVisitor;
 /**
  * The Bootstrap 3 framework visitor.
  */
-class BS3 extends AbstractElementVisitor
+class Bs3 extends AbstractElementVisitor
 {
 
 	/**
@@ -34,6 +34,7 @@ class BS3 extends AbstractElementVisitor
 	 */
 	public function visitAlert(Alert $alert)
 	{
+		$alert->addClass('alert', true);
 		$alert->addClass('alert-' . $alert->getType(), true);
 	}
 
@@ -56,6 +57,7 @@ class BS3 extends AbstractElementVisitor
 	 */
 	public function visitButton(Button $button)
 	{
+		$button->addClass('btn', true);
 		$button->addClass('btn-default', true);
 	}
 
