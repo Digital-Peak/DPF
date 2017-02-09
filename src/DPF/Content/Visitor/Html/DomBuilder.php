@@ -18,7 +18,6 @@ use DPF\Content\Element\Basic\ListContainer;
  */
 class DomBuilder implements ElementVisitorInterface
 {
-
 	/**
 	 * The dom document.
 	 *
@@ -26,6 +25,25 @@ class DomBuilder implements ElementVisitorInterface
 	 */
 	private $dom = null;
 
+	/**
+	 * Classes to debug.
+	 *
+	 * @var array
+	 */
+	private static $debugClasses = [];
+
+	/**
+	 * Helper function which allows to add classes to debug when the element tree is visited.
+	 *
+	 * @param string $class
+	 */
+	public static function debugClass($class) {
+		self::$debugClasses[$class] = $class;
+	}
+
+	/**
+	 * Initialises the internal dom document.
+	 */
 	public function __construct()
 	{
 		// Prepare the dom document
@@ -107,6 +125,7 @@ class DomBuilder implements ElementVisitorInterface
 					$fragment->appendXML('<![CDATA[' . $element->getContent() . ']]>');
 				}
 
+				// If the fragment is not empty, append it
 				if ($fragment->childNodes->length > 0) {
 					$root->appendChild($fragment);
 				}
@@ -116,6 +135,13 @@ class DomBuilder implements ElementVisitorInterface
 				$root->nodeValue = htmlspecialchars($element->getContent());
 			}
 		}
+
+		// Problem helper function
+		if (key_exists(get_class($element), self::$debugClasses)) {
+			echo '<pre>' . $element . '<br>Dom id attribute from parent: ' . $parent->getAttribute('id') . '<br/>' . htmlentities($this->dom->saveXML($root)) . '</pre>';
+		}
+
+		return $root;
 	}
 
 	/**
