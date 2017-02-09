@@ -37,7 +37,8 @@ class DomBuilder implements ElementVisitorInterface
 	 *
 	 * @param string $class
 	 */
-	public static function debugClass($class) {
+	public static function debugClass($class)
+	{
 		self::$debugClasses[$class] = $class;
 	}
 
@@ -138,7 +139,8 @@ class DomBuilder implements ElementVisitorInterface
 
 		// Problem helper function
 		if (key_exists(get_class($element), self::$debugClasses)) {
-			echo '<pre>' . $element . '<br>Dom id attribute from parent: ' . $parent->getAttribute('id') . '<br/>' . htmlentities($this->dom->saveXML($root)) . '</pre>';
+			echo '<pre>' . $element . '<br>Dom id attribute from parent: ' . $parent->getAttribute('id') .
+				'<br/>' . htmlentities($this->dom->saveXML($root)) . '</pre>';
 		}
 
 		return $root;
