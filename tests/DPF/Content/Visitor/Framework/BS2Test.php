@@ -21,6 +21,6 @@ class BS2Test extends TestCase
 		$f = new BS2();
 
 		$f->visitAlert($a);
-		$this->assertXmlStringEqualsXmlString('<div class="dpf-alert-info alert alert-info" id="test"/>', $a->render());
+		$this->assertEquals('dpf-alert-info alert alert-info', $a->getAttributes()['class']);
 	}
 }

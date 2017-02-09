@@ -17,6 +17,6 @@ class LinkTest extends TestCase
 	{
 		$e = new Link('test', 'https://digital-peak.com');
 
-		$this->assertXmlStringEqualsXmlString('<a id="test" href="https://digital-peak.com"></a>', $e->render());
+		$this->assertContains('https://digital-peak.com', $e->getAttributes());
 	}
 }

@@ -8,7 +8,7 @@
 namespace DPF\Content\Visitor\IconStrategy;
 
 use DPF\Content\Element\Basic\Icon;
-use DPF\Content\Visitor\Basic\AbstractElementVisitor;
+use DPF\Content\Visitor\AbstractElementVisitor;
 
 /**
  * The Joomla icon strategy.
@@ -17,7 +17,6 @@ class Joomla extends AbstractElementVisitor
 {
 
 	/**
-	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitor::visitIcon()

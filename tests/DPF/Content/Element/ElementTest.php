@@ -8,70 +8,68 @@
 namespace DPF\Tests\Content\Element;
 
 use PHPUnit\Framework\TestCase;
-use DPF\Content\Visitor\Basic\ElementVisitor;
 use DPF\Content\Element\Basic\Element;
+use DPF\Content\Visitor\ElementVisitorInterface;
 
 class ElementTest extends TestCase
 {
 
-	public function testRender()
+	public function testGetId()
 	{
 		$e = new Element('test');
 
-		$this->assertXmlStringEqualsXmlString('<div id="test"></div>', $e->render());
+		$this->assertEquals('test', $e->getId());
 	}
 
-	public function testRenderWithContent()
+	public function testGetContent()
 	{
 		$e = new Element('test');
 		$e->setContent('unit');
 
-		$this->assertXmlStringEqualsXmlString('<div id="test">unit</div>', $e->render());
+		$this->assertEquals('unit', $e->getContent());
 	}
 
-	public function testRenderWithHTMLContent()
+	public function testGetContentWithHTMLContent()
 	{
 		$e = new Element('test');
 		$e->setContent('<p>unit</p>');
 
-		$this->assertXmlStringEqualsXmlString('<div id="test"><p>unit</p></div>', $e->render());
+		$this->assertEquals('<p>unit</p>', $e->getContent());
 	}
 
-	public function testRenderWithInvalidHTMLContent()
+	public function testGetContentWithInvalidHTMLContent()
 	{
 		$e = new Element('test');
 		$e->setContent('<p>unit');
 
-		$this->assertEquals('<div id="test"><p>unit</div>', $e->render());
+		$this->assertEquals('<p>unit', $e->getContent());
 	}
 
-	public function testRenderWithPrefix()
+	public function testGetClassFromAttributes()
 	{
-		$e = new Element('test', array(
-			'unit'
-		), array(
-			'dpf-prefix' => 'foo-'
-		));
+		$e = new Element('test', array('unit'));
 
-		$this->assertXmlStringEqualsXmlString('<div id="test" class="foo-unit"></div>', $e->render());
+		$this->assertEquals('unit', $e->getAttributes()['class']);
 	}
 
-	public function testRenderWithPrefixProtectedClass()
+	public function testGetClassFromAttributesWithPrefix()
 	{
-		$e = new Element('test', array(
-			'foo',
-			'bar'
-		), array(
-			'dpf-prefix' => 'unit-'
-		));
+		$e = new Element('test', array('unit'), array('dpf-prefix' => 'foo-'));
+
+		$this->assertEquals('foo-unit', $e->getAttributes()['class']);
+	}
+
+	public function testGetClassFromAttributesWithPrefixProtectedClass()
+	{
+		$e = new Element('test', array('foo', 'bar'), array('dpf-prefix' => 'unit-'));
 		$e->setProtectedClass('bar');
 
-		$this->assertXmlStringEqualsXmlString('<div id="test" class="unit-foo bar"></div>', $e->render());
+		$this->assertEquals('unit-foo bar', $e->getAttributes()['class']);
 	}
 
 	public function testAccept()
 	{
-		$visitor = $this->getMockBuilder(ElementVisitor::class)->getMock();
+		$visitor = $this->getMockBuilder(ElementVisitorInterface::class)->getMock();
 		$visitor->expects($this->once())->method('visitElement');
 
 		$e = new Element('test');

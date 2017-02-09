@@ -7,8 +7,9 @@
  */
 namespace DPF\Content\Element;
 
-use DPF\Content\Visitor\Basic\ElementVisitor;
+use DPF\Content\Visitor\ElementVisitorInterface;
 use DPF\Content\Element\Basic\Element;
+use DPF\Content\Element\Basic\Container;
 
 /**
  * An element represents a node in an HTML tree.
@@ -74,33 +75,9 @@ abstract class AbstractElement implements ElementInterface
 			throw new \Exception('ID cannot be empty!');
 		}
 
-		$this->id = $id;
-		$this->classes = $classes;
+		$this->id         = $id;
+		$this->classes    = $classes;
 		$this->attributes = $attributes;
-	}
-
-	/**
-	 * The tag name of the element.
-	 *
-	 * @return string
-	 */
-	public abstract function getTagName();
-
-	/**
-	 * Renders itself and returns a HTML string.
-	 *
-	 * @return string
-	 *
-	 * @throws \Exception
-	 */
-	public function render(Framework $framework = null)
-	{
-		$handler = function ($errno, $errstr) {
-			throw new \DOMException($errstr);
-		};
-		$oldHandler = set_error_handler($handler);
-		return trim($this->build(null)->ownerDocument->saveHTML());
-		set_error_handler($oldHandler);
 	}
 
 	/**
@@ -124,12 +101,11 @@ abstract class AbstractElement implements ElementInterface
 	}
 
 	/**
-	 * Sets the given class as protected.
-	 * This means when a prefix is set, the class will not being prefixed.
+	 * Sets the given class as protected. This means when a prefix is set, the class will not being prefixed.
 	 *
 	 * @param string $class
 	 *
-	 * @return Element
+	 * @return AbstractElement
 	 */
 	public function setProtectedClass($class)
 	{
@@ -144,7 +120,7 @@ abstract class AbstractElement implements ElementInterface
 	 * @param string $class
 	 * @param boolean $protected
 	 *
-	 * @return Element
+	 * @return AbstractElement
 	 */
 	public function addClass($class, $protected = false)
 	{
@@ -163,7 +139,7 @@ abstract class AbstractElement implements ElementInterface
 	 * @param string $name
 	 * @param string $value
 	 *
-	 * @return Element
+	 * @return AbstractElement
 	 */
 	public function addAttribute($name, $value)
 	{
@@ -173,17 +149,11 @@ abstract class AbstractElement implements ElementInterface
 	}
 
 	/**
-	 * Returns the attributes of the element.
-	 * If prefix is set to true, then all classes which are not protected, are prefixed.
+	 * {@inheritDoc}
 	 *
-	 * @param boolean $prefixClasses
-	 *
-	 * @return string
-	 *
-	 * @see Element::getPrefix
-	 * @see Element::setProtectedClass
+	 * @see \DPF\Content\Element\ElementInterface::getAttributes()
 	 */
-	public function getAttributes($prefixClasses = false)
+	public function getAttributes()
 	{
 		$attributes = $this->attributes;
 
@@ -204,10 +174,14 @@ abstract class AbstractElement implements ElementInterface
 				$attributes['class'] = '';
 			}
 
-			if ($prefixClasses && ! in_array($class, $this->protectedClasses) && $this->getPrefix()) {
+			if (! in_array($class, $this->protectedClasses) && $this->getPrefix()) {
 				$class = $this->getPrefix() . $class;
 			}
 			$attributes['class'] .= $class . ' ';
+		}
+
+		if (key_exists('class', $attributes)) {
+			$attributes['class'] = trim($attributes['class']);
 		}
 
 		$attributes['id'] = $this->getId();
@@ -234,38 +208,13 @@ abstract class AbstractElement implements ElementInterface
 	}
 
 	/**
-	 * Returns the content of the element.
+	 * {@inheritDoc}
 	 *
-	 * @return string
+	 * @see \DPF\Content\Element\ElementInterface::getContent()
 	 */
 	public function getContent()
 	{
 		return $this->content;
-	}
-
-	/**
-	 * Returns the parent of the element.
-	 *
-	 * @return Element
-	 */
-	public function getParent()
-	{
-		return $this->parent;
-	}
-
-	/**
-	 * Sets the parent of the element.
-	 *
-	 * @param Element $parent
-	 *
-	 * @return Element
-	 *
-	 */
-	public function setParent(Element $parent)
-	{
-		$this->parent = $parent;
-
-		return $this;
 	}
 
 	/**
@@ -275,7 +224,7 @@ abstract class AbstractElement implements ElementInterface
 	 * @param string $content
 	 * @param boolean $append
 	 *
-	 * @return Element
+	 * @return AbstractElement
 	 *
 	 * @throws \Exception
 	 */
@@ -293,86 +242,35 @@ abstract class AbstractElement implements ElementInterface
 	}
 
 	/**
-	 * Builds the element as DOMElement under the given parent.
+	 * Returns the parent of the element.
 	 *
-	 * @param \DOMElement $parent
-	 *
-	 * @return \DOMNode
-	 *
-	 * @throws \DOMException
+	 * @return \DPF\Content\Element\ElementInterface
 	 */
-	public function build(\DOMElement $parent = null)
+	public function getParent()
 	{
-		// Prepare the domdocument
-		$dom = new \DOMDocument('1.0', 'UTF-8');
-		if ($parent != null) {
-			$dom = $parent->ownerDocument;
-		}
-		$dom->formatOutput = true;
-
-		// Create the root element
-		$domElement = $dom->createElement($this->getTagName());
-
-		if ($parent == null) {
-			$parent = $dom;
-		}
-
-		$root = $parent->appendChild($domElement);
-
-		// Set the attributes
-		foreach ($this->getAttributes(true) as $name => $attr) {
-			$attr = trim($attr);
-			if ($attr == '' || $attr === null) {
-				continue;
-			}
-
-			$root->setAttribute($name, $attr);
-		}
-
-		if ($this->getContent()) {
-			if (strpos($this->getContent(), '<') >= 0) {
-				$instance = $this;
-				$handler = function ($errno, $errstr, $errfile, $errline) use ($instance) {
-					throw new \DOMException($errstr . ' in file ' . $errfile . ' on line ' . $errline . PHP_EOL . htmlentities($this->getContent()));
-				};
-				$oldHandler = set_error_handler($handler);
-
-				$fragment = $dom->createDocumentFragment();
-
-				// If the content contains alrady cdata, then we assume it wil be valid at all
-				if (strpos($this->getContent(), '<![CDATA[') !== false) {
-					$fragment->appendXML($this->getContent());
-				} else {
-					$fragment->appendXML('<![CDATA[' . $this->getContent() . ']]>');
-				}
-
-				if ($fragment->childNodes->length > 0) {
-					$root->appendChild($fragment);
-				}
-
-				set_error_handler($oldHandler);
-			} else {
-				$root->nodeValue = htmlspecialchars($this->getContent());
-			}
-		}
-		return $root;
+		return $this->parent;
 	}
 
 	/**
-	 * Returns a string for the element.
+	 * Sets the parent of the element.
 	 *
-	 * @return string
+	 * @param \DPF\Content\Element\ElementInterface $parent
+	 *
+	 * @return AbstractElement
 	 */
-	public function __toString()
+	public function setParent(ElementInterface $parent)
 	{
-		return $this->getId() . ' [' . get_class($this) . ']';
+		$this->parent = $parent;
+
+		return $this;
 	}
 
 	/**
+	 * {@inheritDoc}
 	 *
-	 * @param ElementVisitor $visitor
+	 * @see \DPF\Content\Element\ElementInterface::accept()
 	 */
-	public function accept(ElementVisitor $visitor)
+	public function accept(ElementVisitorInterface $visitor)
 	{
 		$name = str_replace(__NAMESPACE__ . '\\Basic\\', '', get_class($this));
 		$name = 'visit' . str_replace('\\', '', $name);
@@ -383,5 +281,15 @@ abstract class AbstractElement implements ElementInterface
 		}
 
 		$visitor->{$name}($this);
+	}
+
+	/**
+	 * Returns a string for the element.
+	 *
+	 * @return string
+	 */
+	public function __toString()
+	{
+		return $this->getId() . ' [' . get_class($this) . ']';
 	}
 }

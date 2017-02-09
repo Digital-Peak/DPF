@@ -5,18 +5,18 @@
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Visitor\Basic;
+namespace DPF\Content\Visitor;
 
 /**
  * Abstract class which implements ElementVisitor.
  */
-abstract class AbstractElementVisitor implements ElementVisitor
+abstract class AbstractElementVisitor implements ElementVisitorInterface
 {
 
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitAlert()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitAlert()
 	 */
 	public function visitAlert(\DPF\Content\Element\Basic\Alert $alert)
 	{
@@ -25,7 +25,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitBadge()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitBadge()
 	 */
 	public function visitBadge(\DPF\Content\Element\Basic\Badge $badge)
 	{
@@ -34,7 +34,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitButton()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitButton()
 	 */
 	public function visitButton(\DPF\Content\Element\Basic\Button $button)
 	{
@@ -43,7 +43,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitContainer()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitContainer()
 	 */
 	public function visitContainer(\DPF\Content\Element\Basic\Container $container)
 	{
@@ -52,7 +52,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitCustom()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitCustom()
 	 */
 	public function visitCustom(\DPF\Content\Element\Basic\Custom $custom)
 	{
@@ -61,7 +61,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitDescriptionDescription()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitDescriptionDescription()
 	 */
 	public function visitDescriptionDescription(\DPF\Content\Element\Basic\Description\Description $descriptionDescription)
 	{
@@ -70,7 +70,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitDescriptionTerm()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitDescriptionTerm()
 	 */
 	public function visitDescriptionTerm(\DPF\Content\Element\Basic\Description\Term $descriptionTerm)
 	{
@@ -79,7 +79,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitDescriptionList()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitDescriptionList()
 	 */
 	public function visitDescriptionList(\DPF\Content\Element\Basic\DescriptionList $descriptionList)
 	{
@@ -88,7 +88,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitDescriptionListHorizontal()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitDescriptionListHorizontal()
 	 */
 	public function visitDescriptionListHorizontal(\DPF\Content\Element\Basic\DescriptionListHorizontal $descriptionListHorizontal)
 	{
@@ -97,7 +97,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitElement()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitElement()
 	 */
 	public function visitElement(\DPF\Content\Element\Basic\Element $element)
 	{
@@ -106,7 +106,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitFont()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFont()
 	 */
 	public function visitFont(\DPF\Content\Element\Basic\Font $font)
 	{
@@ -115,7 +115,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitForm()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitForm()
 	 */
 	public function visitForm(\DPF\Content\Element\Basic\Form $form)
 	{
@@ -124,7 +124,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitFormInput()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFormInput()
 	 */
 	public function visitFormInput(\DPF\Content\Element\Basic\Form\Input $formInput)
 	{
@@ -133,7 +133,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitFormLabel()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFormLabel()
 	 */
 	public function visitFormLabel(\DPF\Content\Element\Basic\Form\Label $formLabel)
 	{
@@ -142,7 +142,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitFormSelect()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFormSelect()
 	 */
 	public function visitFormSelect(\DPF\Content\Element\Basic\Form\Select $formSelect)
 	{
@@ -151,7 +151,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitGrid()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitGrid()
 	 */
 	public function visitGrid(\DPF\Content\Element\Basic\Grid $grid)
 	{
@@ -160,7 +160,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitGridColumn()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitGridColumn()
 	 */
 	public function visitGridColumn(\DPF\Content\Element\Basic\Grid\Column $gridColumn)
 	{
@@ -169,7 +169,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitGridRow()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitGridRow()
 	 */
 	public function visitGridRow(\DPF\Content\Element\Basic\Grid\Row $gridRow)
 	{
@@ -178,7 +178,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitHeading()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitHeading()
 	 */
 	public function visitHeading(\DPF\Content\Element\Basic\Heading $heading)
 	{
@@ -187,7 +187,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitIcon()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitIcon()
 	 */
 	public function visitIcon(\DPF\Content\Element\Basic\Icon $icon)
 	{
@@ -196,7 +196,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitImage()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitImage()
 	 */
 	public function visitImage(\DPF\Content\Element\Basic\Image $image)
 	{
@@ -205,7 +205,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitLink()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitLink()
 	 */
 	public function visitLink(\DPF\Content\Element\Basic\Link $link)
 	{
@@ -214,7 +214,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitListContainer()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitListContainer()
 	 */
 	public function visitListContainer(\DPF\Content\Element\Basic\ListContainer $listContainer)
 	{
@@ -223,7 +223,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitListItem()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitListItem()
 	 */
 	public function visitListItem(\DPF\Content\Element\Basic\ListItem $listItem)
 	{
@@ -232,7 +232,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitMeta()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitMeta()
 	 */
 	public function visitMeta(\DPF\Content\Element\Basic\Meta $meta)
 	{
@@ -241,7 +241,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitParagraph()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitParagraph()
 	 */
 	public function visitParagraph(\DPF\Content\Element\Basic\Paragraph $paragraph)
 	{
@@ -250,7 +250,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitTab()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTab()
 	 */
 	public function visitTab(\DPF\Content\Element\Basic\Tab $tab)
 	{
@@ -259,7 +259,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitTabContainer()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTabContainer()
 	 */
 	public function visitTabContainer(\DPF\Content\Element\Basic\TabContainer $tabContainer)
 	{
@@ -268,7 +268,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitTable()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTable()
 	 */
 	public function visitTable(\DPF\Content\Element\Basic\Table $table)
 	{
@@ -277,7 +277,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitTableCell()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableCell()
 	 */
 	public function visitTableCell(\DPF\Content\Element\Basic\Table\Cell $tableCell)
 	{
@@ -286,7 +286,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitTableRow()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableRow()
 	 */
 	public function visitTableRow(\DPF\Content\Element\Basic\Table\Row $tableRow)
 	{
@@ -295,9 +295,63 @@ abstract class AbstractElementVisitor implements ElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitTextBlock()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTextBlock()
 	 */
 	public function visitTextBlock(\DPF\Content\Element\Basic\TextBlock $textBlock)
+	{
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFacebookComments()
+	 */
+	public function visitFacebookComments(\DPF\Content\Element\Extension\FacebookComments $facebookComments)
+	{
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFacebookLike()
+	 */
+	public function visitFacebookLike(\DPF\Content\Element\Extension\FacebookLike $facebookLike)
+	{
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitGoogleLike()
+	 */
+	public function visitGoogleLike(\DPF\Content\Element\Extension\GoogleLike $googleLike)
+	{
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitLinkedInShare()
+	 */
+	public function visitLinkedInShare(\DPF\Content\Element\Extension\LinkedInShare $linkedInShare)
+	{
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTwitterShare()
+	 */
+	public function visitTwitterShare(\DPF\Content\Element\Extension\TwitterShare $twitterShare)
+	{
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitXingShare()
+	 */
+	public function visitXingShare(\DPF\Content\Element\Extension\XingShare $xingShare)
 	{
 	}
 }

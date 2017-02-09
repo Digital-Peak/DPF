@@ -1,12 +1,10 @@
 <?php
-$root = dirname(__DIR__) . "/src/DPF/Content/Element/Basic/";
-$rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root));
+$root = dirname(__DIR__) . "/src/DPF/Content/Element/";
 
 $files = [];
+foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root)) as $file) {
 
-foreach ($rii as $file) {
-
-	if ($file->isDir()) {
+	if ($file->isDir() || $file->getFileName() == 'AbstractElement.php' || $file->getFileName() == 'ElementInterface.php') {
 		continue;
 	}
 
@@ -30,12 +28,14 @@ foreach ($files as $file) {
 		".php",
 		$root
 	], "", $file);
+	$name = str_replace("Basic" . DIRECTORY_SEPARATOR, "", $name);
+	$name = str_replace("Extension" . DIRECTORY_SEPARATOR, "", $name);
 	$name = str_replace(DIRECTORY_SEPARATOR, "", $name);
 
 	$functions[] = "	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \\DPF\\DPF\\Content\\Visitor\\Basic\\ElementVisitor::visit" . $name . "()
+	 * @see \\DPF\\DPF\\Content\\Visitor\\ElementVisitor::visit" . $name . "()
 	 */
 	public function visit" . $name . "(" . $namespace . " \$" . lcfirst($name) . ")
 	{
@@ -58,7 +58,7 @@ $buffer = "<?php
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Visitor\Basic;
+namespace DPF\Content\Visitor;
 
 /**
  * Abstract class which implements ElementVisitor.
@@ -69,7 +69,7 @@ abstract class AbstractElementVisitor implements ElementVisitor
 " . implode(PHP_EOL, $functions) . "}
 ";
 
-file_put_contents(dirname(__DIR__) . "/src/DPF/Content/Visitor/Basic/AbstractElementVisitor.php", $buffer);
+file_put_contents(dirname(__DIR__) . "/src/DPF/Content/Visitor/AbstractElementVisitor.php", $buffer);
 
 $buffer = "<?php
 /**
@@ -78,7 +78,7 @@ $buffer = "<?php
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Visitor\Basic;
+namespace DPF\Content\Visitor;
 
 /**
  * Interface to visit the elements.
@@ -88,4 +88,4 @@ interface ElementVisitor
 
 " . implode(PHP_EOL, $functionsI) . "}
 ";
-file_put_contents(dirname(__DIR__) . "/src/DPF/Content/Visitor/Basic/ElementVisitor.php", $buffer);
+file_put_contents(dirname(__DIR__) . "/src/DPF/Content/Visitor/ElementVisitor.php", $buffer);

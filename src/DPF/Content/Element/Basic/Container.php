@@ -7,7 +7,7 @@
  */
 namespace DPF\Content\Element\Basic;
 
-use DPF\Content\Visitor\Basic\ElementVisitor;
+use DPF\Content\Visitor\ElementVisitorInterface;
 
 /**
  * A container element which can hold child elements.
@@ -76,27 +76,11 @@ class Container extends Element
 	}
 
 	/**
-	 * {@inheritdoc}
-	 *
-	 * @see \DPF\Content\Element\Basic\AbstractElement::build()
-	 */
-	public function build(\DOMElement $parent = null)
-	{
-		$root = parent::build($parent);
-
-		foreach ($this->getChildren() as $child) {
-			$child->build($root);
-		}
-
-		return $root;
-	}
-
-	/**
 	 * {@inheritDoc}
 	 *
 	 * @see \DPF\Content\Element\AbstractElement::accept()
 	 */
-	public function accept(ElementVisitor $visitor)
+	public function accept(ElementVisitorInterface $visitor)
 	{
 		parent::accept($visitor);
 

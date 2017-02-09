@@ -18,7 +18,7 @@ use DPF\Content\Element\Basic\Link;
 use DPF\Content\Element\Basic\Tab;
 use DPF\Content\Element\Basic\TabContainer;
 use DPF\Content\Element\Basic\Table;
-use DPF\Content\Visitor\Basic\AbstractElementVisitor;
+use DPF\Content\Visitor\AbstractElementVisitor;
 
 /**
  * The Bootstrap 2 framework visitor.

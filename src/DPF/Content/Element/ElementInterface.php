@@ -7,13 +7,38 @@
  */
 namespace DPF\Content\Element;
 
-use DPF\Content\Visitor\Basic\ElementVisitor;
+use DPF\Content\Visitor\ElementVisitorInterface;
 
 /**
  * Interface which defines an element.
  */
 interface ElementInterface
 {
+	/**
+	 * Returns the content of the element.
+	 *
+	 * @return string
+	 */
+	public function getContent();
 
-	public function accept(ElementVisitor $visitor);
+	/**
+	 * Returns the attributes of the element.
+	 *
+	 * @return string
+	 */
+	public function getAttributes();
+
+	/**
+	 * The tag name of the element.
+	 *
+	 * @return string
+	 */
+	public function getTagName();
+
+	/**
+	 * Accepts the visitor and is calling the aproperiate visit method.
+	 *
+	 * @param ElementVisitorInterface $visitor
+	 */
+	public function accept(ElementVisitorInterface $visitor);
 }

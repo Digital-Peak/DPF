@@ -5,12 +5,12 @@
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Visitor\Basic;
+namespace DPF\Content\Visitor;
 
 /**
  * Interface to visit the elements.
  */
-interface ElementVisitor
+interface ElementVisitorInterface
 {
 
 	/**
@@ -236,4 +236,46 @@ interface ElementVisitor
 	 * @param \DPF\Content\Element\Basic\TextBlock $textBlock
 	 */
 	public function visitTextBlock(\DPF\Content\Element\Basic\TextBlock $textBlock);
+
+	/**
+	 * Visit the FacebookComments
+	 *
+	 * @param \DPF\Content\Element\Extension\FacebookComments $facebookComments
+	 */
+	public function visitFacebookComments(\DPF\Content\Element\Extension\FacebookComments $facebookComments);
+
+	/**
+	 * Visit the FacebookLike
+	 *
+	 * @param \DPF\Content\Element\Extension\FacebookLike $facebookLike
+	 */
+	public function visitFacebookLike(\DPF\Content\Element\Extension\FacebookLike $facebookLike);
+
+	/**
+	 * Visit the GoogleLike
+	 *
+	 * @param \DPF\Content\Element\Extension\GoogleLike $googleLike
+	 */
+	public function visitGoogleLike(\DPF\Content\Element\Extension\GoogleLike $googleLike);
+
+	/**
+	 * Visit the LinkedInShare
+	 *
+	 * @param \DPF\Content\Element\Extension\LinkedInShare $linkedInShare
+	 */
+	public function visitLinkedInShare(\DPF\Content\Element\Extension\LinkedInShare $linkedInShare);
+
+	/**
+	 * Visit the TwitterShare
+	 *
+	 * @param \DPF\Content\Element\Extension\TwitterShare $twitterShare
+	 */
+	public function visitTwitterShare(\DPF\Content\Element\Extension\TwitterShare $twitterShare);
+
+	/**
+	 * Visit the XingShare
+	 *
+	 * @param \DPF\Content\Element\Extension\XingShare $xingShare
+	 */
+	public function visitXingShare(\DPF\Content\Element\Extension\XingShare $xingShare);
 }
