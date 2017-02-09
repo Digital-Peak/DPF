@@ -8,6 +8,7 @@
 namespace DPF\Content\Element\Extension;
 
 use DPF\Content\Element\Basic\Element;
+use DPF\Content\Visitor\ElementVisitorInterface;
 
 class FacebookLike extends Element
 {
@@ -20,5 +21,15 @@ class FacebookLike extends Element
 		$this->setProtectedClass('fb-like');
 
 		parent::__construct($id, $classes, $attributes);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see \DPF\Content\Element\ElementInterface::accept()
+	 */
+	public function accept(ElementVisitorInterface $visitor)
+	{
+		$visitor->visitFacebookLike($this);
 	}
 }

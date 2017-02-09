@@ -121,7 +121,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitAlert()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitAlert()
 	 */
 	public function visitAlert(\DPF\Content\Element\Basic\Alert $alert)
 	{
@@ -131,7 +131,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitBadge()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitBadge()
 	 */
 	public function visitBadge(\DPF\Content\Element\Basic\Badge $badge)
 	{
@@ -141,7 +141,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitButton()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitButton()
 	 */
 	public function visitButton(\DPF\Content\Element\Basic\Button $button)
 	{
@@ -151,7 +151,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitContainer()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitContainer()
 	 */
 	public function visitContainer(\DPF\Content\Element\Basic\Container $container)
 	{
@@ -161,7 +161,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitDescriptionDescription()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitDescriptionDescription()
 	 */
 	public function visitDescriptionDescription(\DPF\Content\Element\Basic\Description\Description $descriptionDescription)
 	{
@@ -171,7 +171,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitDescriptionTerm()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitDescriptionTerm()
 	 */
 	public function visitDescriptionTerm(\DPF\Content\Element\Basic\Description\Term $descriptionTerm)
 	{
@@ -181,7 +181,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitDescriptionList()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitDescriptionList()
 	 */
 	public function visitDescriptionList(\DPF\Content\Element\Basic\DescriptionList $descriptionList)
 	{
@@ -191,7 +191,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitDescriptionListHorizontal()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitDescriptionListHorizontal()
 	 */
 	public function visitDescriptionListHorizontal(\DPF\Content\Element\Basic\DescriptionListHorizontal $descriptionListHorizontal)
 	{
@@ -201,7 +201,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitElement()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitElement()
 	 */
 	public function visitElement(\DPF\Content\Element\Basic\Element $element)
 	{
@@ -211,7 +211,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFont()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitFont()
 	 */
 	public function visitFont(\DPF\Content\Element\Basic\Font $font)
 	{
@@ -221,7 +221,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitForm()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitForm()
 	 */
 	public function visitForm(\DPF\Content\Element\Basic\Form $form)
 	{
@@ -231,7 +231,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFormInput()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitFormInput()
 	 */
 	public function visitFormInput(\DPF\Content\Element\Basic\Form\Input $formInput)
 	{
@@ -241,7 +241,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFormLabel()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitFormLabel()
 	 */
 	public function visitFormLabel(\DPF\Content\Element\Basic\Form\Label $formLabel)
 	{
@@ -251,7 +251,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFormOption()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitFormOption()
 	 */
 	public function visitFormOption(\DPF\Content\Element\Basic\Form\Option $formOption)
 	{
@@ -261,7 +261,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFormSelect()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitFormSelect()
 	 */
 	public function visitFormSelect(\DPF\Content\Element\Basic\Form\Select $formSelect)
 	{
@@ -271,7 +271,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitGrid()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitGrid()
 	 */
 	public function visitGrid(\DPF\Content\Element\Basic\Grid $grid)
 	{
@@ -281,7 +281,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitGridColumn()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitGridColumn()
 	 */
 	public function visitGridColumn(\DPF\Content\Element\Basic\Grid\Column $gridColumn)
 	{
@@ -291,7 +291,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitGridRow()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitGridRow()
 	 */
 	public function visitGridRow(\DPF\Content\Element\Basic\Grid\Row $gridRow)
 	{
@@ -301,7 +301,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitHeading()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitHeading()
 	 */
 	public function visitHeading(\DPF\Content\Element\Basic\Heading $heading)
 	{
@@ -311,7 +311,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitIcon()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitIcon()
 	 */
 	public function visitIcon(\DPF\Content\Element\Basic\Icon $icon)
 	{
@@ -321,7 +321,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitImage()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitImage()
 	 */
 	public function visitImage(\DPF\Content\Element\Basic\Image $image)
 	{
@@ -331,7 +331,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitLink()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitLink()
 	 */
 	public function visitLink(\DPF\Content\Element\Basic\Link $link)
 	{
@@ -341,7 +341,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitListContainer()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitListContainer()
 	 */
 	public function visitListContainer(\DPF\Content\Element\Basic\ListContainer $listContainer)
 	{
@@ -351,7 +351,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitListItem()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitListItem()
 	 */
 	public function visitListItem(\DPF\Content\Element\Basic\ListItem $listItem)
 	{
@@ -361,7 +361,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitMeta()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitMeta()
 	 */
 	public function visitMeta(\DPF\Content\Element\Basic\Meta $meta)
 	{
@@ -371,7 +371,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitParagraph()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitParagraph()
 	 */
 	public function visitParagraph(\DPF\Content\Element\Basic\Paragraph $paragraph)
 	{
@@ -381,7 +381,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTab()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTab()
 	 */
 	public function visitTab(\DPF\Content\Element\Basic\Tab $tab)
 	{
@@ -391,7 +391,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTabContainer()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTabContainer()
 	 */
 	public function visitTabContainer(\DPF\Content\Element\Basic\TabContainer $tabContainer)
 	{
@@ -401,7 +401,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTable()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTable()
 	 */
 	public function visitTable(\DPF\Content\Element\Basic\Table $table)
 	{
@@ -411,7 +411,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableBody()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTableBody()
 	 */
 	public function visitTableBody(\DPF\Content\Element\Basic\Table\Body $tableBody)
 	{
@@ -421,7 +421,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableCell()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTableCell()
 	 */
 	public function visitTableCell(\DPF\Content\Element\Basic\Table\Cell $tableCell)
 	{
@@ -431,7 +431,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableFooter()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTableFooter()
 	 */
 	public function visitTableFooter(\DPF\Content\Element\Basic\Table\Footer $tableFooter)
 	{
@@ -441,7 +441,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableHead()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTableHead()
 	 */
 	public function visitTableHead(\DPF\Content\Element\Basic\Table\Head $tableHead)
 	{
@@ -451,7 +451,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableHeadCell()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTableHeadCell()
 	 */
 	public function visitTableHeadCell(\DPF\Content\Element\Basic\Table\HeadCell $tableHeadCell)
 	{
@@ -461,7 +461,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTableRow()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTableRow()
 	 */
 	public function visitTableRow(\DPF\Content\Element\Basic\Table\Row $tableRow)
 	{
@@ -471,7 +471,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTextBlock()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTextBlock()
 	 */
 	public function visitTextBlock(\DPF\Content\Element\Basic\TextBlock $textBlock)
 	{
@@ -481,17 +481,17 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFacebookComments()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitFacebookComment()
 	 */
-	public function visitFacebookComments(\DPF\Content\Element\Extension\FacebookComments $facebookComments)
+	public function visitFacebookComment(\DPF\Content\Element\Extension\FacebookComment $facebookComment)
 	{
-		$this->build($facebookComments);
+		$this->build($facebookComment);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitFacebookLike()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitFacebookLike()
 	 */
 	public function visitFacebookLike(\DPF\Content\Element\Extension\FacebookLike $facebookLike)
 	{
@@ -501,7 +501,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitGoogleLike()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitGoogleLike()
 	 */
 	public function visitGoogleLike(\DPF\Content\Element\Extension\GoogleLike $googleLike)
 	{
@@ -511,7 +511,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitLinkedInShare()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitLinkedInShare()
 	 */
 	public function visitLinkedInShare(\DPF\Content\Element\Extension\LinkedInShare $linkedInShare)
 	{
@@ -521,7 +521,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitTwitterShare()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTwitterShare()
 	 */
 	public function visitTwitterShare(\DPF\Content\Element\Extension\TwitterShare $twitterShare)
 	{
@@ -531,7 +531,7 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitor::visitXingShare()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitXingShare()
 	 */
 	public function visitXingShare(\DPF\Content\Element\Extension\XingShare $xingShare)
 	{

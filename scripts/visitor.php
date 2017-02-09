@@ -35,7 +35,7 @@ foreach ($files as $file) {
 	$functions[] = "	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \\DPF\\DPF\\Content\\Visitor\\ElementVisitor::visit" . $name . "()
+	 * @see \\DPF\\DPF\\Content\\Visitor\\ElementVisitorInterface::visit" . $name . "()
 	 */
 	public function visit" . $name . "(" . $namespace . " \$" . lcfirst($name) . ")
 	{

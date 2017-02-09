@@ -12,6 +12,7 @@ use PHPUnit\Framework\TestCase;
 use DPF\Content\Element\Basic\Element;
 use DPF\Content\Element\Basic\Container;
 use DPF\Content\Visitor\Html\DomBuilder;
+use DPF\Content\Element\Extension\FacebookComment;
 
 class DomBuilderTest extends TestCase
 {
@@ -112,5 +113,15 @@ class DomBuilderTest extends TestCase
 		$string .= '</div>';
 
 		$this->assertXmlStringEqualsXmlString($string, $builder->render($e));
+	}
+
+	public function testRenderExtension()
+	{
+		$builder = new DomBuilder();
+
+		$e = new FacebookComment('test', 'https://digital-peak.com');
+		$e->accept($builder);
+
+		$this->assertXmlStringEqualsXmlString('<div class="fb-comments" data-href="https://digital-peak.com" id="test"></div>', $builder->render());
 	}
 }

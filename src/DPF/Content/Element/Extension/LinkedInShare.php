@@ -8,6 +8,7 @@
 namespace DPF\Content\Element\Extension;
 
 use DPF\Content\Element\Basic\Element;
+use DPF\Content\Visitor\ElementVisitorInterface;
 
 class LinkedInShare extends Element
 {
@@ -65,5 +66,15 @@ class LinkedInShare extends Element
 		}
 
 		return $tmpLanguage;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see \DPF\Content\Element\ElementInterface::accept()
+	 */
+	public function accept(ElementVisitorInterface $visitor)
+	{
+		$visitor->visitLinkedInShare($this);
 	}
 }

@@ -5,7 +5,7 @@
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Tests\Content\Element;
+namespace DPF\Tests\Content\Element\Basic;
 
 use DPF\Content\Element\Basic\Link;
 use PHPUnit\Framework\TestCase;

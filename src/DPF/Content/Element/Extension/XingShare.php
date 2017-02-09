@@ -8,6 +8,7 @@
 namespace DPF\Content\Element\Extension;
 
 use DPF\Content\Element\Basic\Element;
+use DPF\Content\Visitor\ElementVisitorInterface;
 
 class XingShare extends Element
 {
@@ -24,5 +25,15 @@ class XingShare extends Element
       x.src = "https://www.xing-share.com/plugins/share.js";
       s.parentNode.insertBefore(x, s);
   })(document, "script");</script>');
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see \DPF\Content\Element\ElementInterface::accept()
+	 */
+	public function accept(ElementVisitorInterface $visitor)
+	{
+		$visitor->visitXingShare($this);
 	}
 }

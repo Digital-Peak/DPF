@@ -30,7 +30,7 @@ class BS2 extends AbstractElementVisitor
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitor::visitAlert()
+	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitAlert()
 	 */
 	public function visitAlert(Alert $alert)
 	{
@@ -42,7 +42,7 @@ class BS2 extends AbstractElementVisitor
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitor::visitBadge()
+	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitBadge()
 	 */
 	public function visitBadge(Badge $badge)
 	{
@@ -54,7 +54,7 @@ class BS2 extends AbstractElementVisitor
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitor::visitButton()
+	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitButton()
 	 */
 	public function visitButton(Button $button)
 	{
@@ -66,7 +66,7 @@ class BS2 extends AbstractElementVisitor
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitor::visitDescriptionListHorizontal()
+	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitDescriptionListHorizontal()
 	 */
 	public function visitDescriptionListHorizontal(DescriptionListHorizontal $descriptionListHorizontal)
 	{
@@ -77,7 +77,7 @@ class BS2 extends AbstractElementVisitor
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitor::visitForm()
+	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitForm()
 	 */
 	public function visitForm(Form $form)
 	{
@@ -88,7 +88,7 @@ class BS2 extends AbstractElementVisitor
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitor::visitGridColumn()
+	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitorInterface::visitGridColumn()
 	 */
 	public function visitGridColumn(Column $gridColumn)
 	{
@@ -99,7 +99,7 @@ class BS2 extends AbstractElementVisitor
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitor::visitGridRow()
+	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitGridRow()
 	 */
 	public function visitGridRow(Row $gridRow)
 	{
@@ -110,7 +110,7 @@ class BS2 extends AbstractElementVisitor
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitor::visitTabContainer()
+	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitTabContainer()
 	 */
 	public function visitTabContainer(TabContainer $tabContainer)
 	{
@@ -137,7 +137,7 @@ class BS2 extends AbstractElementVisitor
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitor::visitTable()
+	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitTable()
 	 */
 	public function visitTable(Table $table)
 	{

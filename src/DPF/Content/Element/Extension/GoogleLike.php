@@ -8,6 +8,7 @@
 namespace DPF\Content\Element\Extension;
 
 use DPF\Content\Element\Basic\Element;
+use DPF\Content\Visitor\ElementVisitorInterface;
 
 class GoogleLike extends Element
 {
@@ -87,5 +88,15 @@ class GoogleLike extends Element
 		}
 
 		return $tmpLanguage;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see \DPF\Content\Element\ElementInterface::accept()
+	 */
+	public function accept(ElementVisitorInterface $visitor)
+	{
+		$visitor->visitGoogleLike($this);
 	}
 }

@@ -266,11 +266,11 @@ interface ElementVisitorInterface
 	public function visitTextBlock(\DPF\Content\Element\Basic\TextBlock $textBlock);
 
 	/**
-	 * Visit the FacebookComments
+	 * Visit the FacebookComment
 	 *
-	 * @param \DPF\Content\Element\Extension\FacebookComments $facebookComments
+	 * @param \DPF\Content\Element\Extension\FacebookComment $facebookComment
 	 */
-	public function visitFacebookComments(\DPF\Content\Element\Extension\FacebookComments $facebookComments);
+	public function visitFacebookComment(\DPF\Content\Element\Extension\FacebookComment $facebookComment);
 
 	/**
 	 * Visit the FacebookLike

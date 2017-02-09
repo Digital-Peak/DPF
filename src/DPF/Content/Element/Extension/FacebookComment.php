@@ -8,8 +8,9 @@
 namespace DPF\Content\Element\Extension;
 
 use DPF\Content\Element\Basic\Element;
+use DPF\Content\Visitor\ElementVisitorInterface;
 
-class FacebookComments extends Element
+class FacebookComment extends Element
 {
 
 	public static $LANGUAGES = array(
@@ -154,5 +155,15 @@ class FacebookComments extends Element
 	public function setColorScheme($scheme)
 	{
 		$this->attributes['data-colorscheme'] = $scheme;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see \DPF\Content\Element\ElementInterface::accept()
+	 */
+	public function accept(ElementVisitorInterface $visitor)
+	{
+		$visitor->visitFacebookComment($this);
 	}
 }

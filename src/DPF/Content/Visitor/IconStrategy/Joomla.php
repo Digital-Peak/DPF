@@ -19,7 +19,7 @@ class Joomla extends AbstractElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitor::visitIcon()
+	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitIcon()
 	 */
 	public function visitIcon(\DPF\Content\Element\Basic\Icon $icon)
 	{
