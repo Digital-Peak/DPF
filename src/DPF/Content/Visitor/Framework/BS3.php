@@ -21,9 +21,9 @@ use DPF\Content\Element\Basic\Table;
 use DPF\Content\Visitor\AbstractElementVisitor;
 
 /**
- * The Bootstrap 2 framework visitor.
+ * The Bootstrap 3 framework visitor.
  */
-class BS2 extends AbstractElementVisitor
+class BS3 extends AbstractElementVisitor
 {
 
 	/**
@@ -34,7 +34,6 @@ class BS2 extends AbstractElementVisitor
 	 */
 	public function visitAlert(Alert $alert)
 	{
-		$alert->addClass('alert', true);
 		$alert->addClass('alert-' . $alert->getType(), true);
 	}
 
@@ -57,7 +56,6 @@ class BS2 extends AbstractElementVisitor
 	 */
 	public function visitButton(Button $button)
 	{
-		$button->addClass('btn', true);
 		$button->addClass('btn-default', true);
 	}
 
@@ -91,7 +89,7 @@ class BS2 extends AbstractElementVisitor
 	 */
 	public function visitGridColumn(Column $gridColumn)
 	{
-		$gridColumn->addClass('span' . $gridColumn->getWidth(), true);
+		$gridColumn->addClass('col-md-' . $gridColumn->getWidth(), true);
 	}
 
 	/**
@@ -102,7 +100,7 @@ class BS2 extends AbstractElementVisitor
 	 */
 	public function visitGridRow(Row $gridRow)
 	{
-		$gridRow->addClass('row-fluid', true);
+		$gridRow->addClass('row', true);
 	}
 
 	/**
