@@ -196,15 +196,4 @@ class Icon extends Element
 	{
 		return $this->type;
 	}
-
-	/**
-	 *
-	 * {@inheritdoc}
-	 *
-	 * @see Element::getTagName()
-	 */
-	public function getTagName()
-	{
-		return 'i';
-	}
 }

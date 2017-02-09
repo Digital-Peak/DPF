@@ -4,7 +4,7 @@ $root = dirname(__DIR__) . "/src/DPF/Content/Element/";
 $files = [];
 foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root)) as $file) {
 
-	if ($file->isDir() || $file->getFileName() == 'AbstractElement.php' || $file->getFileName() == 'ElementInterface.php') {
+	if ($file->isDir() || $file->getFileName() == 'ElementInterface.php') {
 		continue;
 	}
 
@@ -83,9 +83,9 @@ namespace DPF\Content\Visitor;
 /**
  * Interface to visit the elements.
  */
-interface ElementVisitor
+interface ElementVisitorInterface
 {
 
 " . implode(PHP_EOL, $functionsI) . "}
 ";
-file_put_contents(dirname(__DIR__) . "/src/DPF/Content/Visitor/ElementVisitor.php", $buffer);
+file_put_contents(dirname(__DIR__) . "/src/DPF/Content/Visitor/ElementVisitorInterface.php", $buffer);

@@ -7,6 +7,9 @@
  */
 namespace DPF\Content\Element\Basic;
 
+/**
+ * An heading representation.
+ */
 class Heading extends Container
 {
 
@@ -31,8 +34,13 @@ class Heading extends Container
 		parent::__construct($id, $classes, $attributes);
 	}
 
-	public function getTagName()
+	/**
+	 * The size of the heading.
+	 *
+	 * @return number
+	 */
+	public function getSize()
 	{
-		return 'h' . $this->size;
+		return $this->size;
 	}
 }

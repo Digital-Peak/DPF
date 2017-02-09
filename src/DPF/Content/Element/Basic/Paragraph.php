@@ -9,9 +9,4 @@ namespace DPF\Content\Element\Basic;
 
 class Paragraph extends Container
 {
-
-	public function getTagName()
-	{
-		return 'p';
-	}
 }

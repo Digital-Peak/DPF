@@ -10,8 +10,8 @@ namespace DPF\Tests\Content\Visitor\Framework;
 use DPF\Content\Framework;
 use PHPUnit\Framework\TestCase;
 use DPF\Content\Element\Basic\Element;
-use DPF\Content\Html\DomBuilder;
 use DPF\Content\Element\Basic\Container;
+use DPF\Content\Visitor\Html\DomBuilder;
 
 class DomBuilderTest extends TestCase
 {
@@ -20,7 +20,10 @@ class DomBuilderTest extends TestCase
 	{
 		$builder = new DomBuilder();
 
-		$this->assertXmlStringEqualsXmlString('<div id="test"></div>', $builder->render(new Element('test')));
+		$e = new Element('test');
+		$e->accept($builder);
+
+		$this->assertXmlStringEqualsXmlString('<div id="test"></div>', $builder->render());
 	}
 
 	public function testRenderWithContent()
@@ -29,6 +32,7 @@ class DomBuilderTest extends TestCase
 
 		$e = new Element('test');
 		$e->setContent('unit');
+		$e->accept($builder);
 
 		$this->assertXmlStringEqualsXmlString('<div id="test">unit</div>', $builder->render($e));
 	}
@@ -39,6 +43,7 @@ class DomBuilderTest extends TestCase
 
 		$e = new Element('test');
 		$e->setContent('<p>unit</p>');
+		$e->accept($builder);
 
 		$this->assertXmlStringEqualsXmlString('<div id="test"><p>unit</p></div>', $builder->render($e));
 	}
@@ -49,6 +54,7 @@ class DomBuilderTest extends TestCase
 
 		$e = new Element('test');
 		$e->setContent('<p>unit');
+		$e->accept($builder);
 
 		$this->assertEquals('<div id="test"><p>unit</div>', $builder->render($e));
 	}
@@ -60,6 +66,7 @@ class DomBuilderTest extends TestCase
 		$e = new Container('test');
 		$el = $e->addChild(new Container('unit'));
 		$el->setContent('unit test');
+		$e->accept($builder);
 
 		$this->assertXmlStringEqualsXmlString('<div id="test"><div id="test-unit">unit test</div></div>', $builder->render($e));
 	}
@@ -74,6 +81,8 @@ class DomBuilderTest extends TestCase
 		$c = $e->addChild(new Container('unit2'));
 		$c->addChild(new Container('unit2.1'));
 		$c->addChild(new Container('unit2.2'));
+
+		$e->accept($builder);
 
 		$string  = '<div id="test">';
 		$string .= '<div id="test-unit1"><div id="test-unit1-unit1.1"></div></div>';
@@ -92,6 +101,7 @@ class DomBuilderTest extends TestCase
 		->addChild(new Container('bar', array('doo')))
 		->addChild(new Container('john'));
 
+		$e->accept($builder);
 
 		$string  = '<div id="test">';
 		$string .= '<div id="test-unit">';

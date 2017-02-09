@@ -14,15 +14,4 @@ use DPF\Content\Element\Basic\Container;
  */
 class ListItem extends Container
 {
-
-	/**
-	 *
-	 * {@inheritdoc}
-	 *
-	 * @see \DPF\Content\Element::getTagName()
-	 */
-	public function getTagName()
-	{
-		return 'li';
-	}
 }

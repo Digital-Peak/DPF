@@ -18,9 +18,4 @@ class Form extends Container
 
 		parent::__construct($id, $classes, $attributes);
 	}
-
-	public function getTagName()
-	{
-		return 'form';
-	}
 }

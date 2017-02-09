@@ -33,13 +33,4 @@ class Input extends Element
 
 		parent::__construct($id, $classes, $attributes);
 	}
-
-	/**
-	 *
-	 * @return string
-	 */
-	public function getTagName()
-	{
-		return 'input';
-	}
 }

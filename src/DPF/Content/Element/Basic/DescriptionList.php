@@ -32,9 +32,4 @@ class DescriptionList extends Container
 	{
 		return $this->addChild($description);
 	}
-
-	public function getTagName()
-	{
-		return 'dl';
-	}
 }

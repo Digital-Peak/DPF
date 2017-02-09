@@ -9,9 +9,4 @@ namespace DPF\Content\Element\Basic;
 
 class Font extends Container
 {
-
-	public function getTagName()
-	{
-		return 'font';
-	}
 }

@@ -42,13 +42,6 @@ interface ElementVisitorInterface
 	public function visitContainer(\DPF\Content\Element\Basic\Container $container);
 
 	/**
-	 * Visit the Custom
-	 *
-	 * @param \DPF\Content\Element\Basic\Custom $custom
-	 */
-	public function visitCustom(\DPF\Content\Element\Basic\Custom $custom);
-
-	/**
 	 * Visit the DescriptionDescription
 	 *
 	 * @param \DPF\Content\Element\Basic\Description\Description $descriptionDescription
@@ -110,6 +103,13 @@ interface ElementVisitorInterface
 	 * @param \DPF\Content\Element\Basic\Form\Label $formLabel
 	 */
 	public function visitFormLabel(\DPF\Content\Element\Basic\Form\Label $formLabel);
+
+	/**
+	 * Visit the FormOption
+	 *
+	 * @param \DPF\Content\Element\Basic\Form\Option $formOption
+	 */
+	public function visitFormOption(\DPF\Content\Element\Basic\Form\Option $formOption);
 
 	/**
 	 * Visit the FormSelect

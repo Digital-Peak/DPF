@@ -78,7 +78,7 @@ class Container extends Element
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see \DPF\Content\Element\AbstractElement::accept()
+	 * @see \DPF\Content\Element\Basic\Element::accept()
 	 */
 	public function accept(ElementVisitorInterface $visitor)
 	{
@@ -90,9 +90,9 @@ class Container extends Element
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * {@inheritDoc}
 	 *
-	 * @see \DPF\Content\Element\Basic\AbstractElement::__toString()
+	 * @see \DPF\Content\Element\Basic\Element::__toString()
 	 */
 	public function __toString()
 	{

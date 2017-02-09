@@ -7,24 +7,24 @@
  */
 namespace DPF\Content\Element\Basic\Form;
 
-use DPF\Content\Element\Basic\Container;
+use DPF\Content\Element\Basic\Element;
 
 /**
- * A form label representation.
+ * A select option representation.
  */
-class Label extends Container
+class Option extends Element
 {
 
 	/**
 	 * Initiates the label for the id of the given for input.
 	 *
-	 * @param string $forId
+	 * @param string $value
 	 * @param array $classes
 	 * @param array $attributes
 	 */
-	public function __construct($id, $forId, array $classes = [], array $attributes = [])
+	public function __construct($id, $value, array $classes = [], array $attributes = [])
 	{
-		$attributes['for'] = $forId;
+		$attributes['value'] = $value;
 		parent::__construct($id, $classes, $attributes);
 	}
 }

@@ -56,9 +56,4 @@ class Table extends Container
 		}
 		return parent::build($parent, $framework);
 	}
-
-	public function getTagName()
-	{
-		return 'table';
-	}
 }

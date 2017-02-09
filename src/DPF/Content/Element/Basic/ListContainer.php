@@ -80,15 +80,4 @@ class ListContainer extends Container
 	{
 		return $this->addChild($listItem);
 	}
-
-	/**
-	 *
-	 * {@inheritdoc}
-	 *
-	 * @see \DPF\Content\Element::getTagName()
-	 */
-	public function getTagName()
-	{
-		return $this->getType() == self::UNORDERED ? 'ul' : 'ol';
-	}
 }

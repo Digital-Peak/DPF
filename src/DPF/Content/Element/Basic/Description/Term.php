@@ -11,9 +11,4 @@ use DPF\Content\Element\Basic\Container;
 
 class Term extends Container
 {
-
-	public function getTagName()
-	{
-		return 'dt';
-	}
 }

@@ -35,15 +35,4 @@ class Button extends Container
 			$this->addChild(new TextBlock('text'))->setContent($text);
 		}
 	}
-
-	/**
-	 *
-	 * {@inheritdoc}
-	 *
-	 * @see Element::getTagName()
-	 */
-	public function getTagName()
-	{
-		return 'button';
-	}
 }

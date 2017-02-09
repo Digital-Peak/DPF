@@ -9,9 +9,4 @@ namespace DPF\Content\Element\Basic;
 
 class TextBlock extends Container
 {
-
-	public function getTagName()
-	{
-		return 'span';
-	}
 }

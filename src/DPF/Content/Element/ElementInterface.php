@@ -15,6 +15,13 @@ use DPF\Content\Visitor\ElementVisitorInterface;
 interface ElementInterface
 {
 	/**
+	 * Returns the id of the element.
+	 *
+	 * @return string
+	 */
+	public function getId();
+
+	/**
 	 * Returns the content of the element.
 	 *
 	 * @return string
@@ -29,11 +36,11 @@ interface ElementInterface
 	public function getAttributes();
 
 	/**
-	 * The tag name of the element.
+	 * Returns the parent of the element.
 	 *
-	 * @return string
+	 * @return \DPF\Content\Element\ElementInterface
 	 */
-	public function getTagName();
+	public function getParent();
 
 	/**
 	 * Accepts the visitor and is calling the aproperiate visit method.

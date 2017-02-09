@@ -31,15 +31,4 @@ class Meta extends Element
 
 		parent::__construct($id, $classes, $attributes);
 	}
-
-	/**
-	 *
-	 * {@inheritdoc}
-	 *
-	 * @see Element::getTagName()
-	 */
-	public function getTagName()
-	{
-		return 'meta';
-	}
 }
