@@ -195,7 +195,7 @@ class DomBuilder implements ElementVisitorInterface
 	 */
 	public function visitDescriptionListHorizontal(\DPF\Content\Element\Basic\DescriptionListHorizontal $descriptionListHorizontal)
 	{
-		$this->build($descriptionList, 'dl');
+		$this->build($descriptionListHorizontal, 'dl');
 	}
 
 	/**
@@ -215,7 +215,7 @@ class DomBuilder implements ElementVisitorInterface
 	 */
 	public function visitFont(\DPF\Content\Element\Basic\Font $font)
 	{
-		$this->build($descriptionList, 'font');
+		$this->build($font, 'font');
 	}
 
 	/**
@@ -235,7 +235,7 @@ class DomBuilder implements ElementVisitorInterface
 	 */
 	public function visitFormInput(\DPF\Content\Element\Basic\Form\Input $formInput)
 	{
-		$this->build($form, 'input');
+		$this->build($formInput, 'input');
 	}
 
 	/**
@@ -245,7 +245,7 @@ class DomBuilder implements ElementVisitorInterface
 	 */
 	public function visitFormLabel(\DPF\Content\Element\Basic\Form\Label $formLabel)
 	{
-		$this->build($form, 'label');
+		$this->build($formLabel, 'label');
 	}
 
 	/**
@@ -255,7 +255,7 @@ class DomBuilder implements ElementVisitorInterface
 	 */
 	public function visitFormOption(\DPF\Content\Element\Basic\Form\Option $formOption)
 	{
-		$this->build($form, 'option');
+		$this->build($formOption, 'option');
 	}
 
 	/**
@@ -265,7 +265,7 @@ class DomBuilder implements ElementVisitorInterface
 	 */
 	public function visitFormSelect(\DPF\Content\Element\Basic\Form\Select $formSelect)
 	{
-		$this->build($form, 'select');
+		$this->build($formSelect, 'select');
 	}
 
 	/**
@@ -335,7 +335,7 @@ class DomBuilder implements ElementVisitorInterface
 	 */
 	public function visitLink(\DPF\Content\Element\Basic\Link $link)
 	{
-		$this->build($image, 'a');
+		$this->build($link, 'a');
 	}
 
 	/**

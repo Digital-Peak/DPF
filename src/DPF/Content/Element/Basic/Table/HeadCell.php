@@ -10,20 +10,8 @@ namespace DPF\Content\Element\Basic\Table;
 use DPF\Content\Element\Basic\Container;
 
 /**
- * A table row representation.
+ * A table head cell representation.
  */
-class Row extends Container
+class HeadCell extends Container
 {
-
-	/**
-	 * Adds the given cell to the internal child collection.
-	 *
-	 * @param Cell $cell
-	 *
-	 * @return Cell
-	 */
-	public function addCell(Cell $cell)
-	{
-		return $this->addChild($cell);
-	}
 }

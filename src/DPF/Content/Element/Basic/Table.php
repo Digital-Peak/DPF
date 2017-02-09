@@ -9,8 +9,14 @@ namespace DPF\Content\Element\Basic;
 
 use DPF\Content\Element\Basic\Table\Row;
 use DPF\Content\Element\Basic\Table\Cell;
-use DPF\Content\Framework;
+use DPF\Content\Element\Basic\Table\Head;
+use DPF\Content\Element\Basic\Table\Body;
+use DPF\Content\Element\Basic\Table\Footer;
+use DPF\Content\Element\Basic\Table\HeadCell;
 
+/**
+ * A Table representation.
+ */
 class Table extends Container
 {
 
@@ -24,14 +30,14 @@ class Table extends Container
 	{
 		parent::__construct($id, $classes, $attributes);
 
-		$this->head = $this->addChild(new Custom('head', 'thead'));
-		$this->body = $this->addChild(new Custom('body', 'tbody'));
-		$this->footer = $this->addChild(new Custom('footer', 'tfoot'));
+		$this->head = $this->addChild(new Head('head'));
+		$this->body = $this->addChild(new Body('body'));
+		$this->footer = $this->addChild(new Footer('footer'));
 
 		$row = $this->head->addChild(new Row('row'));
 
 		foreach ($columns as $index => $column) {
-			$row->addChild(new Custom('cell-' . $index, 'th'))->setContent($column);
+			$row->addChild(new HeadCell('cell-' . $index))->setContent($column);
 		}
 	}
 
@@ -43,17 +49,5 @@ class Table extends Container
 	public function addFooterRow(Row $row)
 	{
 		return $this->footer->addChild($row);
-	}
-
-	public function build(\DOMElement $parent = null, Framework $framework = null)
-	{
-		// Fill the rows with empty cells
-		$count = count($this->head->getChildren()[0]->getChildren());
-		foreach ($this->body->getChildren() as $row) {
-			while (count($row->getChildren()) < $count) {
-				$row->addChild(new Cell('cell-' . count($row->getChildren())));
-			}
-		}
-		return parent::build($parent, $framework);
 	}
 }

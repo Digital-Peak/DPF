@@ -27,17 +27,15 @@ class TabContainer extends Container
 	{
 		$this->getTabs()->addChild($tab);
 
-		$li = $this->getTabLinks()->addChild(new Custom('tab-' . (count($this->getTabLinks()
-			->getChildren()) + 1), 'li'));
-		$li->addChild(new Link('link', '#' . $tab->getId()))
-			->setContent($tab->getTitle());
+		$li = $this->getTabLinks()->addChild(new ListItem('tab-' . (count($this->getTabLinks()->getChildren()) + 1)));
+		$li->addChild(new Link('link', '#' . $tab->getId()))->setContent($tab->getTitle());
 		return $tab;
 	}
 
 	public function getTabLinks()
 	{
 		if ($this->tabLinks === null) {
-			$this->tabLinks = new Custom('links', 'ul');
+			$this->tabLinks = new ListContainer('links', ListContainer::UNORDERED);
 			$this->addChild($this->tabLinks);
 		}
 
