@@ -34,7 +34,7 @@ class FontAwesome4 extends AbstractElementVisitor
 				$icon->addClass('fa fa-trash', true);
 				break;
 			case Icon::DOWN:
-				$icon->addClass('fa fa-carret-down', true);
+				$icon->addClass('fa fa-caret-down', true);
 				break;
 			case Icon::DOWNLOAD:
 				$icon->addClass('fa fa-download', true);
@@ -70,7 +70,7 @@ class FontAwesome4 extends AbstractElementVisitor
 				$icon->addClass('fa fa-sign-in', true);
 				break;
 			case Icon::UP:
-				$icon->addClass('fa fa-carret-up', true);
+				$icon->addClass('fa fa-caret-up', true);
 				break;
 			case Icon::USERS:
 				$icon->addClass('fa fa-users', true);
