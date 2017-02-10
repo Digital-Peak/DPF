@@ -299,6 +299,16 @@ class DomBuilder implements ElementVisitorInterface
 	/**
 	 * {@inheritdoc}
 	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitFrame()
+	 */
+	public function visitFrame(\DPF\Content\Element\Basic\Frame $frame)
+	{
+		$this->build($frame, 'iframe');
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
 	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitGrid()
 	 */
 	public function visitGrid(\DPF\Content\Element\Basic\Grid $grid)
