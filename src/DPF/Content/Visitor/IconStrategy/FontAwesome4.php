@@ -13,7 +13,7 @@ use DPF\Content\Visitor\AbstractElementVisitor;
 /**
  * The Joomla icon strategy.
  */
-class Joomla extends AbstractElementVisitor
+class FontAwesome4 extends AbstractElementVisitor
 {
 
 	/**
@@ -25,55 +25,55 @@ class Joomla extends AbstractElementVisitor
 	{
 		switch ($icon->getType()) {
 			case Icon::CALENDAR:
-				$icon->addClass('icon-calendar', true);
+				$icon->addClass('fa fa-calendar', true);
 				break;
 			case Icon::CANCEL:
-				$icon->addClass('icon-remove', true);
+				$icon->addClass('fa fa-ban', true);
 				break;
 			case Icon::DELETE:
-				$icon->addClass('icon-remove', true);
+				$icon->addClass('fa fa-trash', true);
 				break;
 			case Icon::DOWN:
-				$icon->addClass('icon-arrow-down', true);
+				$icon->addClass('fa fa-carret-down', true);
 				break;
 			case Icon::DOWNLOAD:
-				$icon->addClass('icon-download', true);
+				$icon->addClass('fa fa-download', true);
 				break;
 			case Icon::EDIT:
-				$icon->addClass('icon-edit', true);
+				$icon->addClass('fa fa-pencil', true);
 				break;
 			case Icon::FILE:
-				$icon->addClass('icon-file', true);
+				$icon->addClass('fa fa-file', true);
 				break;
 			case Icon::INFO:
-				$icon->addClass('icon-info', true);
+				$icon->addClass('fa fa-info', true);
 				break;
 			case Icon::MAIL:
-				$icon->addClass('icon-envelope', true);
+				$icon->addClass('fa fa-envelope', true);
 				break;
 			case Icon::PLUS:
-				$icon->addClass('icon-plus', true);
+				$icon->addClass('fa fa-plus', true);
 				break;
 			case Icon::LOCATION:
-				$icon->addClass('icon-location', true);
+				$icon->addClass('fa fa-map-marker', true);
 				break;
 			case Icon::OK:
-				$icon->addClass('icon-ok', true);
+				$icon->addClass('fa fa-check', true);
 				break;
 			case Icon::PRINTING:
-				$icon->addClass('icon-print', true);
+				$icon->addClass('fa fa-print', true);
 				break;
 			case Icon::SEARCH:
-				$icon->addClass('icon-search', true);
+				$icon->addClass('fa fa-search', true);
 				break;
 			case Icon::SIGNUP:
-				$icon->addClass('icon-signup', true);
+				$icon->addClass('fa fa-sign-in', true);
 				break;
 			case Icon::UP:
-				$icon->addClass('icon-arrow-up', true);
+				$icon->addClass('fa fa-carret-up', true);
 				break;
 			case Icon::USERS:
-				$icon->addClass('icon-users', true);
+				$icon->addClass('fa fa-users', true);
 				break;
 		}
 	}

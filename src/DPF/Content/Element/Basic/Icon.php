@@ -14,27 +14,19 @@ use DPF\Content\Element\Basic\Element;
  */
 class Icon extends Element
 {
-
 	/**
-	 * The plus icon.
+	 * The calendar icon.
 	 *
 	 * @var string
 	 */
-	const PLUS = 'plus';
+	const CALENDAR = 'calendar';
 
 	/**
-	 * The location icon.
+	 * The cancel icon.
 	 *
 	 * @var string
 	 */
-	const LOCATION = 'location';
-
-	/**
-	 * The edit icon.
-	 *
-	 * @var string
-	 */
-	const EDIT = 'edit';
+	const CANCEL = 'cancel';
 
 	/**
 	 * The delete icon.
@@ -44,11 +36,46 @@ class Icon extends Element
 	const DELETE = 'delete';
 
 	/**
+	 * The down icon.
+	 *
+	 * @var string
+	 */
+	const DOWN = 'down';
+
+	/**
+	 * The download icon.
+	 *
+	 * @var string
+	 */
+	const DOWNLOAD = 'download';
+
+	/**
 	 * The edit icon.
 	 *
 	 * @var string
 	 */
-	const PRINTING = 'print';
+	const EDIT = 'edit';
+
+	/**
+	 * The file icon.
+	 *
+	 * @var string
+	 */
+	const FILE = 'file';
+
+	/**
+	 * The info icon.
+	 *
+	 * @var string
+	 */
+	const INFO = 'info';
+
+	/**
+	 * The location icon.
+	 *
+	 * @var string
+	 */
+	const LOCATION = 'location';
 
 	/**
 	 * The mail icon.
@@ -58,11 +85,32 @@ class Icon extends Element
 	const MAIL = 'mail';
 
 	/**
-	 * The download icon.
+	 * The ok icon.
 	 *
 	 * @var string
 	 */
-	const DOWNLOAD = 'download';
+	const OK = 'ok';
+
+	/**
+	 * The plus icon.
+	 *
+	 * @var string
+	 */
+	const PLUS = 'plus';
+
+	/**
+	 * The edit icon.
+	 *
+	 * @var string
+	 */
+	const PRINTING = 'print';
+
+	/**
+	 * The search icon.
+	 *
+	 * @var string
+	 */
+	const SEARCH = 'search';
 
 	/**
 	 * The signup icon.
@@ -79,34 +127,6 @@ class Icon extends Element
 	const UP = 'up';
 
 	/**
-	 * The down icon.
-	 *
-	 * @var string
-	 */
-	const DOWN = 'down';
-
-	/**
-	 * The ok icon.
-	 *
-	 * @var string
-	 */
-	const OK = 'ok';
-
-	/**
-	 * The cancel icon.
-	 *
-	 * @var string
-	 */
-	const CANCEL = 'cancel';
-
-	/**
-	 * The info icon.
-	 *
-	 * @var string
-	 */
-	const INFO = 'info';
-
-	/**
 	 * The users icon.
 	 *
 	 * @var string
@@ -114,49 +134,28 @@ class Icon extends Element
 	const USERS = 'users';
 
 	/**
-	 * The search icon.
-	 *
-	 * @var string
-	 */
-	const SEARCH = 'search';
-
-	/**
-	 * The file icon.
-	 *
-	 * @var string
-	 */
-	const FILE = 'file';
-
-	/**
-	 * The calendar icon.
-	 *
-	 * @var string
-	 */
-	const CALENDAR = 'calendar';
-
-	/**
 	 * Array which holds all available icons.
 	 *
 	 * @var array
 	 */
 	private static $ALL_ICONS = [
+		self::CALENDAR,
+		self::CANCEL,
+		self::DELETE,
+		self::DOWN,
+		self::DOWNLOAD,
+		self::EDIT,
+		self::FILE,
+		self::INFO,
+		self::MAIL,
 		self::PLUS,
 		self::LOCATION,
-		self::EDIT,
-		self::DELETE,
+		self::OK,
 		self::PRINTING,
-		self::MAIL,
-		self::DOWNLOAD,
+		self::SEARCH,
 		self::SIGNUP,
 		self::UP,
-		self::DOWN,
-		self::OK,
-		self::CANCEL,
-		self::INFO,
-		self::USERS,
-		self::SEARCH,
-		self::FILE,
-		self::CALENDAR
+		self::USERS
 	];
 
 	/**

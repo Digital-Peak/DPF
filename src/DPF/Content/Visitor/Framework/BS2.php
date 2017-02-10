@@ -19,13 +19,13 @@ use DPF\Content\Element\Basic\Tab;
 use DPF\Content\Element\Basic\TabContainer;
 use DPF\Content\Element\Basic\Table;
 use DPF\Content\Visitor\AbstractElementVisitor;
-use DPF\Content\Element\Basic\Grid;
 
 /**
- * The Uikit 2 framework visitor.
+ * The Bootstrap 2 framework visitor.
  */
-class Uikit2 extends AbstractElementVisitor
+class BS2 extends AbstractElementVisitor
 {
+
 	/**
 	 * The alert mappings.
 	 *
@@ -35,7 +35,7 @@ class Uikit2 extends AbstractElementVisitor
 		Alert::INFO    => 'info',
 		Alert::SUCCESS => 'success',
 		Alert::WARNING => 'warning',
-		Alert::DANGER  => 'danger'
+		Alert::DANGER  => 'error'
 	];
 
 	/**
@@ -46,8 +46,8 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitAlert(Alert $alert)
 	{
-		$alert->addClass('uk-alert', true);
-		$alert->addClass('uk-alert-' . $this->alertTypes[$alert->getType()], true);
+		$alert->addClass('alert', true);
+		$alert->addClass('alert-' . $this->alertTypes[$alert->getType()], true);
 	}
 
 	/**
@@ -58,7 +58,7 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitBadge(Badge $badge)
 	{
-		$badge->addClass('uk-badge', true);
+		$badge->addClass('badge', true);
 	}
 
 	/**
@@ -69,7 +69,8 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitButton(Button $button)
 	{
-		$button->addClass('uk-button', true);
+		$button->addClass('btn', true);
+		$button->addClass('btn-default', true);
 	}
 
 	/**
@@ -80,7 +81,7 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitDescriptionListHorizontal(DescriptionListHorizontal $descriptionListHorizontal)
 	{
-		$descriptionListHorizontal->addClass('uk-description-list-horizontal', true);
+		$descriptionListHorizontal->addClass('dl-horizontal', true);
 	}
 
 	/**
@@ -91,18 +92,7 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitForm(Form $form)
 	{
-		$form->addClass('uk-form', true);
-		$form->addClass('uk-form-horizontal', true);
-	}
-
-	/**
-	 * {@inheritdoc}
-	 *
-	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitFormLabel()
-	 */
-	public function visitFormLabel(\DPF\Content\Element\Basic\Form\Label $formLabel)
-	{
-		$formLabel->addClass('uk-form-label', true);
+		$form->addClass('form-horizontal', true);
 	}
 
 	/**
@@ -113,17 +103,7 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitGridColumn(Column $gridColumn)
 	{
-		$width = (10 / 100) * $gridColumn->getWidth();
-		$width = round($width);
-
-		if ($width < 1) {
-			$width = 1;
-		}
-		if ($width > 10) {
-			$width = 10;
-		}
-
-		$gridColumn->addClass('uk-width-' . $width . '-10', true);
+		$gridColumn->addClass('span' . $this->calculateWidth($gridColumn->getWidth()), true);
 	}
 
 	/**
@@ -134,8 +114,7 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitGridRow(Row $gridRow)
 	{
-		$gridRow->addClass('uk-grid', true);
-		$gridRow->addClass('uk-grid-collapse', true);
+		$gridRow->addClass('row-fluid', true);
 	}
 
 	/**
@@ -148,19 +127,26 @@ class Uikit2 extends AbstractElementVisitor
 	{
 		// Set up the tab links
 		$tabLinks = $tabContainer->getTabLinks();
-		$tabLinks->addClass('uk-tab', true);
-		$tabLinks->addAttribute('data-uk-tab', '{connect:"#' . $tabContainer->getTabs()->getId() . '"}');
+		$tabLinks->addClass('nav', true);
+		$tabLinks->addClass('nav-tabs', true);
 
-		// Set the first one as active
+
+		// Set the first one as active and add the toggle attribute
 		foreach ($tabLinks->getChildren() as $index => $link) {
 			if ($index == 0) {
-				$link->addClass('uk-active', true);
-				break;
+				$link->addClass('active', true);
 			}
+			$link->getChildren()[0]->addAttribute('data-toggle', 'tab');
 		}
 
 		// Set up the tab content
-		$tabContainer->getTabs()->addClass('uk-switcher', true);
+		$tabContainer->getTabs()->addClass('tab-content', true);
+		foreach ($tabContainer->getTabs()->getChildren() as $index => $tab) {
+			if ($index == 0) {
+				$tab->addClass('active', true);
+			}
+			$tab->addClass('tab-pane', true);
+		}
 	}
 
 	/**
@@ -171,7 +157,28 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitTable(Table $table)
 	{
-		$table->addClass('uk-table', true);
-		$table->addClass('uk-table-stripped', true);
+		$table->addClass('table', true);
+		$table->addClass('table-stripped', true);
+	}
+
+	/**
+	 * Calculates the width.
+	 *
+	 * @param number $width
+	 * @param number $maxWidth
+	 * @return number
+	 */
+	protected function calculateWidth($width, $maxWidth = 12) {
+		$newWidth = ($maxWidth / 100) * $width;
+		$newWidth = round($newWidth);
+
+		if ($newWidth < 1) {
+			$newWidth = 1;
+		}
+		if ($newWidth > $maxWidth) {
+			$newWidth = $maxWidth;
+		}
+
+		return $newWidth;
 	}
 }

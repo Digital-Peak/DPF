@@ -14,7 +14,7 @@ use DPF\Content\Element\Basic\Alert;
 /**
  * The Bootstrap 3 framework visitor.
  */
-class Bs3 extends Bs2
+class BS3 extends BS2
 {
 	/**
 	 * The alert mappings.
