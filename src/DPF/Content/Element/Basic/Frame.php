@@ -8,18 +8,14 @@
 namespace DPF\Content\Element\Basic;
 
 /**
- * A link representation.
+ * A frame representation.
  */
-class Link extends Container
+class Frame extends Container
 {
 
-	public function __construct($id, $link, $target = null, array $classes = [], array $attributes = [])
+	public function __construct($id, $src, array $classes = [], array $attributes = [])
 	{
-		$attributes['href'] = $link;
-
-		if ($target) {
-			$attributes['target'] = $target;
-		}
+		$attributes['src'] = $src;
 
 		parent::__construct($id, $classes, $attributes);
 	}

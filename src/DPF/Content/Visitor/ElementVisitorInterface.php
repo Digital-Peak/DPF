@@ -119,6 +119,13 @@ interface ElementVisitorInterface
 	public function visitFormSelect(\DPF\Content\Element\Basic\Form\Select $formSelect);
 
 	/**
+	 * Visit the Frame
+	 *
+	 * @param \DPF\Content\Element\Basic\Frame $frame
+	 */
+	public function visitFrame(\DPF\Content\Element\Basic\Frame $frame);
+
+	/**
 	 * Visit the Grid
 	 *
 	 * @param \DPF\Content\Element\Basic\Grid $grid
