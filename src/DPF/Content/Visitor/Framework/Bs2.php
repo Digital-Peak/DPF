@@ -27,6 +27,18 @@ class Bs2 extends AbstractElementVisitor
 {
 
 	/**
+	 * The alert mappings.
+	 *
+	 * @var array
+	 */
+	protected $alertTypes = [
+		Alert::INFO    => 'info',
+		Alert::SUCCESS => 'success',
+		Alert::WARNING => 'warning',
+		Alert::DANGER  => 'error'
+	];
+
+	/**
 	 *
 	 * {@inheritdoc}
 	 *
@@ -35,7 +47,7 @@ class Bs2 extends AbstractElementVisitor
 	public function visitAlert(Alert $alert)
 	{
 		$alert->addClass('alert', true);
-		$alert->addClass('alert-' . $alert->getType(), true);
+		$alert->addClass('alert-' . $this->alertTypes[$alert->getType()], true);
 	}
 
 	/**
@@ -91,7 +103,7 @@ class Bs2 extends AbstractElementVisitor
 	 */
 	public function visitGridColumn(Column $gridColumn)
 	{
-		$gridColumn->addClass('span' . $gridColumn->getWidth(), true);
+		$gridColumn->addClass('span' . $this->calculateWidth($gridColumn->getWidth()), true);
 	}
 
 	/**
@@ -113,9 +125,13 @@ class Bs2 extends AbstractElementVisitor
 	 */
 	public function visitTabContainer(TabContainer $tabContainer)
 	{
+		// Set up the tab links
 		$tabLinks = $tabContainer->getTabLinks();
 		$tabLinks->addClass('nav', true);
 		$tabLinks->addClass('nav-tabs', true);
+
+
+		// Set the first one as active and add the toggle attribute
 		foreach ($tabLinks->getChildren() as $index => $link) {
 			if ($index == 0) {
 				$link->addClass('active', true);
@@ -123,6 +139,7 @@ class Bs2 extends AbstractElementVisitor
 			$link->getChildren()[0]->addAttribute('data-toggle', 'tab');
 		}
 
+		// Set up the tab content
 		$tabContainer->getTabs()->addClass('tab-content', true);
 		foreach ($tabContainer->getTabs()->getChildren() as $index => $tab) {
 			if ($index == 0) {
@@ -142,5 +159,26 @@ class Bs2 extends AbstractElementVisitor
 	{
 		$table->addClass('table', true);
 		$table->addClass('table-stripped', true);
+	}
+
+	/**
+	 * Calculates the width.
+	 *
+	 * @param number $width
+	 * @param number $maxWidth
+	 * @return number
+	 */
+	protected function calculateWidth($width, $maxWidth = 12) {
+		$newWidth = ($maxWidth / 100) * $width;
+		$newWidth = round($newWidth);
+
+		if ($newWidth < 1) {
+			$newWidth = 1;
+		}
+		if ($newWidth > $maxWidth) {
+			$newWidth = $maxWidth;
+		}
+
+		return $newWidth;
 	}
 }

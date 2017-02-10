@@ -37,6 +37,13 @@ class Alert extends Container
 	const WARNING = 'warning';
 
 	/**
+	 * The danger alert.
+	 *
+	 * @var string
+	 */
+	const DANGER = 'danger';
+
+	/**
 	 * The type.
 	 *
 	 * @var unknown
@@ -52,20 +59,15 @@ class Alert extends Container
 	 */
 	public function __construct($id, $type, array $classes = [], array $attributes = [])
 	{
-		if (! in_array($type, [
-			self::INFO,
-			self::SUCCESS,
-			self::WARNING
-		])) {
+		parent::__construct($id, $classes, $attributes);
+
+		if (! in_array($type, [self::INFO, self::SUCCESS, self::WARNING, self::DANGER])) {
 			$type = self::INFO;
 		}
 
-		$classes[] = 'dpf-alert-' . $type;
-		$this->setProtectedClass('dpf-alert-' . $type);
-
-		parent::__construct($id, $classes, $attributes);
-
 		$this->type = $type;
+
+		$this->addClass('dpf-alert-' . $type, true);
 	}
 
 	/**

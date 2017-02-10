@@ -32,6 +32,11 @@ class TabContainer extends Container
 		return $tab;
 	}
 
+	/**
+	 * Returns the container for the tab links.
+	 *
+	 * @return \DPF\Content\Element\Basic\ListContainer
+	 */
 	public function getTabLinks()
 	{
 		if ($this->tabLinks === null) {
@@ -42,6 +47,11 @@ class TabContainer extends Container
 		return $this->tabLinks;
 	}
 
+	/**
+	 * Returns the container for the tabs.
+	 *
+	 * @return \DPF\Content\Element\Basic\Container
+	 */
 	public function getTabs()
 	{
 		if ($this->tabs === null) {

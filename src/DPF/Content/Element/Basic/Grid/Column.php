@@ -16,7 +16,7 @@ class Column extends Container
 {
 
 	/**
-	 * The width of the column.
+	 * The width of the column as percentag.
 	 *
 	 * @var integer
 	 */
@@ -24,16 +24,19 @@ class Column extends Container
 
 	public function __construct($id, $width, array $classes = [], array $attributes = [])
 	{
-		$classes[] = 'dpf-col-' . $width;
-		$this->setProtectedClass('dpf-col-' . $width);
-
 		parent::__construct($id, $classes, $attributes);
 
+		if ($width > 100) {
+			$width = 100;
+		}
+
 		$this->width = $width;
+
+		$this->addClass('dpf-col-' . $width, true);
 	}
 
 	/**
-	 * Returns the width of a column.
+	 * Returns the width of a column in percentage.
 	 *
 	 * @return number
 	 */

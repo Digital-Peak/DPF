@@ -26,6 +26,17 @@ use DPF\Content\Element\Basic\Grid;
  */
 class Uikit2 extends AbstractElementVisitor
 {
+	/**
+	 * The alert mappings.
+	 *
+	 * @var array
+	 */
+	protected $alertTypes = [
+		Alert::INFO    => 'info',
+		Alert::SUCCESS => 'success',
+		Alert::WARNING => 'warning',
+		Alert::DANGER  => 'danger'
+	];
 
 	/**
 	 *
@@ -35,8 +46,8 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitAlert(Alert $alert)
 	{
-		$alert->addClass('alert', true);
-		$alert->addClass('alert-' . $alert->getType(), true);
+		$alert->addClass('uk-alert', true);
+		$alert->addClass('uk-alert-' . $this->alertTypes[$alert->getType()], true);
 	}
 
 	/**
@@ -47,7 +58,7 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitBadge(Badge $badge)
 	{
-		$badge->addClass('badge', true);
+		$badge->addClass('uk-badge', true);
 	}
 
 	/**
@@ -59,7 +70,6 @@ class Uikit2 extends AbstractElementVisitor
 	public function visitButton(Button $button)
 	{
 		$button->addClass('uk-button', true);
-		$button->addClass('uk-btn-default', true);
 	}
 
 	/**
@@ -70,7 +80,7 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitDescriptionListHorizontal(DescriptionListHorizontal $descriptionListHorizontal)
 	{
-		$descriptionListHorizontal->addClass('dl-horizontal', true);
+		$descriptionListHorizontal->addClass('uk-description-list-horizontal', true);
 	}
 
 	/**
@@ -81,18 +91,18 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitForm(Form $form)
 	{
-		$form->addClass('form-horizontal', true);
+		$form->addClass('uk-form', true);
+		$form->addClass('uk-form-horizontal', true);
 	}
 
 	/**
-	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitorInterface::visitGrid()
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitFormLabel()
 	 */
-	public function visitGrid1(Grid $grid)
+	public function visitFormLabel(\DPF\Content\Element\Basic\Form\Label $formLabel)
 	{
-		$grid->addAttribute('uk-grid', 'uk-grid');
+		$formLabel->addClass('uk-form-label', true);
 	}
 
 	/**
@@ -103,7 +113,17 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitGridColumn(Column $gridColumn)
 	{
-		$gridColumn->addClass('col-md-' . $gridColumn->getWidth(), true);
+		$width = (10 / 100) * $gridColumn->getWidth();
+		$width = round($width);
+
+		if ($width < 1) {
+			$width = 1;
+		}
+		if ($width > 10) {
+			$width = 10;
+		}
+
+		$gridColumn->addClass('uk-width-' . $width . '-10', true);
 	}
 
 	/**
@@ -114,10 +134,8 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitGridRow(Row $gridRow)
 	{
-		$gridRow->addAttribute('uk-grid', 'true');
-
-		$gridRow->addClass('uk-child-width-expand@s');
-		$gridRow->addClass('uk-text-center');
+		$gridRow->addClass('uk-grid', true);
+		$gridRow->addClass('uk-grid-collapse', true);
 	}
 
 	/**
@@ -128,23 +146,21 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitTabContainer(TabContainer $tabContainer)
 	{
+		// Set up the tab links
 		$tabLinks = $tabContainer->getTabLinks();
-		$tabLinks->addClass('nav', true);
-		$tabLinks->addClass('nav-tabs', true);
+		$tabLinks->addClass('uk-tab', true);
+		$tabLinks->addAttribute('data-uk-tab', '{connect:"#' . $tabContainer->getTabs()->getId() . '"}');
+
+		// Set the first one as active
 		foreach ($tabLinks->getChildren() as $index => $link) {
 			if ($index == 0) {
-				$link->addClass('active', true);
+				$link->addClass('uk-active', true);
+				break;
 			}
-			$link->getChildren()[0]->addAttribute('data-toggle', 'tab');
 		}
 
-		$tabContainer->getTabs()->addClass('tab-content', true);
-		foreach ($tabContainer->getTabs()->getChildren() as $index => $tab) {
-			if ($index == 0) {
-				$tab->addClass('active', true);
-			}
-			$tab->addClass('tab-pane', true);
-		}
+		// Set up the tab content
+		$tabContainer->getTabs()->addClass('uk-switcher', true);
 	}
 
 	/**
@@ -155,7 +171,7 @@ class Uikit2 extends AbstractElementVisitor
 	 */
 	public function visitTable(Table $table)
 	{
-		$table->addClass('table', true);
-		$table->addClass('table-stripped', true);
+		$table->addClass('uk-table', true);
+		$table->addClass('uk-table-stripped', true);
 	}
 }
