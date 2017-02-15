@@ -78,6 +78,13 @@ class Icon extends Element
 	const LOCATION = 'location';
 
 	/**
+	 * The lock icon.
+	 *
+	 * @var string
+	 */
+	const LOCK = 'lock';
+
+	/**
 	 * The mail icon.
 	 *
 	 * @var string
@@ -150,6 +157,7 @@ class Icon extends Element
 		self::MAIL,
 		self::PLUS,
 		self::LOCATION,
+		self::LOCK,
 		self::OK,
 		self::PRINTING,
 		self::SEARCH,

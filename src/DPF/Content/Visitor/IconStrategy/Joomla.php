@@ -57,6 +57,9 @@ class Joomla extends AbstractElementVisitor
 			case Icon::LOCATION:
 				$icon->addClass('icon-location', true);
 				break;
+			case Icon::LOCK:
+				$icon->addClass('icon-lock', true);
+				break;
 			case Icon::OK:
 				$icon->addClass('icon-ok', true);
 				break;

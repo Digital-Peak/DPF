@@ -39,7 +39,6 @@ class BS2 extends AbstractElementVisitor
 	];
 
 	/**
-	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitAlert()
@@ -51,7 +50,6 @@ class BS2 extends AbstractElementVisitor
 	}
 
 	/**
-	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitBadge()
@@ -62,7 +60,6 @@ class BS2 extends AbstractElementVisitor
 	}
 
 	/**
-	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitButton()
@@ -74,7 +71,6 @@ class BS2 extends AbstractElementVisitor
 	}
 
 	/**
-	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitDescriptionListHorizontal()
@@ -85,7 +81,6 @@ class BS2 extends AbstractElementVisitor
 	}
 
 	/**
-	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitForm()
@@ -96,7 +91,6 @@ class BS2 extends AbstractElementVisitor
 	}
 
 	/**
-	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitorInterface::visitGridColumn()
@@ -107,7 +101,6 @@ class BS2 extends AbstractElementVisitor
 	}
 
 	/**
-	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitGridRow()
@@ -118,7 +111,16 @@ class BS2 extends AbstractElementVisitor
 	}
 
 	/**
+	 * {@inheritdoc}
 	 *
+	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitListContainer()
+	 */
+	public function visitListContainer(\DPF\Content\Element\Basic\ListContainer $listContainer)
+	{
+		$listContainer->addClass('list-striped', true);
+	}
+
+	/**
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitTabContainer()
@@ -150,7 +152,6 @@ class BS2 extends AbstractElementVisitor
 	}
 
 	/**
-	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitTable()
