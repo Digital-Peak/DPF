@@ -22,13 +22,17 @@ class Select extends Container
 	 *
 	 * @param string $id
 	 * @param string $name
+	 * @param boolean $multiple
 	 * @param array $classes
 	 * @param array $attributes
 	 */
-	public function __construct($id, $name, array $classes = [], array $attributes = [])
+	public function __construct($id, $name, $multiple = false, array $classes = [], array $attributes = [])
 	{
-		$attributes['name'] = $name;
+		$attributes['name']     = $name;
 
+		if ($multiple) {
+            $attributes['multiple'] = 'multiple';
+        }
 		parent::__construct($id, $classes, $attributes);
 	}
 
