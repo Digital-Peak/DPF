@@ -7,6 +7,8 @@
  */
 namespace DPF\Content\Element\Component;
 
+use DPF\Content\Element\Basic\Container;
+
 /**
  * A TabContainer representation.
  */
@@ -21,6 +23,7 @@ class TabContainer extends Container
 	 * Adds the given tabs to the internal tabs container and returns it for chaining.
 	 *
 	 * @param Tab $tab
+	 *
 	 * @return Tab
 	 */
 	public function addTab(Tab $tab)
@@ -29,6 +32,7 @@ class TabContainer extends Container
 
 		$li = $this->getTabLinks()->addChild(new ListItem('tab-' . (count($this->getTabLinks()->getChildren()) + 1)));
 		$li->addChild(new Link('link', '#' . $tab->getId()))->setContent($tab->getTitle());
+
 		return $tab;
 	}
 

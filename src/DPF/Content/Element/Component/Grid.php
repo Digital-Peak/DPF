@@ -7,6 +7,7 @@
  */
 namespace DPF\Content\Element\Component;
 
+use DPF\Content\Element\Basic\Container;
 use DPF\Content\Element\Component\Grid\Row;
 
 /**
@@ -19,6 +20,7 @@ class Grid extends Container
 	 * Adds the given row to the internal childs and returns it for chaining.
 	 *
 	 * @param Row $row
+	 *
 	 * @return Row
 	 */
 	public function addRow(Row $row)
