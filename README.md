@@ -31,7 +31,7 @@ composer require Digital-Peak/ccl "dev-unstable"
 ```
 
 ## Usage
-Check out the examples in the examples folder or read the [documentation](docs). Basically you can build your content tree like:
+Check out the examples in the examples folder or read the [documentation](docs). Current main functionality is to build content trees like:
 
 ```php
 $container = new \CCL\Content\Element\Basic\Container('demo');
@@ -49,7 +49,7 @@ $container->accept($domBuilder);
 echo $domBuilder->render();
 ```
 
-It prints 
+Which produces: 
 ```html
 <div id="demo">
 <p id="demo-child">Paragraph</p>
