@@ -6,7 +6,7 @@ The content package provides some element tree functionality. You can set up a t
 Running the following code will produce the output:
 > Found element: demo [CCL\Content\Element\Basic\Element]
 
-```
+```PHP
 class ExampleVisitor extends \CCL\Content\Visitor\AbstractElementVisitor
 {
 	public function visitElement(\CCL\Content\Element\Basic\Element $element)
