@@ -167,9 +167,11 @@ class BS2 extends AbstractElementVisitor
 	 *
 	 * @param number $width
 	 * @param number $maxWidth
+	 *
 	 * @return number
 	 */
-	protected function calculateWidth($width, $maxWidth = 12) {
+	protected function calculateWidth($width, $maxWidth = 12)
+	{
 		$newWidth = ($maxWidth / 100) * $width;
 		$newWidth = round($newWidth);
 

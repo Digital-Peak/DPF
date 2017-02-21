@@ -31,8 +31,8 @@ class Select extends Container
 		$attributes['name']     = $name;
 
 		if ($multiple) {
-            $attributes['multiple'] = 'multiple';
-        }
+			$attributes['multiple'] = 'multiple';
+		}
 		parent::__construct($id, $classes, $attributes);
 	}
 
