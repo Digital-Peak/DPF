@@ -14,9 +14,9 @@ class FontAwesome4 extends AbstractElementVisitor
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \CCL\Content\Visitor\Basic\AbstractElementVisitorInterface::visitIcon()
+	 * @see \CCL\Content\Visitor\AbstractElementVisitorInterface::visitIcon()
 	 */
-	public function visitIcon(\CCL\Content\Element\Basic\Icon $icon)
+	public function visitIcon(\CCL\Content\Element\Component\Icon $icon)
 	{
 		switch ($icon->getType()) {
 			case Icon::CALENDAR:
