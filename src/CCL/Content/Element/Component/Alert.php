@@ -61,8 +61,6 @@ class Alert extends Container
 		}
 
 		$this->type = $type;
-
-		$this->addClass('ccl-alert-' . $type, true);
 	}
 
 	/**

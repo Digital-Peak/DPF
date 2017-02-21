@@ -28,4 +28,4 @@ composer require Digital-Peak/ccl "dev-unstable"
 CCL comes with the following packages:
 
 ## [Content](Content)
- Package to build content trees. HTML can be generated out of such a tree decorated with different frontend frameworks like Bootstrap or Uikit and icon frameworks like Fontawesome.
+ Package to build content trees. HTML strings can be generated out of such a tree decorated with different frontend frameworks classes like Bootstrap or Uikit and icon frameworks like Fontawesome.

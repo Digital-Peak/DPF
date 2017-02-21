@@ -68,4 +68,25 @@ It will echo:
 </div>
 ```
 
+## Build a Bootstrap 4 alert box
+To build an HTML string out of a content tree, then use the following code:
+
+```php
+$alert = new \CCL\Content\Element\Component\Alert('alert', \CCL\Content\Element\Component\Alert::DANGER);
+$alert->setContent('I am an alert box!');
+
+// Decorate with Bootstrap 4 classes
+$alert->accept(new \CCL\Content\Visitor\Framework\BS4());
+
+// Traverse the tree
+$domBuilder = new \CCL\Content\Visitor\Html\DomBuilder();
+$alert->accept($domBuilder);
+
+echo $domBuilder->render();
+```
+
+It will echo:
+```html
+<div class="alert alert-danger" id="alert">I am an alert box!</div>
+```
 More examples can be found in the examples directory. They are standalone scripts which can be executed without any additional dependencies. Don't forget to run `composer install` first in the root of the ccl package.
