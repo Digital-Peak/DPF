@@ -1,4 +1,4 @@
-CCL a simple framework for CMS extensions
+CCL a simple library for CMS extensions
 ====================
 
 Build Status

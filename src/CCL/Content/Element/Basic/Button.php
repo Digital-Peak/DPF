@@ -3,6 +3,7 @@
 namespace CCL\Content\Element\Basic;
 
 use CCL\Content\Element\Basic\Container;
+use CCL\Content\Element\Component\Icon;
 
 /**
  * A button representation.
