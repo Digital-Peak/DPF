@@ -1,8 +1,8 @@
 {
 	"name": "Digital-Peak/ccl",
-	"type": "package",
+	"type": "library",
 	"description": "Cross CMS Library from Digital Peak",
-	"keywords": ["content", "framework", "library"],
+	"keywords": ["cms", "framework", "library"],
 	"homepage": "https://github.com/Digital-Peak/ccl",
 	"license": "MIT",
 	"config": {
