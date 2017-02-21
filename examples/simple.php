@@ -1,6 +1,6 @@
 <?php
 /**
- * Simple script to show how to load CCL and to create an element and run a visitor.
+ * Simple script to show how to load CCL and to create an element visiting by an example visitor.
  */
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
