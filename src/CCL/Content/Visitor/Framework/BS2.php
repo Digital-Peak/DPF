@@ -112,7 +112,9 @@ class BS2 extends AbstractElementVisitor
 	 */
 	public function visitListContainer(\CCL\Content\Element\Basic\ListContainer $listContainer)
 	{
-		$listContainer->addClass('list-striped', true);
+		if (!$listContainer->getParent() instanceof TabContainer) {
+			$listContainer->addClass('list-striped', true);
+		}
 	}
 
 	/**
