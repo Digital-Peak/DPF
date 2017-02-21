@@ -1,5 +1,5 @@
 <?php
-$root = dirname(__DIR__) . "/src/DPF/Content/Element/";
+$root = dirname(__DIR__) . "/src/CCL/Content/Element/";
 
 $files = [];
 foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root)) as $file) {
@@ -34,7 +34,7 @@ foreach ($files as $name => $file) {
 	$functions[] = "	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \\DPF\\Content\\Visitor\\ElementVisitorInterface::visit" . $name . "()
+	 * @see \\CCL\\Content\\Visitor\\ElementVisitorInterface::visit" . $name . "()
 	 */
 	public function visit" . $name . "(" . $namespace . " \$" . lcfirst($name) . ")
 	{
@@ -51,13 +51,8 @@ foreach ($files as $name => $file) {
 }
 
 $buffer = "<?php
-/**
- * @package    DPF
- * @author     Digital Peak http://www.digital-peak.com
- * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
- * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
- */
-namespace DPF\Content\Visitor;
+
+namespace CCL\\Content\\Visitor;
 
 /**
  * Abstract class which implements ElementVisitorInterface.
@@ -68,16 +63,11 @@ abstract class AbstractElementVisitor implements ElementVisitorInterface
 " . implode(PHP_EOL, $functions) . "}
 ";
 
-file_put_contents(dirname(__DIR__) . "/src/DPF/Content/Visitor/AbstractElementVisitor.php", $buffer);
+file_put_contents(dirname(__DIR__) . "/src/CCL/Content/Visitor/AbstractElementVisitor.php", $buffer);
 
 $buffer = "<?php
-/**
- * @package    DPF
- * @author     Digital Peak http://www.digital-peak.com
- * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
- * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
- */
-namespace DPF\Content\Visitor;
+
+namespace CCL\\Content\\Visitor;
 
 /**
  * Interface to visit the elements.
@@ -87,4 +77,4 @@ interface ElementVisitorInterface
 
 " . implode(PHP_EOL, $functionsI) . "}
 ";
-file_put_contents(dirname(__DIR__) . "/src/DPF/Content/Visitor/ElementVisitorInterface.php", $buffer);
+file_put_contents(dirname(__DIR__) . "/src/CCL/Content/Visitor/ElementVisitorInterface.php", $buffer);

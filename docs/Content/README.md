@@ -4,18 +4,18 @@ The content package provides some element tree functionality. You can set up a t
 
 
 Running the following code will produce the output:
-> Found element: demo [DPF\Content\Element\Basic\Element]
+> Found element: demo [CCL\Content\Element\Basic\Element]
 
 ```
-class ExampleVisitor extends \DPF\Content\Visitor\AbstractElementVisitor
+class ExampleVisitor extends \CCL\Content\Visitor\AbstractElementVisitor
 {
-	public function visitElement(\DPF\Content\Element\Basic\Element $element)
+	public function visitElement(\CCL\Content\Element\Basic\Element $element)
 	{
 		echo 'Found element: ' . $element;
 	}
 }
 
-$element = new \DPF\Content\Element\Basic\Element('demo');
+$element = new \CCL\Content\Element\Basic\Element('demo');
 $element->accept(new ExampleVisitor());
 ```
 More example can be found in the examples directory.

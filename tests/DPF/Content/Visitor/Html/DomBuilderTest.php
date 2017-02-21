@@ -1,18 +1,13 @@
 <?php
-/**
- * @package    DPF
- * @author     Digital Peak http://www.digital-peak.com
- * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
- * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
- */
-namespace DPF\Tests\Content\Visitor\Framework;
 
-use DPF\Content\Framework;
+namespace CCL\Tests\Content\Visitor\Framework;
+
+use CCL\Content\Framework;
 use PHPUnit\Framework\TestCase;
-use DPF\Content\Element\Basic\Element;
-use DPF\Content\Element\Basic\Container;
-use DPF\Content\Visitor\Html\DomBuilder;
-use DPF\Content\Element\Extension\FacebookComment;
+use CCL\Content\Element\Basic\Element;
+use CCL\Content\Element\Basic\Container;
+use CCL\Content\Visitor\Html\DomBuilder;
+use CCL\Content\Element\Extension\FacebookComment;
 
 class DomBuilderTest extends TestCase
 {
@@ -97,7 +92,7 @@ class DomBuilderTest extends TestCase
 	{
 		$builder = new DomBuilder();
 
-		$e = new Container('test', array(), array('dpf-prefix' => 'foo-'));
+		$e = new Container('test', array(), array('ccl-prefix' => 'foo-'));
 		$e->addChild(new Container('unit'))
 		->addChild(new Container('bar', array('doo')))
 		->addChild(new Container('john'));

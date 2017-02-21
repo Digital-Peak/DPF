@@ -18,7 +18,7 @@ before_script:
 script:
   - mkdir -p build/logs
   - vendor/bin/phpunit
-  - vendor/bin/phpcs --report=full -p -s --standard=scripts/phpcs/DPF src tests
+  - vendor/bin/phpcs --report=full -p -s --standard=scripts/phpcs/CCL src tests
 
 after_success:
   - travis_retry php vendor/bin/coveralls

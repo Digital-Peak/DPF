@@ -1,15 +1,10 @@
 <?php
-/**
- * @package    DPF
- * @author     Digital Peak http://www.digital-peak.com
- * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
- * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
- */
-namespace DPF\Tests\Content\Element\Basic;
+
+namespace CCL\Tests\Content\Element\Basic;
 
 use PHPUnit\Framework\TestCase;
-use DPF\Content\Element\Basic\Element;
-use DPF\Content\Visitor\ElementVisitorInterface;
+use CCL\Content\Element\Basic\Element;
+use CCL\Content\Visitor\ElementVisitorInterface;
 
 class ElementTest extends TestCase
 {
@@ -61,14 +56,14 @@ class ElementTest extends TestCase
 
 	public function testGetClassFromAttributesWithPrefix()
 	{
-		$e = new Element('test', array('unit'), array('dpf-prefix' => 'foo-'));
+		$e = new Element('test', array('unit'), array('ccl-prefix' => 'foo-'));
 
 		$this->assertEquals('foo-unit', $e->getAttributes()['class']);
 	}
 
 	public function testGetClassFromAttributesWithPrefixProtectedClass()
 	{
-		$e = new Element('test', array('foo', 'bar'), array('dpf-prefix' => 'unit-'));
+		$e = new Element('test', array('foo', 'bar'), array('ccl-prefix' => 'unit-'));
 		$e->setProtectedClass('bar');
 
 		$this->assertEquals('unit-foo bar', $e->getAttributes()['class']);

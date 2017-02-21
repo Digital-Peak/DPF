@@ -17,12 +17,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"DPF\\": "src/DPF"
+			"CCL\\": "src/CCL"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"DPF\\Tests\\": "tests/DPF"
+			"CCL\\Tests\\": "tests/CCL"
 		}
 	}
 }

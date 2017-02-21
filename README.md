@@ -1,10 +1,10 @@
-DPF a simple framework for CMS extensions
+CCL a simple framework for CMS extensions
 ====================
 
 Build Status
 ---------------------
-[![Build Status](https://travis-ci.org/Digital-Peak/dpf.svg?branch=unstable)](https://travis-ci.org/Digital-Peak/dpf)
-[![Coverage Status](https://coveralls.io/repos/github/Digital-Peak/dpf/badge.svg?branch=unstable)](https://coveralls.io/github/Digital-Peak/dpf?branch=unstable)
+[![Build Status](https://travis-ci.org/Digital-Peak/ccl.svg?branch=unstable)](https://travis-ci.org/Digital-Peak/ccl)
+[![Coverage Status](https://coveralls.io/repos/github/Digital-Peak/ccl/badge.svg?branch=unstable)](https://coveralls.io/github/Digital-Peak/ccl?branch=unstable)
 
 Status
 ---------------------

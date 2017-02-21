@@ -1,17 +1,12 @@
 <?php
-/**
- * @package    DPF
- * @author     Digital Peak http://www.digital-peak.com
- * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
- * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
- */
-namespace DPF\Tests\Content\Visitor\Framework;
 
-use DPF\Content\Framework;
+namespace CCL\Tests\Content\Visitor\Framework;
+
+use CCL\Content\Framework;
 use PHPUnit\Framework\TestCase;
-use DPF\Content\Element\Component\Alert;
-use DPF\Content\Visitor\Framework\BS2;
-use DPF\Content\Element\Component\Grid\Column;
+use CCL\Content\Element\Component\Alert;
+use CCL\Content\Visitor\Framework\BS2;
+use CCL\Content\Element\Component\Grid\Column;
 
 class BS2Test extends TestCase
 {
@@ -22,7 +17,7 @@ class BS2Test extends TestCase
 		$f = new BS2();
 
 		$f->visitAlert($a);
-		$this->assertEquals('dpf-alert-info alert alert-info', $a->getAttributes()['class']);
+		$this->assertEquals('ccl-alert-info alert alert-info', $a->getAttributes()['class']);
 	}
 
 	public function testBS2GridColumnMin()
@@ -31,7 +26,7 @@ class BS2Test extends TestCase
 		$f = new BS2();
 
 		$f->visitGridColumn($c);
-		$this->assertEquals('dpf-col-1 span1', $c->getAttributes()['class']);
+		$this->assertEquals('ccl-col-1 span1', $c->getAttributes()['class']);
 	}
 
 	public function testBS2GridColumnMiddle()
@@ -40,7 +35,7 @@ class BS2Test extends TestCase
 		$f = new BS2();
 
 		$f->visitGridColumn($c);
-		$this->assertEquals('dpf-col-25 span3', $c->getAttributes()['class']);
+		$this->assertEquals('ccl-col-25 span3', $c->getAttributes()['class']);
 	}
 
 	public function testBS2GridColumnFull()
@@ -49,6 +44,6 @@ class BS2Test extends TestCase
 		$f = new BS2();
 
 		$f->visitGridColumn($c);
-		$this->assertEquals('dpf-col-100 span12', $c->getAttributes()['class']);
+		$this->assertEquals('ccl-col-100 span12', $c->getAttributes()['class']);
 	}
 }
