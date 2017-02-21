@@ -7,9 +7,9 @@
  */
 namespace DPF\Content\Visitor\Framework;
 
-use DPF\Content\Element\Basic\Grid\Column;
-use DPF\Content\Element\Basic\Grid\Row;
-use DPF\Content\Element\Basic\Alert;
+use DPF\Content\Element\Component\Grid\Column;
+use DPF\Content\Element\Component\Grid\Row;
+use DPF\Content\Element\Component\Alert;
 
 /**
  * The Bootstrap 3 framework visitor.
@@ -32,7 +32,7 @@ class BS3 extends BS2
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\DPF\Content\Visitor\Basic\ElementVisitorInterface::visitGridColumn()
+	 * @see \DPF\Content\Visitor\ElementVisitorInterface::visitGridColumn()
 	 */
 	public function visitGridColumn(Column $gridColumn)
 	{
@@ -43,7 +43,7 @@ class BS3 extends BS2
 	 *
 	 * {@inheritdoc}
 	 *
-	 * @see \DPF\Content\Visitor\Basic\AbstractElementVisitorInterface::visitGridRow()
+	 * @see \DPF\Content\Visitor\ElementVisitorInterface::visitGridRow()
 	 */
 	public function visitGridRow(Row $gridRow)
 	{

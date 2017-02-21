@@ -10,6 +10,6 @@ namespace DPF\Content\Visitor\Framework;
 /**
  * The Bootstrap 4 framework visitor.
  */
-class Bs3 extends BS3
+class BS4 extends BS3
 {
 }

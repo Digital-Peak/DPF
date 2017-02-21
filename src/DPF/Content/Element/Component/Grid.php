@@ -5,9 +5,9 @@
  * @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
-namespace DPF\Content\Element\Basic;
+namespace DPF\Content\Element\Component;
 
-use DPF\Content\Element\Basic\Grid\Row;
+use DPF\Content\Element\Component\Grid\Row;
 
 /**
  * A grid representation.

@@ -16,16 +16,16 @@ interface ElementVisitorInterface
 	/**
 	 * Visit the Alert
 	 *
-	 * @param \DPF\Content\Element\Basic\Alert $alert
+	 * @param \DPF\Content\Element\Component\Alert $alert
 	 */
-	public function visitAlert(\DPF\Content\Element\Basic\Alert $alert);
+	public function visitAlert(\DPF\Content\Element\Component\Alert $alert);
 
 	/**
 	 * Visit the Badge
 	 *
-	 * @param \DPF\Content\Element\Basic\Badge $badge
+	 * @param \DPF\Content\Element\Component\Badge $badge
 	 */
-	public function visitBadge(\DPF\Content\Element\Basic\Badge $badge);
+	public function visitBadge(\DPF\Content\Element\Component\Badge $badge);
 
 	/**
 	 * Visit the Button
@@ -49,13 +49,6 @@ interface ElementVisitorInterface
 	public function visitDescriptionDescription(\DPF\Content\Element\Basic\Description\Description $descriptionDescription);
 
 	/**
-	 * Visit the DescriptionTerm
-	 *
-	 * @param \DPF\Content\Element\Basic\Description\Term $descriptionTerm
-	 */
-	public function visitDescriptionTerm(\DPF\Content\Element\Basic\Description\Term $descriptionTerm);
-
-	/**
 	 * Visit the DescriptionList
 	 *
 	 * @param \DPF\Content\Element\Basic\DescriptionList $descriptionList
@@ -70,11 +63,32 @@ interface ElementVisitorInterface
 	public function visitDescriptionListHorizontal(\DPF\Content\Element\Basic\DescriptionListHorizontal $descriptionListHorizontal);
 
 	/**
+	 * Visit the DescriptionTerm
+	 *
+	 * @param \DPF\Content\Element\Basic\Description\Term $descriptionTerm
+	 */
+	public function visitDescriptionTerm(\DPF\Content\Element\Basic\Description\Term $descriptionTerm);
+
+	/**
 	 * Visit the Element
 	 *
 	 * @param \DPF\Content\Element\Basic\Element $element
 	 */
 	public function visitElement(\DPF\Content\Element\Basic\Element $element);
+
+	/**
+	 * Visit the FacebookComment
+	 *
+	 * @param \DPF\Content\Element\Extension\FacebookComment $facebookComment
+	 */
+	public function visitFacebookComment(\DPF\Content\Element\Extension\FacebookComment $facebookComment);
+
+	/**
+	 * Visit the FacebookLike
+	 *
+	 * @param \DPF\Content\Element\Extension\FacebookLike $facebookLike
+	 */
+	public function visitFacebookLike(\DPF\Content\Element\Extension\FacebookLike $facebookLike);
 
 	/**
 	 * Visit the Font
@@ -126,25 +140,32 @@ interface ElementVisitorInterface
 	public function visitFrame(\DPF\Content\Element\Basic\Frame $frame);
 
 	/**
+	 * Visit the GoogleLike
+	 *
+	 * @param \DPF\Content\Element\Extension\GoogleLike $googleLike
+	 */
+	public function visitGoogleLike(\DPF\Content\Element\Extension\GoogleLike $googleLike);
+
+	/**
 	 * Visit the Grid
 	 *
-	 * @param \DPF\Content\Element\Basic\Grid $grid
+	 * @param \DPF\Content\Element\Component\Grid $grid
 	 */
-	public function visitGrid(\DPF\Content\Element\Basic\Grid $grid);
+	public function visitGrid(\DPF\Content\Element\Component\Grid $grid);
 
 	/**
 	 * Visit the GridColumn
 	 *
-	 * @param \DPF\Content\Element\Basic\Grid\Column $gridColumn
+	 * @param \DPF\Content\Element\Component\Grid\Column $gridColumn
 	 */
-	public function visitGridColumn(\DPF\Content\Element\Basic\Grid\Column $gridColumn);
+	public function visitGridColumn(\DPF\Content\Element\Component\Grid\Column $gridColumn);
 
 	/**
 	 * Visit the GridRow
 	 *
-	 * @param \DPF\Content\Element\Basic\Grid\Row $gridRow
+	 * @param \DPF\Content\Element\Component\Grid\Row $gridRow
 	 */
-	public function visitGridRow(\DPF\Content\Element\Basic\Grid\Row $gridRow);
+	public function visitGridRow(\DPF\Content\Element\Component\Grid\Row $gridRow);
 
 	/**
 	 * Visit the Heading
@@ -156,9 +177,9 @@ interface ElementVisitorInterface
 	/**
 	 * Visit the Icon
 	 *
-	 * @param \DPF\Content\Element\Basic\Icon $icon
+	 * @param \DPF\Content\Element\Component\Icon $icon
 	 */
-	public function visitIcon(\DPF\Content\Element\Basic\Icon $icon);
+	public function visitIcon(\DPF\Content\Element\Component\Icon $icon);
 
 	/**
 	 * Visit the Image
@@ -173,6 +194,13 @@ interface ElementVisitorInterface
 	 * @param \DPF\Content\Element\Basic\Link $link
 	 */
 	public function visitLink(\DPF\Content\Element\Basic\Link $link);
+
+	/**
+	 * Visit the LinkedInShare
+	 *
+	 * @param \DPF\Content\Element\Extension\LinkedInShare $linkedInShare
+	 */
+	public function visitLinkedInShare(\DPF\Content\Element\Extension\LinkedInShare $linkedInShare);
 
 	/**
 	 * Visit the ListContainer
@@ -205,16 +233,16 @@ interface ElementVisitorInterface
 	/**
 	 * Visit the Tab
 	 *
-	 * @param \DPF\Content\Element\Basic\Tab $tab
+	 * @param \DPF\Content\Element\Component\Tab $tab
 	 */
-	public function visitTab(\DPF\Content\Element\Basic\Tab $tab);
+	public function visitTab(\DPF\Content\Element\Component\Tab $tab);
 
 	/**
 	 * Visit the TabContainer
 	 *
-	 * @param \DPF\Content\Element\Basic\TabContainer $tabContainer
+	 * @param \DPF\Content\Element\Component\TabContainer $tabContainer
 	 */
-	public function visitTabContainer(\DPF\Content\Element\Basic\TabContainer $tabContainer);
+	public function visitTabContainer(\DPF\Content\Element\Component\TabContainer $tabContainer);
 
 	/**
 	 * Visit the Table
@@ -271,34 +299,6 @@ interface ElementVisitorInterface
 	 * @param \DPF\Content\Element\Basic\TextBlock $textBlock
 	 */
 	public function visitTextBlock(\DPF\Content\Element\Basic\TextBlock $textBlock);
-
-	/**
-	 * Visit the FacebookComment
-	 *
-	 * @param \DPF\Content\Element\Extension\FacebookComment $facebookComment
-	 */
-	public function visitFacebookComment(\DPF\Content\Element\Extension\FacebookComment $facebookComment);
-
-	/**
-	 * Visit the FacebookLike
-	 *
-	 * @param \DPF\Content\Element\Extension\FacebookLike $facebookLike
-	 */
-	public function visitFacebookLike(\DPF\Content\Element\Extension\FacebookLike $facebookLike);
-
-	/**
-	 * Visit the GoogleLike
-	 *
-	 * @param \DPF\Content\Element\Extension\GoogleLike $googleLike
-	 */
-	public function visitGoogleLike(\DPF\Content\Element\Extension\GoogleLike $googleLike);
-
-	/**
-	 * Visit the LinkedInShare
-	 *
-	 * @param \DPF\Content\Element\Extension\LinkedInShare $linkedInShare
-	 */
-	public function visitLinkedInShare(\DPF\Content\Element\Extension\LinkedInShare $linkedInShare);
 
 	/**
 	 * Visit the TwitterShare

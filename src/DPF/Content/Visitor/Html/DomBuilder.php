@@ -151,7 +151,7 @@ class DomBuilder implements ElementVisitorInterface
 	 *
 	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitAlert()
 	 */
-	public function visitAlert(\DPF\Content\Element\Basic\Alert $alert)
+	public function visitAlert(\DPF\Content\Element\Component\Alert $alert)
 	{
 		$this->build($alert);
 	}
@@ -161,7 +161,7 @@ class DomBuilder implements ElementVisitorInterface
 	 *
 	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitBadge()
 	 */
-	public function visitBadge(\DPF\Content\Element\Basic\Badge $badge)
+	public function visitBadge(\DPF\Content\Element\Component\Badge $badge)
 	{
 		$this->build($badge);
 	}
@@ -311,7 +311,7 @@ class DomBuilder implements ElementVisitorInterface
 	 *
 	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitGrid()
 	 */
-	public function visitGrid(\DPF\Content\Element\Basic\Grid $grid)
+	public function visitGrid(\DPF\Content\Element\Component\Grid $grid)
 	{
 		$this->build($grid);
 	}
@@ -321,7 +321,7 @@ class DomBuilder implements ElementVisitorInterface
 	 *
 	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitGridColumn()
 	 */
-	public function visitGridColumn(\DPF\Content\Element\Basic\Grid\Column $gridColumn)
+	public function visitGridColumn(\DPF\Content\Element\Component\Grid\Column $gridColumn)
 	{
 		$this->build($gridColumn);
 	}
@@ -331,7 +331,7 @@ class DomBuilder implements ElementVisitorInterface
 	 *
 	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitGridRow()
 	 */
-	public function visitGridRow(\DPF\Content\Element\Basic\Grid\Row $gridRow)
+	public function visitGridRow(\DPF\Content\Element\Component\Grid\Row $gridRow)
 	{
 		$this->build($gridRow);
 	}
@@ -351,7 +351,7 @@ class DomBuilder implements ElementVisitorInterface
 	 *
 	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitIcon()
 	 */
-	public function visitIcon(\DPF\Content\Element\Basic\Icon $icon)
+	public function visitIcon(\DPF\Content\Element\Component\Icon $icon)
 	{
 		$this->build($icon, 'i');
 	}
@@ -421,7 +421,7 @@ class DomBuilder implements ElementVisitorInterface
 	 *
 	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTab()
 	 */
-	public function visitTab(\DPF\Content\Element\Basic\Tab $tab)
+	public function visitTab(\DPF\Content\Element\Component\Tab $tab)
 	{
 		$this->build($tab);
 	}
@@ -431,7 +431,7 @@ class DomBuilder implements ElementVisitorInterface
 	 *
 	 * @see \DPF\DPF\Content\Visitor\ElementVisitorInterface::visitTabContainer()
 	 */
-	public function visitTabContainer(\DPF\Content\Element\Basic\TabContainer $tabContainer)
+	public function visitTabContainer(\DPF\Content\Element\Component\TabContainer $tabContainer)
 	{
 		$this->build($tabContainer);
 	}

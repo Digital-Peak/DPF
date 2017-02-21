@@ -8,34 +8,33 @@ foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root)) as
 		continue;
 	}
 
-	$files[] = $file->getPathName();
+
+	$name = str_replace(['.php', $root], '', $file->getPathName());
+	$name = str_replace("Basic" . DIRECTORY_SEPARATOR, "", $name);
+	$name = str_replace("Component" . DIRECTORY_SEPARATOR, "", $name);
+	$name = str_replace("Extension" . DIRECTORY_SEPARATOR, "", $name);
+	$name = str_replace(DIRECTORY_SEPARATOR, "", $name);
+
+	$files[$name] = $file->getPathName();
 }
 
-sort($files);
+ksort($files);
 
-$functions = array();
+$functions  = array();
 $functionsI = array();
 
-foreach ($files as $file) {
+foreach ($files as $name => $file) {
 	$content = file_get_contents($file);
-	if (! preg_match("#^namespace\s+(.+?);$#sm", $content, $m)) {
+	if (!preg_match("#^namespace\s+(.+?);$#sm", $content, $m)) {
 		continue;
 	}
 
 	$namespace = "\\" . $m[1] . "\\" . basename($file, ".php");
 
-	$name = str_replace([
-		".php",
-		$root
-	], "", $file);
-	$name = str_replace("Basic" . DIRECTORY_SEPARATOR, "", $name);
-	$name = str_replace("Extension" . DIRECTORY_SEPARATOR, "", $name);
-	$name = str_replace(DIRECTORY_SEPARATOR, "", $name);
-
 	$functions[] = "	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \\DPF\\DPF\\Content\\Visitor\\ElementVisitorInterface::visit" . $name . "()
+	 * @see \\DPF\\Content\\Visitor\\ElementVisitorInterface::visit" . $name . "()
 	 */
 	public function visit" . $name . "(" . $namespace . " \$" . lcfirst($name) . ")
 	{
