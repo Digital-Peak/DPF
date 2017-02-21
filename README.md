@@ -31,7 +31,7 @@ composer require Digital-Peak/ccl "dev-unstable"
 ```
 
 ## Usage
-Check out the examples in the examples folder or read the (documentation)[docs]. Basically you can build your content tree like:
+Check out the examples in the examples folder or read the [documentation](docs). Basically you can build your content tree like:
 
 ```php
 $container = new \CCL\Content\Element\Basic\Container('demo');
