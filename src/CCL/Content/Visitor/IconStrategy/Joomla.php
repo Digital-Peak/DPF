@@ -2,7 +2,7 @@
 
 namespace CCL\Content\Visitor\IconStrategy;
 
-use CCL\Content\Element\Basic\Icon;
+use CCL\Content\Element\Component\Icon;
 use CCL\Content\Visitor\AbstractElementVisitor;
 
 /**
@@ -16,7 +16,7 @@ class Joomla extends AbstractElementVisitor
 	 *
 	 * @see \CCL\Content\Visitor\AbstractElementVisitorInterface::visitIcon()
 	 */
-	public function visitIcon(\CCL\Content\Element\Component\Icon $icon)
+	public function visitIcon(Icon $icon)
 	{
 		switch ($icon->getType()) {
 			case Icon::CALENDAR:
