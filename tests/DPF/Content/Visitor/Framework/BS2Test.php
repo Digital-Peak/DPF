@@ -9,9 +9,9 @@ namespace DPF\Tests\Content\Visitor\Framework;
 
 use DPF\Content\Framework;
 use PHPUnit\Framework\TestCase;
-use DPF\Content\Element\Basic\Alert;
+use DPF\Content\Element\Component\Alert;
 use DPF\Content\Visitor\Framework\BS2;
-use DPF\Content\Element\Basic\Grid\Column;
+use DPF\Content\Element\Component\Grid\Column;
 
 class BS2Test extends TestCase
 {

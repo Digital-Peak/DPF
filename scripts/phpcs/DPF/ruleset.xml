@@ -28,8 +28,4 @@
 			<property name="absoluteLineLimit" value="0" />
 		</properties>
 	</rule>
-
-	<rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
-		<exclude-pattern type="relative">tests/*</exclude-pattern>
-	</rule>
 </ruleset>
