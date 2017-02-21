@@ -17,7 +17,7 @@ class BS2Test extends TestCase
 		$f = new BS2();
 
 		$f->visitAlert($a);
-		$this->assertEquals('ccl-alert-info alert alert-info', $a->getAttributes()['class']);
+		$this->assertEquals('alert alert-info', $a->getAttributes()['class']);
 	}
 
 	public function testBS2GridColumnMin()
@@ -26,7 +26,7 @@ class BS2Test extends TestCase
 		$f = new BS2();
 
 		$f->visitGridColumn($c);
-		$this->assertEquals('ccl-col-1 span1', $c->getAttributes()['class']);
+		$this->assertEquals('span1', $c->getAttributes()['class']);
 	}
 
 	public function testBS2GridColumnMiddle()
@@ -35,7 +35,7 @@ class BS2Test extends TestCase
 		$f = new BS2();
 
 		$f->visitGridColumn($c);
-		$this->assertEquals('ccl-col-25 span3', $c->getAttributes()['class']);
+		$this->assertEquals('span3', $c->getAttributes()['class']);
 	}
 
 	public function testBS2GridColumnFull()
@@ -44,6 +44,6 @@ class BS2Test extends TestCase
 		$f = new BS2();
 
 		$f->visitGridColumn($c);
-		$this->assertEquals('ccl-col-100 span12', $c->getAttributes()['class']);
+		$this->assertEquals('span12', $c->getAttributes()['class']);
 	}
 }

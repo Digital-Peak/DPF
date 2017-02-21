@@ -26,8 +26,6 @@ class Column extends Container
 		}
 
 		$this->width = $width;
-
-		$this->addClass('ccl-col-' . $width, true);
 	}
 
 	/**
