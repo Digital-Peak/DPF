@@ -3,6 +3,7 @@
 namespace CCL\Content\Element\Component;
 
 use CCL\Content\Element\Basic\Container;
+use CCL\Content\Element\Basic\Link;
 use CCL\Content\Element\Basic\ListContainer;
 use CCL\Content\Element\Basic\ListItem;
 
