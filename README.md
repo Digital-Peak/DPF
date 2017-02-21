@@ -37,8 +37,10 @@ Check out the examples in the examples folder or read the [documentation](docs).
 $container = new \CCL\Content\Element\Basic\Container('demo');
 
 // Build the tree
-$container->addChild(new \CCL\Content\Element\Basic\Paragraph('child1'))->setContent('Paragraph');
-$container->addChild(new \CCL\Content\Element\Basic\TextBlock('child2'))->setContent('TextBlock');
+$container->addChild(new \CCL\Content\Element\Basic\Paragraph('child'))->setContent('Paragraph');
+$container->addChild(new \CCL\Content\Element\Component\Alert('alert'))->setContent('I am an alert box!');
+
+$container->accept(new \CCL\Content\Visitor\Framework\BS4());
 
 // Traverse the tree
 $domBuilder = new \CCL\Content\Visitor\Html\DomBuilder();
@@ -47,11 +49,11 @@ $container->accept($domBuilder);
 echo $domBuilder->render();
 ```
 
-It echoes 
+It prints 
 ```html
 <div id="demo">
-<p id="demo-child1">Paragraph</p>
-<span id="demo-child2">TextBlock</span>
+<p id="demo-child">Paragraph</p>
+<div class="alert alert-info" id="demo-alert">I am an alert box!</div>
 </div>
 ```
 
