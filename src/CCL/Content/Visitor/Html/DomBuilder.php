@@ -377,7 +377,7 @@ class DomBuilder implements ElementVisitorInterface
 	 */
 	public function visitListContainer(\CCL\Content\Element\Basic\ListContainer $listContainer)
 	{
-		$this->build($listContainer, $listContainer->getType() == ListContainer::UNORDERED ? 'ul' : 'ol');
+		$this->build($listContainer, $listContainer->getType() == \CCL\Content\Element\Basic\ListContainer::UNORDERED ? 'ul' : 'ol');
 	}
 
 	/**
