@@ -3,7 +3,6 @@
 namespace CCL\Content\Element\Extension;
 
 use CCL\Content\Element\Basic\Element;
-use CCL\Content\Visitor\ElementVisitorInterface;
 
 class LinkedInShare extends Element
 {
@@ -61,15 +60,5 @@ class LinkedInShare extends Element
 		}
 
 		return $tmpLanguage;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see \CCL\Content\Element\ElementInterface::accept()
-	 */
-	public function accept(ElementVisitorInterface $visitor)
-	{
-		$visitor->visitLinkedInShare($this);
 	}
 }

@@ -276,13 +276,25 @@ class Element implements ElementInterface
 	 */
 	public function accept(ElementVisitorInterface $visitor)
 	{
-		$name = str_replace(__NAMESPACE__, '', get_class($this));
+		// Get the current class name
+		$class = get_class($this);
+
+		// Replace the none basic namespaces to the actual one
+		$class = str_replace('CCL\\Content\\Element\\Component', __NAMESPACE__, $class);
+		$class = str_replace('CCL\\Content\\Element\\Extension', __NAMESPACE__, $class);
+
+		// Remove the actual namespace from the class name
+		$name = str_replace(__NAMESPACE__, '', $class);
+
+		// Create the visit funtion name
 		$name = 'visit' . str_replace('\\', '', $name);
 
+		// Check if the name exists
 		if (!method_exists($visitor, $name)) {
 			return;
 		}
 
+		// Call the visit function
 		$visitor->{$name}($this);
 	}
 

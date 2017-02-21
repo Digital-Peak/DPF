@@ -3,7 +3,6 @@
 namespace CCL\Content\Element\Extension;
 
 use CCL\Content\Element\Basic\Element;
-use CCL\Content\Visitor\ElementVisitorInterface;
 
 class XingShare extends Element
 {
@@ -20,15 +19,5 @@ class XingShare extends Element
       x.src = "https://www.xing-share.com/plugins/share.js";
       s.parentNode.insertBefore(x, s);
   })(document, "script");</script>');
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see \CCL\Content\Element\ElementInterface::accept()
-	 */
-	public function accept(ElementVisitorInterface $visitor)
-	{
-		$visitor->visitXingShare($this);
 	}
 }

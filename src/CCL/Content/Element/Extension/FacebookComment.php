@@ -3,7 +3,6 @@
 namespace CCL\Content\Element\Extension;
 
 use CCL\Content\Element\Basic\Element;
-use CCL\Content\Visitor\ElementVisitorInterface;
 
 class FacebookComment extends Element
 {
@@ -144,21 +143,11 @@ class FacebookComment extends Element
 
 	public function setNumberOfPostsLimit($max)
 	{
-		$this->attributes['data-numposts'] = (int) $max;
+		$this->addAttribute('data-numposts', (int) $max);
 	}
 
 	public function setColorScheme($scheme)
 	{
-		$this->attributes['data-colorscheme'] = $scheme;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see \CCL\Content\Element\ElementInterface::accept()
-	 */
-	public function accept(ElementVisitorInterface $visitor)
-	{
-		$visitor->visitFacebookComment($this);
+		$this->addAttribute('data-colorscheme', $scheme);
 	}
 }

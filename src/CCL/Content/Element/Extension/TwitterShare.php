@@ -3,7 +3,6 @@
 namespace CCL\Content\Element\Extension;
 
 use CCL\Content\Element\Basic\Link;
-use CCL\Content\Visitor\ElementVisitorInterface;
 
 class TwitterShare extends Link
 {
@@ -41,15 +40,5 @@ class TwitterShare extends Link
 			$tmpLanguage = 'en';
 		}
 		return $tmpLanguage;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see \CCL\Content\Element\ElementInterface::accept()
-	 */
-	public function accept(ElementVisitorInterface $visitor)
-	{
-		$visitor->visitTwitterShare($this);
 	}
 }
