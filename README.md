@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/Digital-Peak/ccl/badge.svg?branch=unstable)](https://coveralls.io/github/Digital-Peak/ccl?branch=unstable)
 
 ## Status
-This is a fresh project under heavy development. The target is to provide a framework which will allow to use extensions on different CMS's like Joomla or Wordpress.
+CCL means **C**ross **C**MS **L**ibrary. This is a fresh project under heavy development. The target is to provide a library which allows to use one code base for an extension on different CMS's like Joomla or Wordpress.
 
 ## Installation via Composer
 Add `"Digital-Peak/ccl": "dev-unstable"` to the require block in your composer.json and then run `composer install`.
