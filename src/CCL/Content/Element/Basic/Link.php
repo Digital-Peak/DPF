@@ -10,12 +10,12 @@ class Link extends Container
 
 	public function __construct($id, $link, $target = null, array $classes = [], array $attributes = [])
 	{
-		$attributes['href'] = $link;
+		parent::__construct($id, $classes, $attributes);
+
+		$this->addAttribute('href', $link);
 
 		if ($target) {
-			$attributes['target'] = $target;
+			$this->addAttribute('target', $target);
 		}
-
-		parent::__construct($id, $classes, $attributes);
 	}
 }

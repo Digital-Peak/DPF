@@ -1,6 +1,6 @@
 <?php
 
-namespace CCL\Tests\Content\Visitor\Framework;
+namespace CCL\Tests\Content\Visitor\Html\Framework;
 
 use CCL\Content\Framework;
 use PHPUnit\Framework\TestCase;
