@@ -5,7 +5,7 @@ namespace CCL\Tests\Content\Visitor\Framework;
 use CCL\Content\Framework;
 use PHPUnit\Framework\TestCase;
 use CCL\Content\Element\Component\Alert;
-use CCL\Content\Visitor\Framework\BS2;
+use CCL\Content\Visitor\Html\Framework\BS2;
 use CCL\Content\Element\Component\Grid\Column;
 
 class BS2Test extends TestCase

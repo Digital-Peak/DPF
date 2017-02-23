@@ -1,6 +1,6 @@
 <?php
 
-namespace CCL\Content\Visitor\Framework;
+namespace CCL\Content\Visitor\Html\Framework;
 
 use CCL\Content\Element\Component\Grid\Column;
 use CCL\Content\Element\Component\Grid\Row;

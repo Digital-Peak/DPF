@@ -76,7 +76,7 @@ $alert = new \CCL\Content\Element\Component\Alert('alert', \CCL\Content\Element\
 $alert->setContent('I am an alert box!');
 
 // Decorate with Bootstrap 4 classes
-$alert->accept(new \CCL\Content\Visitor\Framework\BS4());
+$alert->accept(new \CCL\Content\Visitor\Html\Framework\BS4());
 
 // Traverse the tree
 $domBuilder = new \CCL\Content\Visitor\Html\DomBuilder();

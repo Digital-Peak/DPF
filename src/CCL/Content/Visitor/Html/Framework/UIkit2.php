@@ -1,6 +1,6 @@
 <?php
 
-namespace CCL\Content\Visitor\Framework;
+namespace CCL\Content\Visitor\Html\Framework;
 
 use CCL\Content\Element\Component\Alert;
 use CCL\Content\Element\Component\Badge;
@@ -14,13 +14,13 @@ use CCL\Content\Element\Component\Tab;
 use CCL\Content\Element\Component\TabContainer;
 use CCL\Content\Element\Basic\Table;
 use CCL\Content\Visitor\AbstractElementVisitor;
+use CCL\Content\Element\Component\Grid;
 
 /**
- * The Bootstrap 2 framework visitor.
+ * The Uikit 2 framework visitor.
  */
-class BS2 extends AbstractElementVisitor
+class UIkit2 extends AbstractElementVisitor
 {
-
 	/**
 	 * The alert mappings.
 	 *
@@ -30,94 +30,111 @@ class BS2 extends AbstractElementVisitor
 		Alert::INFO    => 'info',
 		Alert::SUCCESS => 'success',
 		Alert::WARNING => 'warning',
-		Alert::DANGER  => 'error'
+		Alert::DANGER  => 'danger'
 	];
 
 	/**
+	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitAlert()
 	 */
 	public function visitAlert(Alert $alert)
 	{
-		$alert->addClass('alert', true);
-		$alert->addClass('alert-' . $this->alertTypes[$alert->getType()], true);
+		$alert->addClass('uk-alert', true);
+		$alert->addClass('uk-alert-' . $this->alertTypes[$alert->getType()], true);
 	}
 
 	/**
+	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitBadge()
 	 */
 	public function visitBadge(Badge $badge)
 	{
-		$badge->addClass('badge', true);
+		$badge->addClass('uk-badge', true);
 	}
 
 	/**
+	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitButton()
 	 */
 	public function visitButton(Button $button)
 	{
-		$button->addClass('btn', true);
-		$button->addClass('btn-default', true);
+		$button->addClass('uk-button', true);
 	}
 
 	/**
+	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitDescriptionListHorizontal()
 	 */
 	public function visitDescriptionListHorizontal(DescriptionListHorizontal $descriptionListHorizontal)
 	{
-		$descriptionListHorizontal->addClass('dl-horizontal', true);
+		$descriptionListHorizontal->addClass('uk-description-list-horizontal', true);
 	}
 
 	/**
+	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitForm()
 	 */
 	public function visitForm(Form $form)
 	{
-		$form->addClass('form-horizontal', true);
+		$form->addClass('uk-form', true);
+		$form->addClass('uk-form-horizontal', true);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 *
-	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitGridColumn()
+	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitFormLabel()
 	 */
-	public function visitGridColumn(Column $gridColumn)
+	public function visitFormLabel(\CCL\Content\Element\Basic\Form\Label $formLabel)
 	{
-		$gridColumn->addClass('span' . $this->calculateWidth($gridColumn->getWidth()), true);
+		$formLabel->addClass('uk-form-label', true);
 	}
 
 	/**
+	 *
+	 * {@inheritdoc}
+	 *
+	 * @see \CCL\Content\Visitor\Basic\ElementVisitorInterface::visitGridColumn()
+	 */
+	public function visitGridColumn(Column $gridColumn)
+	{
+		$width = (10 / 100) * $gridColumn->getWidth();
+		$width = round($width);
+
+		if ($width < 1) {
+			$width = 1;
+		}
+		if ($width > 10) {
+			$width = 10;
+		}
+
+		$gridColumn->addClass('uk-width-' . $width . '-10', true);
+	}
+
+	/**
+	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitGridRow()
 	 */
 	public function visitGridRow(Row $gridRow)
 	{
-		$gridRow->addClass('row-fluid', true);
+		$gridRow->addClass('uk-grid', true);
+		$gridRow->addClass('uk-grid-collapse', true);
 	}
 
 	/**
-	 * {@inheritdoc}
 	 *
-	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitListContainer()
-	 */
-	public function visitListContainer(\CCL\Content\Element\Basic\ListContainer $listContainer)
-	{
-		if (!$listContainer->getParent() instanceof TabContainer) {
-			$listContainer->addClass('list-striped', true);
-		}
-	}
-
-	/**
 	 * {@inheritdoc}
 	 *
 	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitTabContainer()
@@ -126,59 +143,30 @@ class BS2 extends AbstractElementVisitor
 	{
 		// Set up the tab links
 		$tabLinks = $tabContainer->getTabLinks();
-		$tabLinks->addClass('nav', true);
-		$tabLinks->addClass('nav-tabs', true);
+		$tabLinks->addClass('uk-tab', true);
+		$tabLinks->addAttribute('data-uk-tab', '{connect:"#' . $tabContainer->getTabs()->getId() . '"}');
 
-
-		// Set the first one as active and add the toggle attribute
+		// Set the first one as active
 		foreach ($tabLinks->getChildren() as $index => $link) {
 			if ($index == 0) {
-				$link->addClass('active', true);
+				$link->addClass('uk-active', true);
+				break;
 			}
-			$link->getChildren()[0]->addAttribute('data-toggle', 'tab');
 		}
 
 		// Set up the tab content
-		$tabContainer->getTabs()->addClass('tab-content', true);
-		foreach ($tabContainer->getTabs()->getChildren() as $index => $tab) {
-			if ($index == 0) {
-				$tab->addClass('active', true);
-			}
-			$tab->addClass('tab-pane', true);
-		}
+		$tabContainer->getTabs()->addClass('uk-switcher', true);
 	}
 
 	/**
+	 *
 	 * {@inheritdoc}
 	 *
 	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitTable()
 	 */
 	public function visitTable(Table $table)
 	{
-		$table->addClass('table', true);
-		$table->addClass('table-stripped', true);
-	}
-
-	/**
-	 * Calculates the width.
-	 *
-	 * @param number $width
-	 * @param number $maxWidth
-	 *
-	 * @return number
-	 */
-	protected function calculateWidth($width, $maxWidth = 12)
-	{
-		$newWidth = ($maxWidth / 100) * $width;
-		$newWidth = round($newWidth);
-
-		if ($newWidth < 1) {
-			$newWidth = 1;
-		}
-		if ($newWidth > $maxWidth) {
-			$newWidth = $maxWidth;
-		}
-
-		return $newWidth;
+		$table->addClass('uk-table', true);
+		$table->addClass('uk-table-stripped', true);
 	}
 }

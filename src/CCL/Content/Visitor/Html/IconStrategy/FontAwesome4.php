@@ -1,6 +1,6 @@
 <?php
 
-namespace CCL\Content\Visitor\IconStrategy;
+namespace CCL\Content\Visitor\Html\IconStrategy;
 
 use CCL\Content\Element\Component\Icon;
 use CCL\Content\Visitor\AbstractElementVisitor;
