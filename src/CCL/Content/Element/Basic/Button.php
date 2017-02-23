@@ -16,9 +16,9 @@ class Button extends Container
 	 *
 	 * @param string $id
 	 * @param string $text
-	 * @param Icon $icon
-	 * @param array $classes
-	 * @param array $attributes
+	 * @param Icon   $icon
+	 * @param array  $classes
+	 * @param array  $attributes
 	 */
 	public function __construct($id, $text = '', Icon $icon = null, array $classes = [], array $attributes = [])
 	{
@@ -30,5 +30,8 @@ class Button extends Container
 		if ($text) {
 			$this->addChild(new TextBlock('text'))->setContent($text);
 		}
+
+		// Set the type otherwise it will act as submit button
+		$this->addAttribute('type', 'button');
 	}
 }
