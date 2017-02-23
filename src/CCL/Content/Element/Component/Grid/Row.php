@@ -9,19 +9,11 @@ use CCL\Content\Element\Basic\Container;
  */
 class Row extends Container
 {
-
-	public function __construct($id, array $classes = [], array $attributes = [])
-	{
-		$classes[] = 'ccl-row';
-		$this->setProtectedClass('ccl-row');
-
-		parent::__construct($id, $classes, $attributes);
-	}
-
 	/**
 	 * Adds the given column to the internal childs and returns it for chaining.
 	 *
 	 * @param Column $column
+	 *
 	 * @return Column
 	 */
 	public function addColumn(Column $column)
