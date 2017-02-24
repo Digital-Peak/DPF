@@ -185,8 +185,6 @@ class Icon extends Element
 		}
 
 		$this->type = $type;
-
-		$this->addClass('ccl-icon-' . $type, true);
 	}
 
 	/**
