@@ -76,7 +76,7 @@ class DomBuilder implements ElementVisitorInterface
 	 * Builds the element as DOMElement with the defined tag.
 	 *
 	 * @param ElementInterface $element
-	 * @param string $tagName
+	 * @param string           $tagName
 	 *
 	 * @return \DOMNode
 	 *
@@ -87,8 +87,8 @@ class DomBuilder implements ElementVisitorInterface
 		// Determine the parent the element belongs to
 		$parent = $this->dom;
 		if ($element->getParent() != null) {
-			$x = new \DOMXPath($this->dom);
-			$parent = $x->query("//*[@id='" . $element->getParent()->getId() . "']")->item(0);
+			$x      = new \DOMXPath($this->dom);
+			$parent = $x->query("//*[@id='" . $element->getParent()->getId() . "']")->item(0) ?: $this->dom;
 		}
 
 		$root = $parent->appendChild($this->dom->createElement($tagName));
@@ -105,7 +105,7 @@ class DomBuilder implements ElementVisitorInterface
 
 		if ($element->getContent()) {
 			if (strpos($element->getContent(), '<') >= 0) {
-				$handler = function ($errno, $errstr, $errfile, $errline) use ($element) {
+				$handler    = function ($errno, $errstr, $errfile, $errline) use ($element) {
 					throw new \DOMException($errstr . ' in file ' . $errfile .
 						' on line ' . $errline . PHP_EOL . htmlentities($element->getContent()));
 				};
