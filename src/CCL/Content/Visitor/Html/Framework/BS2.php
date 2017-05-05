@@ -156,7 +156,7 @@ class BS2 extends AbstractElementVisitor
 	public function visitTable(Table $table)
 	{
 		$table->addClass('table', true);
-		$table->addClass('table-stripped', true);
+		$table->addClass('table-striped', true);
 	}
 
 	/**
