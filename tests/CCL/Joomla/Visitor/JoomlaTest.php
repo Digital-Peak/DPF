@@ -13,7 +13,7 @@ class JoomlaTest extends TestCase
 	{
 		$visitor = new Joomla();
 
-		$e = new Table('test');
+		$e = new Table('test', []);
 		$e->accept($visitor);
 
 		$this->assertContains('table-bordered', $e->getClasses());
