@@ -557,7 +557,7 @@ class DomBuilder implements ElementVisitorInterface
 	 */
 	public function visitTwitterShare(\CCL\Content\Element\Extension\TwitterShare $twitterShare)
 	{
-		$this->build($twitterShare);
+		$this->build($twitterShare, 'a');
 	}
 
 	/**

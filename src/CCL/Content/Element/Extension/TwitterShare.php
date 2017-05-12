@@ -34,11 +34,11 @@ class TwitterShare extends Link
 
 	public static function getCorrectLanguage($language)
 	{
-		$tmpLanguage = $language;
 		$tmpLanguage = substr($language, 0, strpos($language, '-'));
-		if (! in_array($tmpLanguage, self::$LANGUAGES)) {
+		if (!in_array($tmpLanguage, self::$LANGUAGES)) {
 			$tmpLanguage = 'en';
 		}
+
 		return $tmpLanguage;
 	}
 }
