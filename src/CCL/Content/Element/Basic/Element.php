@@ -1,10 +1,5 @@
 <?php
-/**
- * @package    CCL
-* @author     Digital Peak http://www.digital-peak.com
-* @copyright  Copyright (C) 2007 - 2016 Digital Peak. All rights reserved.
-* @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+
 namespace CCL\Content\Element\Basic;
 
 use CCL\Content\Visitor\ElementVisitorInterface;
@@ -64,14 +59,14 @@ class Element implements ElementInterface
 	 * Defines the internal attributes structure with the given parameters.
 	 *
 	 * @param string $id
-	 * @param array $classes
-	 * @param array $attributes
+	 * @param array  $classes
+	 * @param array  $attributes
 	 *
 	 * @throws \Exception
 	 */
 	public function __construct($id, array $classes = [], array $attributes = [])
 	{
-		if (! $id) {
+		if (!$id) {
 			throw new \Exception('ID cannot be empty!');
 		}
 
@@ -117,7 +112,7 @@ class Element implements ElementInterface
 	/**
 	 * Adds the given class to the internal class variable.
 	 *
-	 * @param string $class
+	 * @param string  $class
 	 * @param boolean $protected
 	 *
 	 * @return Element
@@ -167,15 +162,15 @@ class Element implements ElementInterface
 			$class = trim($class);
 
 			// Empty class is ignored
-			if (! $class) {
+			if (!$class) {
 				continue;
 			}
 
-			if (! key_exists('class', $attributes)) {
+			if (!key_exists('class', $attributes)) {
 				$attributes['class'] = '';
 			}
 
-			if (! in_array($class, $this->protectedClasses) && $this->getPrefix()) {
+			if (!in_array($class, $this->protectedClasses) && $this->getPrefix()) {
 				$class = $this->getPrefix() . $class;
 			}
 			$attributes['class'] .= $class . ' ';
@@ -205,9 +200,10 @@ class Element implements ElementInterface
 			$prefix = $this->attributes['ccl-prefix'];
 		}
 
-		if (! $prefix && $this->parent) {
+		if (!$prefix && $this->parent) {
 			return $this->parent->getPrefix();
 		}
+
 		return $prefix;
 	}
 
@@ -225,7 +221,7 @@ class Element implements ElementInterface
 	 * Sets the content for the element.
 	 * If append is set to true, the existing content will not being touched. If the content is invalid XML, an exception is thrown.
 	 *
-	 * @param string $content
+	 * @param string  $content
 	 * @param boolean $append
 	 *
 	 * @return Element
