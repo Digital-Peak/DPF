@@ -134,6 +134,19 @@ class UIkit2 extends AbstractElementVisitor
 	}
 
 	/**
+	 * {@inheritdoc}
+	 *
+	 * @see \CCL\Content\Visitor\ElementVisitorInterface::visitListContainer()
+	 */
+	public function visitListContainer(\CCL\Content\Element\Basic\ListContainer $listContainer)
+	{
+		if (!$listContainer->getParent() instanceof TabContainer) {
+			$listContainer->addClass('uk-list', true);
+			$listContainer->addClass('uk-list-striped', true);
+		}
+	}
+
+	/**
 	 *
 	 * {@inheritdoc}
 	 *
