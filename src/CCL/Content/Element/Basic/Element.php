@@ -56,18 +56,19 @@ class Element implements ElementInterface
 	private $parent = null;
 
 	/**
-	 * Defines the internal attributes structure with the given parameters.
+	 * Constructor which sets the classes and attributes of the element.
+	 * The id parameter must be set, otherwise an InvalidArgumentException is thrown.
 	 *
-	 * @param string $id
-	 * @param array  $classes
-	 * @param array  $attributes
+	 * @param string $id         The id of the element, must be not empty
+	 * @param array  $classes    The classes of the element
+	 * @param array  $attributes Additional attributes for the element
 	 *
-	 * @throws \Exception
+	 * @throws \InvalidArgumentException
 	 */
 	public function __construct($id, array $classes = [], array $attributes = [])
 	{
 		if (!$id) {
-			throw new \Exception('ID cannot be empty!');
+			throw new \InvalidArgumentException('ID can not be empty!');
 		}
 
 		$this->id         = $id;

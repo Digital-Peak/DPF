@@ -47,7 +47,7 @@ class DomBuilder implements ElementVisitorInterface
 	}
 
 	/**
-	 * Renders the given element and returns a HTML string.
+	 * Creates a HTML representation of the visited elements.
 	 *
 	 * @return string
 	 *

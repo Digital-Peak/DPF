@@ -90,3 +90,10 @@ It will echo:
 <div class="alert alert-danger" id="alert">I am an alert box!</div>
 ```
 More examples can be found in the examples directory. They are standalone scripts which can be executed without any additional dependencies. Don't forget to run `composer install` first in the root of the ccl package.
+
+## Available elements
+The **basic** elements do describe some standard HTML elements like a Paragraph or Description List. The full documentation of all available Basic elements can be found [here](BasicElements.md).
+
+The **components** do represent some advanced HTML elements like an Alert box or Tabs. The are mostly found in front end frameworks. The full documentation of all available Component elements can be found [here](ComponentElements.md).
+
+**Extensions** are some service helper elements like Facebook Like. The full documentation of all available extension elements can be found [here](ExtensionElements.md).
