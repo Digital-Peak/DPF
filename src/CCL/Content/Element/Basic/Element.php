@@ -220,7 +220,7 @@ class Element implements ElementInterface
 
 	/**
 	 * Sets the content for the element.
-	 * If append is set to true, the existing content will not being touched. If the content is invalid XML, an exception is thrown.
+	 * If append is set to true, the existing content will not being touched and the new content appended.
 	 *
 	 * @param string  $content
 	 * @param boolean $append
@@ -232,10 +232,6 @@ class Element implements ElementInterface
 	public function setContent($content, $append = false)
 	{
 		$content = ($append ? $this->content : '') . $content;
-
-		if ($content === '' || $content === null) {
-			return $this;
-		}
 
 		$this->content = $content;
 
