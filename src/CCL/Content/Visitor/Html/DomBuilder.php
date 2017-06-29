@@ -103,7 +103,7 @@ class DomBuilder implements ElementVisitorInterface
 			$root->setAttribute($name, $attr);
 		}
 
-		if ($element->getContent()) {
+		if ($element->getContent() !== null) {
 			if (strpos($element->getContent(), '<') >= 0) {
 				$handler    = function ($errno, $errstr, $errfile, $errline) use ($element) {
 					throw new \DOMException($errstr . ' in file ' . $errfile .
