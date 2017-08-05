@@ -71,7 +71,8 @@ class Element implements ElementInterface
 			throw new \InvalidArgumentException('ID can not be empty!');
 		}
 
-		$this->id         = $id;
+		// Only alpha num in ids
+		$this->id         = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $id);
 		$this->classes    = $classes;
 		$this->attributes = $attributes;
 	}
