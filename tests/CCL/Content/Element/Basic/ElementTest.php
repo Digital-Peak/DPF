@@ -16,6 +16,13 @@ class ElementTest extends TestCase
 		$this->assertEquals('test', $e->getId());
 	}
 
+	public function testGetIdAlphaNum()
+	{
+		$e = new Element('test.unit');
+
+		$this->assertEquals('testunit', $e->getId());
+	}
+
 	public function testGetContent()
 	{
 		$e = new Element('test');

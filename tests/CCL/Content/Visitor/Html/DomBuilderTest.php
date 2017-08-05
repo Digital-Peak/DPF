@@ -72,17 +72,17 @@ class DomBuilderTest extends TestCase
 		$builder = new DomBuilder();
 
 		$e = new Container('test');
-		$e->addChild(new Container('unit1'))->addChild(new Container('unit1.1'));
+		$e->addChild(new Container('unit1'))->addChild(new Container('unit1-1'));
 
 		$c = $e->addChild(new Container('unit2'));
-		$c->addChild(new Container('unit2.1'));
-		$c->addChild(new Container('unit2.2'));
+		$c->addChild(new Container('unit2-1'));
+		$c->addChild(new Container('unit2-2'));
 
 		$e->accept($builder);
 
 		$string  = '<div id="test">';
-		$string .= '<div id="test-unit1"><div id="test-unit1-unit1.1"></div></div>';
-		$string .= '<div id="test-unit2"><div id="test-unit2-unit2.1"></div><div id="test-unit2-unit2.2"></div></div>';
+		$string .= '<div id="test-unit1"><div id="test-unit1-unit1-1"></div></div>';
+		$string .= '<div id="test-unit2"><div id="test-unit2-unit2-1"></div><div id="test-unit2-unit2-2"></div></div>';
 		$string .= '</div>';
 
 		$this->assertXmlStringEqualsXmlString($string, $builder->render($e));
