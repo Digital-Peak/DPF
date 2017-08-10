@@ -133,12 +133,12 @@ $f = new Form('myform', 'url/to/form.html', 'myForm', 'GET');
 ###### Example
 ```
 // The following code snippet creates a frame.
-$f = new Form('myfram', 'url/to/embed.html');
+$f = new Frame('myframe', 'url/to/embed.html');
 ```
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <em>Constructor which sets the classes and attributes of the element. The src attribute must be a url which should be embedded by this frame. The idand src parameter must be set, otherwise an InvalidArgumentException is thrown.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string <strong>$src</strong> <em>The src url to embed</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$src</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
+| public | <em>Constructor which sets the classes and attributes of the element. The src attribute can be a url which should be embedded by this frame.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string <strong>$src</strong> <em>The src url to embed</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$src</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
 
 *This class extends \CCL\Content\Element\Basic\Container*
 
@@ -146,12 +146,18 @@ $f = new Form('myfram', 'url/to/embed.html');
 
 ### Class: \CCL\Content\Element\Basic\Heading
 
-> An heading representation.
+> Represents a heading element.
+
+###### Example
+```
+// The following code snippet creates a heading with the size 3.
+$h = new Heading('myheading', 3);
+```
 
 | Visibility | Function |
 |:-----------|:---------|
 | public | Parameters: <ul><li>mixed <strong>$id</strong> <em></em></li><li>mixed <strong>$size</strong> <em></em></li><li>array <strong>$classes</strong> <em></em></li><li>array <strong>$attributes</strong> <em></em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>mixed</em> <strong>$id</strong>, <em>mixed</em> <strong>$size</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
-| public | <em>The size of the heading.</em><br><br>Returns:<br><em>number</em><br><br>Call:<br><strong>getSize()</strong> |
+| public | <em>The size of the heading, must be between 1 and 6.</em><br><br>Returns:<br><em>number</em><br><br>Call:<br><strong>getSize()</strong> |
 
 *This class extends \CCL\Content\Element\Basic\Container*
 
@@ -159,11 +165,17 @@ $f = new Form('myfram', 'url/to/embed.html');
 
 ### Class: \CCL\Content\Element\Basic\Image
 
-> A image representation.
+> Represents an image element.
+
+###### Example
+```
+// The following code snippet creates an image with an alternative text.
+$i = new Image('myimage', 'url/to/image.jpg', 'Alte text');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <em>Needs a source and an optional alt attribute.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em></em></li><li>string <strong>$src</strong> <em></em></li><li>string <strong>$alt</strong> <em></em></li><li>array <strong>$classes</strong> <em></em></li><li>array <strong>$attributes</strong> <em></em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$src</strong>, <em>string</em> <strong>$alt = `''`</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
+| public | <em>Constructor which sets the classes and attributes of the element. The src attribute can be a url which represents this image.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string <strong>$src</strong> <em>The src url of the image</em></li><li>string <strong>$alt</strong> <em>The alternative text of the image</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$src</strong>, <em>string</em> <strong>$alt = `''`</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
 
 *This class extends \CCL\Content\Element\Basic\Element*
 
@@ -171,11 +183,17 @@ $f = new Form('myfram', 'url/to/embed.html');
 
 ### Class: \CCL\Content\Element\Basic\Link
 
-> A link representation.
+> Represents a link element.
+
+###### Example
+```
+// The following code snippet creates a link which should open in a new window.
+$l = new Link('mylink', 'http://www.example.com', '_blank');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <em>Defines the internal attributes structure with the given parameters.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string <strong>$link</strong> <em>The link of the element</em></li><li>string <strong>$target</strong> <em>The target of the element</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$link</strong>, <em>string</em> <strong>$target = null</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
+| public | <em>Constructor which sets the classes and attributes of the element. The link attribute can be a url where the link points to. The target attribute defines where the link should be opened.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string <strong>$link</strong> <em>The link of the element</em></li><li>string <strong>$target</strong> <em>The target of the element</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$link</strong>, <em>string</em> <strong>$target = null</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
 
 *This class extends \CCL\Content\Element\Basic\Container*
 
@@ -183,11 +201,18 @@ $f = new Form('myfram', 'url/to/embed.html');
 
 ### Class: \CCL\Content\Element\Basic\ListContainer
 
-> An alert representation.
+> Represents a list element.
+
+###### Example
+```
+// The following code snippet creates an unordered list with one item.
+$l = new ListContainer('mylist', ListContainer::UNORDERED);
+$l->addListItem(new ListItem('myitem'));
+```
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <em>Initiates the alert of the given type.</em><br><br>Parameters: <ul><li>mixed <strong>$id</strong> <em></em></li><li>string <strong>$type</strong> <em></em></li><li>array <strong>$classes</strong> <em></em></li><li>array <strong>$attributes</strong> <em></em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>mixed</em> <strong>$id</strong>, <em>string</em> <strong>$type</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
+| public | <em>Constructor which sets the classes and attributes of the element. The type defines if the list is ordered or not.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string <strong>$type</strong> <em>The type of the list</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$type</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
 | public | <em>Adds the given list item to the children and returns it for chaining.</em><br><br>Parameters: <ul><li>\CCL\Content\Element\Basic\ListItem <strong>$listItem</strong> <em></em></li></ul>Returns:<br><em>[\CCL\Content\Element\Basic\ListItem](#class-cclcontentelementbasiclistitem)</em><br><br>Call:<br><strong>addListItem(</strong><em>[\CCL\Content\Element\Basic\ListItem](#class-cclcontentelementbasiclistitem)</em> <strong>$listItem</strong>)</strong> |
 | public | <em>Returns the type of the list.</em><br><br>Returns:<br><em>string</em><br><br>Call:<br><strong>getType()</strong> |
 
@@ -197,7 +222,13 @@ $f = new Form('myfram', 'url/to/embed.html');
 
 ### Class: \CCL\Content\Element\Basic\ListItem
 
-> A list item representation.
+> Represents a list item element.
+
+###### Example
+```
+// The following code snippet creates a list item.
+$i = new ListItem('myitem');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
@@ -209,11 +240,17 @@ $f = new Form('myfram', 'url/to/embed.html');
 
 ### Class: \CCL\Content\Element\Basic\Meta
 
-> A meta representation.
+> Represents a meta element.
+
+###### Example
+```
+// The following code snippet creates a meta item with the url property.
+$m = new Meta('mymeta', 'url', 'http://www.example.com/item/74);
+```
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <em>Needs a property name and the content of the meta tag.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em></em></li><li>string <strong>$property</strong> <em></em></li><li>string <strong>$content</strong> <em></em></li><li>array <strong>$classes</strong> <em></em></li><li>array <strong>$attributes</strong> <em></em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$property</strong>, <em>string</em> <strong>$content</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
+| public | <em>Constructor which sets the classes and attributes of the element.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string <strong>$property</strong> <em>The property name</em></li><li>string <strong>$content</strong> <em>The content of the element</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$property</strong>, <em>string</em> <strong>$content</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
 
 *This class extends \CCL\Content\Element\Basic\Element*
 
@@ -221,7 +258,7 @@ $f = new Form('myfram', 'url/to/embed.html');
 
 ### Class: \CCL\Content\Element\Basic\Paragraph
 
-> Represents an paragraph element.
+> Represents a paragraph element.
 
 ###### Example
 ```
@@ -239,19 +276,36 @@ $p = new Paragraph('myp');
 
 ### Class: \CCL\Content\Element\Basic\Table
 
-> A Table representation.
+> Represents a table.
+
+###### Example
+```
+// The following code snippet creates a table and a row with a cell.
+$t = new Table('mytable', ['Col A', 'Col B']);
+$r = $t->addRow(new Table\Row('myrow'));
+$c = $r->addCell(new Table\Cell('mycell'));
+$c->setContent('The content of the cell in the table');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | Parameters: <ul><li>mixed <strong>$id</strong> <em></em></li><li>array <strong>$columns</strong> <em></em></li><li>array <strong>$classes</strong> <em></em></li><li>array <strong>$attributes</strong> <em></em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>mixed</em> <strong>$id</strong>, <em>array</em> <strong>$columns</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
-| public | Parameters: <ul><li>\CCL\Content\Element\Basic\Table\Row <strong>$row</strong> <em></em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>addFooterRow(</strong><em>[\CCL\Content\Element\Basic\Table\Row](#class-cclcontentelementbasictablerow)</em> <strong>$row</strong>)</strong> |
-| public | Parameters: <ul><li>\CCL\Content\Element\Basic\Table\Row <strong>$row</strong> <em></em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>addRow(</strong><em>[\CCL\Content\Element\Basic\Table\Row](#class-cclcontentelementbasictablerow)</em> <strong>$row</strong>)</strong> |
+| public | <em>Constructor which sets the classes and attributes of the element. The columns is an array of strings which do represent the columns of the table.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string[] <strong>$columns</strong> <em>The columns</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string[]</em> <strong>$columns</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
+| public | <em>Adds the given row to the internal footer elements children and returns it for chaining.</em><br><br>Parameters: <ul><li>\CCL\Content\Element\Basic\Table\Row <strong>$row</strong> <em></em></li></ul>Returns:<br><em>[\CCL\Content\Element\Basic\Table\Row](#class-cclcontentelementbasictablerow)</em><br><br>Call:<br><strong>addFooterRow(</strong><em>[\CCL\Content\Element\Basic\Table\Row](#class-cclcontentelementbasictablerow)</em> <strong>$row</strong>)</strong> |
+| public | <em>Adds the given row to the internal body elements children and returns it for chaining.</em><br><br>Parameters: <ul><li>\CCL\Content\Element\Basic\Table\Row <strong>$row</strong> <em></em></li></ul>Returns:<br><em>[\CCL\Content\Element\Basic\Table\Row](#class-cclcontentelementbasictablerow)</em><br><br>Call:<br><strong>addRow(</strong><em>[\CCL\Content\Element\Basic\Table\Row](#class-cclcontentelementbasictablerow)</em> <strong>$row</strong>)</strong> |
 
 *This class extends \CCL\Content\Element\Basic\Container*
 
 <hr />
 
 ### Class: \CCL\Content\Element\Basic\TextBlock
+
+> Represents a text block element.
+
+###### Example
+```
+// The following code snippet creates a Text Block.
+$t = new TextBlock('mytextblock');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
