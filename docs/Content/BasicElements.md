@@ -303,7 +303,7 @@ $c->setContent('The content of the cell in the table');
 
 ###### Example
 ```
-// The following code snippet creates a Text Block.
+// The following code snippet creates a text block.
 $t = new TextBlock('mytextblock');
 ```
 
@@ -317,6 +317,14 @@ $t = new TextBlock('mytextblock');
 
 ### Class: \CCL\Content\Element\Basic\Description\Description
 
+> Represents a description which can be used in a description list.
+
+###### Example
+```
+// The following code snippet creates a description.
+$d = new Description('mydesc');
+```
+
 | Visibility | Function |
 |:-----------|:---------|
 | public | <em>Constructor which sets the classes and attributes of the element. The id parameter must be set, otherwise an InvalidArgumentException is thrown.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
@@ -326,6 +334,14 @@ $t = new TextBlock('mytextblock');
 <hr />
 
 ### Class: \CCL\Content\Element\Basic\Description\Term
+
+> Represents a term which can be used in a description list.
+
+###### Example
+```
+// The following code snippet creates a term.
+$t = new Term('myterm');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
@@ -337,11 +353,17 @@ $t = new TextBlock('mytextblock');
 
 ### Class: \CCL\Content\Element\Basic\Form\Input
 
-> A input representation.
+> Represents a input element.
+
+###### Example
+```
+// The following code snippet creates a text area input.
+$i = new Input('myinput', 'textarea', 'nameofinput', 'Default Text');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <em>Initiates the input for a given type and name.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em></em></li><li>string <strong>$type</strong> <em></em></li><li>string <strong>$name</strong> <em></em></li><li>string <strong>$value</strong> <em></em></li><li>array <strong>$classes</strong> <em></em></li><li>array <strong>$attributes</strong> <em></em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$type</strong>, <em>string</em> <strong>$name</strong>, <em>string</em> <strong>$value = `''`</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
+| public | <em>Constructor which sets the classes and attributes of the element. The type defines what this input is and the name must be unique in the form. The value defines what this input contains for data.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string <strong>$type</strong> <em>The type of the input</em></li><li>string <strong>$name</strong> <em>The name of the input</em></li><li>string <strong>$value</strong> <em>The value of the input</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$type</strong>, <em>string</em> <strong>$name</strong>, <em>string</em> <strong>$value = `''`</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
 
 *This class extends \CCL\Content\Element\Basic\Element*
 
@@ -349,11 +371,17 @@ $t = new TextBlock('mytextblock');
 
 ### Class: \CCL\Content\Element\Basic\Form\Label
 
-> A form label representation.
+> Represents a label element.
+
+###### Example
+```
+// The following code snippet creates a text area input.
+$i = new Label('myinput', 'idofinput');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <em>Initiates the label for the id of the given for input.</em><br><br>Parameters: <ul><li>mixed <strong>$id</strong> <em></em></li><li>string <strong>$forId</strong> <em></em></li><li>array <strong>$classes</strong> <em></em></li><li>array <strong>$attributes</strong> <em></em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>mixed</em> <strong>$id</strong>, <em>string</em> <strong>$forId</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
+| public | <em>Constructor which sets the classes and attributes of the element.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string <strong>$forId</strong> <em>The id the label belongs to</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$forId</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
 
 *This class extends \CCL\Content\Element\Basic\Container*
 
@@ -361,11 +389,17 @@ $t = new TextBlock('mytextblock');
 
 ### Class: \CCL\Content\Element\Basic\Form\Option
 
-> A select option representation.
+> Represents a select option element.
+
+###### Example
+```
+// The following code snippet creates a select option element with a value.
+$o = new Option('myselect', 'myvalue');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <em>Initiates the label for the id of the given for input.</em><br><br>Parameters: <ul><li>mixed <strong>$id</strong> <em></em></li><li>string <strong>$value</strong> <em></em></li><li>array <strong>$classes</strong> <em></em></li><li>array <strong>$attributes</strong> <em></em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>mixed</em> <strong>$id</strong>, <em>string</em> <strong>$value</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
+| public | <em>Constructor which sets the classes and attributes of the element.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string <strong>$value</strong> <em>The value of the option</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$value</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
 
 *This class extends \CCL\Content\Element\Basic\Element*
 
@@ -373,11 +407,20 @@ $t = new TextBlock('mytextblock');
 
 ### Class: \CCL\Content\Element\Basic\Form\Select
 
-> A select representation.
+> Represents a select element.
+
+###### Example
+```
+// The following code snippet creates a select element which allows to select multiple options.
+  // The option 2 is pre selected.
+$s = new Select('myselect', 'myname', true);
+s->addOption(1, 'Option 1', false);
+s->addOption(2, 'Option 2', true);
+```
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <em>Initiates the select for a given name.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em></em></li><li>string <strong>$name</strong> <em></em></li><li>bool/boolean <strong>$multiple</strong> <em></em></li><li>array <strong>$classes</strong> <em></em></li><li>array <strong>$attributes</strong> <em></em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$name</strong>, <em>bool/boolean</em> <strong>$multiple = false</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
+| public | <em>Constructor which sets the classes and attributes of the element.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>string <strong>$name</strong> <em>The name of the select</em></li><li>bool/boolean <strong>$multiple</strong> <em>If it is allowed to select multiple elements</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>string</em> <strong>$name</strong>, <em>bool/boolean</em> <strong>$multiple = false</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
 | public | <em>Adds an option with the text and value, if selected is true, it gets the selected property.</em><br><br>Parameters: <ul><li>string <strong>$text</strong> <em></em></li><li>string <strong>$value</strong> <em></em></li><li>bool/boolean <strong>$selected</strong> <em></em></li></ul>Returns:<br><em>\CCL\Content\Element\Basic\Element</em><br><br>Call:<br><strong>addOption(</strong><em>string</em> <strong>$text</strong>, <em>string</em> <strong>$value</strong>, <em>bool/boolean</em> <strong>$selected = false</strong>)</strong> |
 
 *This class extends \CCL\Content\Element\Basic\Container*
@@ -386,7 +429,13 @@ $t = new TextBlock('mytextblock');
 
 ### Class: \CCL\Content\Element\Basic\Table\Body
 
-> A table body representation.
+> Represents a table body element.
+
+###### Example
+```
+// The following code snippet creates a table body element.
+$b = new Body('mybody');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
@@ -398,6 +447,14 @@ $t = new TextBlock('mytextblock');
 
 ### Class: \CCL\Content\Element\Basic\Table\Cell
 
+> Represents a table cell element.
+
+###### Example
+```
+// The following code snippet creates a table cell element.
+$c = new Cell('mycell');
+```
+
 | Visibility | Function |
 |:-----------|:---------|
 | public | <em>Constructor which sets the classes and attributes of the element. The id parameter must be set, otherwise an InvalidArgumentException is thrown.</em><br><br>Parameters: <ul><li>string <strong>$id</strong> <em>The id of the element, must be not empty</em></li><li>array <strong>$classes</strong> <em>The classes of the element</em></li><li>array <strong>$attributes</strong> <em>Additional attributes for the element</em></li></ul>Returns:<br><em>void</em><br><br>Call:<br><strong>__construct(</strong><em>string</em> <strong>$id</strong>, <em>array</em> <strong>$classes = array()</strong>, <em>array</em> <strong>$attributes = array()</strong>)</strong> |
@@ -408,7 +465,13 @@ $t = new TextBlock('mytextblock');
 
 ### Class: \CCL\Content\Element\Basic\Table\Footer
 
-> A table footer representation.
+> Represents a table footer element.
+
+###### Example
+```
+// The following code snippet creates a table footer element.
+$f = new Footer('myfooter');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
@@ -420,7 +483,13 @@ $t = new TextBlock('mytextblock');
 
 ### Class: \CCL\Content\Element\Basic\Table\Head
 
-> A table head representation.
+> Represents a table head element.
+
+###### Example
+```
+// The following code snippet creates a table head element.
+$h = new Head('myhead');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
@@ -432,7 +501,13 @@ $t = new TextBlock('mytextblock');
 
 ### Class: \CCL\Content\Element\Basic\Table\HeadCell
 
-> A table head cell representation.
+> Represents a table head cell element.
+
+###### Example
+```
+// The following code snippet creates a table head cell element.
+$h = new HeadCell('myheadcell');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
@@ -444,7 +519,13 @@ $t = new TextBlock('mytextblock');
 
 ### Class: \CCL\Content\Element\Basic\Table\Row
 
-> A table row representation.
+> Represents a table head row element.
+
+###### Example
+```
+// The following code snippet creates a table head row element.
+$r = new Row('myheadrow');
+```
 
 | Visibility | Function |
 |:-----------|:---------|
