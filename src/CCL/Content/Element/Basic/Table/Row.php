@@ -8,7 +8,7 @@ use CCL\Content\Element\Basic\Container;
  * Represents a table head row element.
  *
  * @example // The following code snippet creates a table head row element.
- * $r = new Row('myheadrow');
+ * $r = new Row('myrow');
  */
 class Row extends Container
 {
